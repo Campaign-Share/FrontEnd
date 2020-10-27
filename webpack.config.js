@@ -1,15 +1,15 @@
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const port = 3000;
 
 module.exports = {
-	mode: "development",
-	entry: ["babel-polyfill", "./src/index.js"],
+	mode: 'development',
+	entry: ['babel-polyfill', './src/index.js'],
 	output: {
-		path: __dirname + "/dist",
-		filename: "bundle.[hash].js",
-		publicPath: "/",
+		path: __dirname + '/dist',
+		filename: 'bundle.[hash].js',
+		publicPath: '/',
 	},
 	module: {
 		rules: [
@@ -18,19 +18,31 @@ module.exports = {
 			{
 				test: /\.(js)$/,
 				exclude: /node_modules/,
-				use: ["babel-loader"],
+				use: ['babel-loader'],
 			},
 			// 두 번째 룰
 			{
 				test: /\.css$/,
 				use: [
 					{
-						loader: "style-loader",
+						loader: 'style-loader',
 					},
 					{
-						loader: "css-loader",
+						loader: 'css-loader',
 						options: {
 							modules: true,
+						},
+					},
+				],
+			},
+			{
+				test: /\.(jpg|png|jpeg|bmp|gif|svg)?$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: '[path][name].[ext]',
+							context: 'src/',
 						},
 					},
 				],
@@ -39,11 +51,11 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: "public/index.html",
+			template: 'public/index.html',
 		}),
 	],
 	devServer: {
-		host: "localhost",
+		host: 'localhost',
 		port: port,
 		open: true,
 		historyApiFallback: true,
