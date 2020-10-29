@@ -5,9 +5,7 @@ import EditProfile from './components/Profile/editProfile/EditProfile.js'
 const Routing = () => {
 	return (
 		<Switch>
-			{/* <Route exact path="/" render={() => <IntroduceContainer />} /> */}
-			<Route exact path="/Mypage" component={Mypage} />
-			<Route exact path='/EditProfile' component={EditProfile}/>
+			
 		</Switch>
 	);
 };
