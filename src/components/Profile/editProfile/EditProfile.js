@@ -17,11 +17,10 @@ const EditProfile = () => {
 						<S.UserImgBox>
 							<S.UserImg src={inputImg}></S.UserImg>
 						</S.UserImgBox>
-                        <S.NameInput placeholder={'jj8747'}></S.NameInput>
-                        <S.BtnBox>
-                            <S.EditButton>완료</S.EditButton>
-                        </S.BtnBox>
-                        
+						<S.NameInput placeholder={'jj8747'}></S.NameInput>
+						<S.BtnBox>
+							<S.EditButton>완료</S.EditButton>
+						</S.BtnBox>
 					</S.EditBox>
 				</S.Body>
 			</S.MainContainer>
