@@ -4,6 +4,8 @@ import profileImg from '../../../assets/img/profile.png';
 import * as S from './style.js';
 import CampaignHowMuch from './campaignHowMuch/CampaignHowMuch.js';
 const Mypage = () => {
+		<S.Container>
+	return (
 	return (
 		<S.Container>
 			<SideBar></SideBar>
