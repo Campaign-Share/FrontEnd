@@ -4,4 +4,4 @@ import Mypage from '../components/Profile/mypage/Mypage';
 const MypageContainer = () => {
 	return <Mypage />;
 };
-export default MypageContainerl;
+export default MypageContainer;
