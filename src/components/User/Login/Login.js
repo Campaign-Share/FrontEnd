@@ -38,7 +38,7 @@ const Login = () => {
 							name="password"></S.Password>
 					</S.InputBox>
 				</S.ContentSection>
-				<S.LoginBtn isActive={isActive}>로그인</S.LoginBtn>
+				<S.UserBtn isActive={isActive}>로그인</S.UserBtn>
 			</S.UserBox>
 		</S.UserContainer>
 	);

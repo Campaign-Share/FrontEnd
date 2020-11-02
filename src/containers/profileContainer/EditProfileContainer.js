@@ -1,5 +1,5 @@
 import React from 'react';
-import EditProfile from '../../components/Profile/editProfile/EditProfile';
+import EditProfile from '../../components/Profile/EditProfile/EditProfile';
 
 const EditProfileContainer = () => {
 	return <EditProfile />;

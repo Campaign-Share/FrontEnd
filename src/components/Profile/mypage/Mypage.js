@@ -2,9 +2,9 @@ import React from 'react';
 import SideBar from '../../Navigation/sideBar/SideBar.js';
 import profileImg from '../../../assets/img/profile.png';
 import * as S from './style.js';
-import CampaignHowMuch from './campaignHowMuch/CampaignHowMuch.js';
-const Mypage = () => {
+import CampaignHowMuch from './CampaignHowMuch/CampaignHowMuch.js';
 
+const Mypage = () => {
 	return (
 		<S.Container>
 			<SideBar></SideBar>
@@ -29,9 +29,9 @@ const Mypage = () => {
 							<CampaignHowMuch></CampaignHowMuch>
 							<S.GraphBox>
 								<S.StickBox>
-									<S.Stick color={'#ABC9C7'}/>
-									<S.Stick color={`#61A5B3`}/>
-									<S.Stick color={`#78BBA8`}/>
+									<S.Stick color={'#ABC9C7'} />
+									<S.Stick color={`#61A5B3`} />
+									<S.Stick color={`#78BBA8`} />
 								</S.StickBox>
 								<S.Line />
 							</S.GraphBox>
