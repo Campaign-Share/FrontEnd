@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Name = styled.input.attrs({
 	type: 'test',
-	placeholder: 'Name',
 })`
 	width: 70%;
 	display: block;
@@ -45,7 +44,15 @@ export const IdBtn = styled.button`
 export const Password = styled(Name).attrs({
 	type: 'password',
 	placeholder: 'Password',
-})``;
+})`
+	margin-top: 20px;
+`;
+
+export const IsError = styled.span`
+	font-size: 12px;
+	color: #FF0000;
+	margin-right: 35px;
+`;
 
 export const Explan = styled.h3`
 	font-size: 18px;
@@ -54,5 +61,4 @@ export const Explan = styled.h3`
 
 export const Email = styled(Name).attrs({
 	type: 'email',
-	placeholder: 'Email',
 })``;
