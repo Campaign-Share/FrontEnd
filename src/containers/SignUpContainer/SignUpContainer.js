@@ -15,6 +15,7 @@ const SignUpContainer = (props) => {
 		component = <SignUp/>
 	}
 
+
 	return <React.Fragment>{component}</React.Fragment>;
 };
 
