@@ -1,6 +1,7 @@
 import React from 'react';
 import Routing from './Routing.js';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import GlobalStyle from './GloblaStyle.js';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const App = () => {
 	return (
