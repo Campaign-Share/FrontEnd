@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SideBar from '../../Navigation/sideBar/SideBar.js';
 import profileImg from '../../../assets/img/profile.png';
 import * as S from './style.js';
 import CampaignHowMuch from './CampaignHowMuch/CampaignHowMuch.js';
 
 const Mypage = ({ getUserInfo, userInfoStore }) => {
-	console.log(userInfoStore	);
+	useEffect(() => {
+		getUserInfo();
+	}, []);
 	return (
 		<S.Container>
 			<SideBar></SideBar>
