@@ -4,7 +4,8 @@ import profileImg from '../../../assets/img/profile.png';
 import * as S from './style.js';
 import CampaignHowMuch from './CampaignHowMuch/CampaignHowMuch.js';
 
-const Mypage = () => {
+const Mypage = ({ getUserInfo, userInfoStore }) => {
+	console.log(userInfoStore	);
 	return (
 		<S.Container>
 			<SideBar></SideBar>

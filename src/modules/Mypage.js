@@ -2,9 +2,9 @@ const GET_MYPAGE_INFO = 'mypage/GET_MYPAGE_INFO';
 
 const mypageReducerState = {
 	ID: '',
-	Nickname: '',
+	nick_name: '',
 	userImg: '',
-	campaignHistory: [],
+	userData : {}
 };
 
 export const getMypageInfo = (payload) => ({
@@ -15,7 +15,11 @@ export const getMypageInfo = (payload) => ({
 const mypageReducer = (state = mypageReducerState, action) => {
 	switch (action.type) {
 		case GET_MYPAGE_INFO: {
-			return action.payload;
+			return({
+				...state,
+			ID: action.payload
+			})
+			// return action.payload;
 		}
 		default: {
 			return state;
