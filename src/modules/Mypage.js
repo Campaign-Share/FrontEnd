@@ -4,7 +4,7 @@ const mypageReducerState = {
 	ID: '',
 	nick_name: '',
 	userImg: '',
-	userData : {}
+	userData: {},
 };
 
 export const getMypageInfo = (payload) => ({
@@ -15,11 +15,10 @@ export const getMypageInfo = (payload) => ({
 const mypageReducer = (state = mypageReducerState, action) => {
 	switch (action.type) {
 		case GET_MYPAGE_INFO: {
-			return({
+			return {
 				...state,
-			ID: action.payload
-			})
-			// return action.payload;
+				userData: action.payload,
+			};
 		}
 		default: {
 			return state;
