@@ -1,6 +1,6 @@
-const GET_MYPAGE_INFO = 'mypage/GET_MYPAGE_INFO';
+const GET_EDITPROFILE_INFO = 'editprofile/GET_EDITPROFILE_INFO';
 
-const mypageReducerState = {
+const editProfileReducerState = {
 	ID: '',
 	nick_name: '',
 	userImg: '',
@@ -8,14 +8,14 @@ const mypageReducerState = {
 	userData: {},
 };
 
-export const getMypageInfo = (payload) => ({
-	type: GET_MYPAGE_INFO,
+export const geteditProfileInfo = (payload) => ({
+	type: GET_EDITPROFILE_INFO,
 	payload,
 });
 
-const mypageReducer = (state = mypageReducerState, action) => {
+const editProfileReducer = (state =  editProfileReducerState, action) => {
 	switch (action.type) {
-		case GET_MYPAGE_INFO: {
+		case GET_EDITPROFILE_INFO: {
 			return {
 				...state,
 				nick_name: action.payload.nick_name,
@@ -29,4 +29,4 @@ const mypageReducer = (state = mypageReducerState, action) => {
 		}
 	}
 };
-export default mypageReducer;
+export default editProfileReducer;

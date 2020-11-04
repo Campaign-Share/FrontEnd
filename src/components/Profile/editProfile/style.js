@@ -66,6 +66,7 @@ export const BtnBox =styled.div`
     width:100%;
     height:170px;
     display:flex;
+	flex-direction:column;
     justify-content:center;
     align-items:center;
 `;
@@ -79,4 +80,14 @@ export const EditButton = styled.button`
     color:white;
     text-align:center;
     outline:none;
-`
+`;
+
+export const ChangePassword = styled.button`
+	outline:none;
+	cursor:pointer;
+	color:#b3d5d4;
+	border:none;
+	background-color:white;
+	margin-top:30px;
+	font-size:15px;
+`;

@@ -4,18 +4,25 @@ import profileImg from '../../../assets/img/profile.png';
 import * as S from './style.js';
 import CampaignHowMuch from './CampaignHowMuch/CampaignHowMuch.js';
 import { useSelector } from 'react-redux';
-const logout = () => {
-	// localStorage.removeItem()
-};
-// const gotoEditProfile
+import { useHistory } from 'react-router-dom';
 const Mypage = () => {
 	const userInfo = useSelector((store) => store.mypage);
+	const history = useHistory();
+	const logout = useCallback(() => {
+		if (confirm('로그아웃 하시겠습니까?')) history.push('/introduce');
+	}, []);
+	const gotoEditProfile = useCallback(() => {
+		history.push(`/editprofile`);
+	}, []);
+	console.log(userInfo.user_uuid);
 	return (
 		<S.Container>
 			<SideBar></SideBar>
 			<S.Body>
 				<S.HeaderEnd>
-					<S.EditProfileBtn>프로필 설정</S.EditProfileBtn>
+					<S.EditProfileBtn onClick={gotoEditProfile}>
+						프로필 설정
+					</S.EditProfileBtn>
 				</S.HeaderEnd>
 				<S.MainInfo>
 					<S.UserDataBoxWrap>

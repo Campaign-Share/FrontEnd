@@ -20,6 +20,7 @@ export const EditProfileBtn = styled.button`
 	color: white;
 	width: 120px;
 	height: 40px;
+	cursor:pointer;
 	border: solid;
 	border-radius: 2rem;
 	outline:none;
@@ -70,6 +71,7 @@ export const Logout = styled.div`
 	color: red;
 	width: 100%;
 	text-align: center;
+	cursor:pointer;
 `;
 export const UserCampaignBox = styled.div`
 	flex: 1;
