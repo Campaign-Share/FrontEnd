@@ -23,9 +23,7 @@ const Suggest = () => {
 								<S.SuggestRightTitle>
 									캠페인 설명 & 참여 방법
 								</S.SuggestRightTitle>
-								<S.SuggestRightInput>
-									캠페인에 대한 것을 적어주세요.
-								</S.SuggestRightInput>
+								<S.SuggestRightInput placeholder="캠페인에 관한 것을 적어주세요." />
 							</S.SuggestRightWrapper>
 						</S.SuggestBodyWrapper>
 						<S.SuggestBottomWrapper>

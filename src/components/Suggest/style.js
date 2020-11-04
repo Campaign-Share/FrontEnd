@@ -109,7 +109,7 @@ export const SuggestRightTitle = styled.h3`
 	margin-left: 10px;
 `;
 
-export const SuggestRightInput = styled.div`
+export const SuggestRightInput = styled.textarea`
 	width: calc(90% - 15px);
 	height: calc(90% - 10px);
 	padding-top: 10px;
@@ -120,6 +120,12 @@ export const SuggestRightInput = styled.div`
 	border-radius: 24px;
 	font-family: Noto Sans CJK KR;
 	color: #b3b3b3;
+	font-size: 18px;
+
+	resize: none;
+	:focus {
+		outline: none;
+	}
 `;
 
 export const SuggestBottomWrapper = styled.div`
