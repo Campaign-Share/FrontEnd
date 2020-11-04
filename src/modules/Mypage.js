@@ -17,7 +17,8 @@ const mypageReducer = (state = mypageReducerState, action) => {
 		case GET_MYPAGE_INFO: {
 			return {
 				...state,
-				userData: action.payload,
+				nick_name: action.payload.nick_name,
+				ID: action.payload.user_id,
 			};
 		}
 		default: {
