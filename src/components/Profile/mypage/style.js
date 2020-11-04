@@ -22,6 +22,7 @@ export const EditProfileBtn = styled.button`
 	height: 40px;
 	border: solid;
 	border-radius: 2rem;
+	outline:none;
 `;
 export const MainInfo = styled.div`
 	width: 100%;
