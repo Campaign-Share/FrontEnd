@@ -4,14 +4,13 @@ import * as L from '../Login/Style';
 import * as S from './Style';
 import background from '../../../assets/img/background.png';
 
-const SignUp = () => {
+const SignUp = (signUpInput) => {
 	let [name, setName] = useState('');
 	let [nickname, setNickName] = useState('');
 	let [id, setId] = useState('');
 	let [password, setPassword] = useState('');
-	let [isPassword, setIsPassword] = useState(false)
+	let [isPassword, setIsPassword] = useState(false);
 	let [isId, setIsId] = useState(false);
-	
 
 	const config = {};
 	const nameChange = (e) => {
@@ -43,28 +42,26 @@ const SignUp = () => {
 		password: password,
 	};
 
-
-	let isPasswordStyle = isPassword ? "visible" : "hidden";
-	let isIdStyle = isId ? "visible" : "hidden";
+	let isPasswordStyle = isPassword ? 'visible' : 'hidden';
+	let isIdStyle = isId ? 'visible' : 'hidden';
 
 	const joinBtn = () => {
+		if (password.length < 8) {
+			setIsPassword(true);
+		} else setIsPassword(false);
 
-		
-		if(password.length < 8) {
-			setIsPassword(true)
-		} else setIsPassword(false)
+		console.log(name, nickname, id, password);
+		if (isCheck(id) === false) return setIsId(true);
+		else return setIsId(false);
 
-		if(isCheck(id) === false) return setIsId(true)
-		else return setIsId(false)
-
-	
-
+		if (setIsPassword(false) && setId(false)) {
+			signUpInput();
+		}
 	};
 
-	
 	return (
-		<L.UserContainer url={background}>
-			<L.UserBox>
+		<L.UserContainer join url={background}>
+			<L.UserBox join>
 				<L.ContentSection>
 					<L.Title>회원가입</L.Title>
 					<L.InputBox>
@@ -74,9 +71,13 @@ const SignUp = () => {
 							<S.Id onChange={idChange} />
 							<S.IdBtn onClick={isCheck}>중복 체크 </S.IdBtn>
 						</S.IdBox>
-						<S.IsError style={{visibility: isIdStyle}}>4~12자의 영문 대소문자와 숫자</S.IsError>
+						<S.IsError style={{ visibility: isIdStyle }}>
+							4~12자의 영문 대소문자와 숫자
+						</S.IsError>
 						<S.Password id="password" onChange={passwordChange} />
-						<S.IsError style={{visibility: isPasswordStyle}}>비밀번호는 8자 이상으로 설정해 주세요. </S.IsError>
+						<S.IsError style={{ visibility: isPasswordStyle }}>
+							비밀번호는 8자 이상으로 설정해 주세요.{' '}
+						</S.IsError>
 					</L.InputBox>
 					<L.UserBtn signUp onClick={joinBtn}>
 						회원가입
