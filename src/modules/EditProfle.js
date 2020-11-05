@@ -5,6 +5,7 @@ const editProfileReducerState = {
 	nick_name: '',
 	userImg: '',
 	user_uuid: '',
+	profile_uri:'',
 	userData: {},
 };
 
@@ -21,7 +22,8 @@ const editProfileReducer = (state =  editProfileReducerState, action) => {
 				nick_name: action.payload.nick_name,
 				ID: action.payload.user_id,
 				user_uuid:action.payload.user_uuid,
-				userData: action.payload
+				userData: action.payload,
+				profile_uri: action.payload.profile_uri
 			};
 		}
 		default: {

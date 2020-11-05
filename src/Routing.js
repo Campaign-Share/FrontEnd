@@ -8,6 +8,7 @@ import MypageContainer from './containers/ProfileContainer/MypageContainer';
 import EditProfileContainer from './containers/ProfileContainer/EditProfileContainer';
 import LoginContainer from './containers/LoginContainer/LoginContainer';
 import SignUpContainer from './containers/SignUpContainer/SignUpContainer';
+import EditPasswordContainer from './containers/profileContainer/EditPasswordContainer';
 
 const Routing = () => {
 	return (
@@ -17,6 +18,7 @@ const Routing = () => {
 			<Route path="/ranking" component={RankingContainer} />
 			<Route exact path="/mypage" component={MypageContainer} />
 			<Route exact path="/editprofile" component={EditProfileContainer} />
+			<Route exact path="/editPassword" component={EditPasswordContainer}/>
 			<Route exact path="/login" component={LoginContainer} />
 			<Route path="/signUp" componet={SignUpContainer} />
 			<Route path="/signUp/:email" component={SignUpContainer} />

@@ -8,6 +8,7 @@ const MypageContainer = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		getUserInfoFromAPI().then((res) => {
+			
 			dispatch(getMypageInfo(res.data));
 		});
 	}, []);
