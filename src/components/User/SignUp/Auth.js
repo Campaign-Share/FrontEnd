@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import * as L from '../Login/Style';
 import * as S from './Style';
 import background from '../../../assets/img/background.png';
+import { useDispatch } from 'react-redux';
+import { signUpAuth } from '../../../modules/SignUp';
 
-const Auth = () => {
+const Auth = (userAuth) => {
 	let [isAuth, setIsAuth] = useState(false);
 	let [code, setCode] = useState('');
 	let isAuthStyle = isAuth ? 'visible' : 'hidden';
@@ -13,8 +15,11 @@ const Auth = () => {
 	};
 
 	const authCheck = () => {
-		setIsAuth(true);
+		auth(code);
 	};
+	const dispatch = useDispatch();
+	const auth = (userAuth) => dispatch(signUpAuth(userAuth));
+
 	return (
 		<L.UserContainer url={background}>
 			<L.UserBox auth>
@@ -27,7 +32,7 @@ const Auth = () => {
 							placeholder="Code"
 							id="email"
 							onChange={codeValue}></S.Email>
-						<S.IsError style={{ visibility: isAuthStyle }}>
+						<S.IsError style={{ visibility: isAuthStyle }} auth>
 							코드가 올바르지 않습니다.
 						</S.IsError>
 					</L.InputBox>
