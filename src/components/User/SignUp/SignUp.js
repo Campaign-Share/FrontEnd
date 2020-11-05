@@ -1,21 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import * as L from '../Login/Style';
 import * as S from './Style';
+import signUpInput from '../../../modules/SignUp';
 import background from '../../../assets/img/background.png';
+import { useDispatch } from 'react-redux';
 
-const SignUp = (signUpInput) => {
+const SignUp = () => {
 	let [name, setName] = useState('');
 	let [nickname, setNickName] = useState('');
 	let [id, setId] = useState('');
 	let [password, setPassword] = useState('');
 	let [isPassword, setIsPassword] = useState(false);
 	let [isId, setIsId] = useState(false);
-
-	const config = {};
 	const nameChange = (e) => {
 		e.preventDefault();
 		setName(e.target.value);
+	};
+
+	const dispatch = useDispatch();
+	const userData = ({ userName, userNickname, userId, userPassword }) => {
+		dispatch(signUpInput({ userName, userNickname, userId, userPassword }));
 	};
 
 	const nickChange = (e) => {
@@ -35,13 +40,6 @@ const SignUp = (signUpInput) => {
 		return re.test(str) ? true : false;
 	};
 
-	const data = {
-		name: name,
-		nickname: nickname,
-		id: id,
-		password: password,
-	};
-
 	let isPasswordStyle = isPassword ? 'visible' : 'hidden';
 	let isIdStyle = isId ? 'visible' : 'hidden';
 
@@ -50,13 +48,11 @@ const SignUp = (signUpInput) => {
 			setIsPassword(true);
 		} else setIsPassword(false);
 
+		userData({ name, nickname, id, password });
+
 		console.log(name, nickname, id, password);
 		if (isCheck(id) === false) return setIsId(true);
 		else return setIsId(false);
-
-		if (setIsPassword(false) && setId(false)) {
-			signUpInput();
-		}
 	};
 
 	return (
