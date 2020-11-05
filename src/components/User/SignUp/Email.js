@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import * as L from '../Login/Style';
 import * as S from './Style';
 import background from '../../../assets/img/background.png';
+import { useDispatch } from 'react-redux';
+import { signUpEmail } from '../../../modules/SignUp';
 
-const Email = () => {
+const Email = (userEmail) => {
 	let [email, setEmail] = useState('');
 	let [isEmail, setIsEmail] = useState(false);
+
+	const dispatch = useDispatch();
 
 	const emailChange = (e) => {
 		const button = document.getElementById('button');
@@ -17,15 +21,15 @@ const Email = () => {
 		return re2.test(str) ? true : false;
 	};
 
+	const joinEmail = (userEmail) => dispatch(signUpEmail(userEmail));
+
 	const onEmail = () => {
 		if (emailCheck(email) === false) {
-			document.getElementById('email').value = null;
 			setIsEmail(true);
-			setEmail('');
+			document.getElementById('email').value = null;
 			console.log(email);
 		} else {
-			//서버 코드
-			console.log('okay');
+			joinEmail(email);
 		}
 	};
 	let isEmailStyle = isEmail ? 'visible' : 'hidden';
