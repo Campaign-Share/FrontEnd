@@ -77,16 +77,32 @@ export const SuggestLeftWrapper = styled.div`
 	justify-content: center;
 `;
 
-export const SuggestImageInput = styled.div`
+export const SuggestImageContainer = styled.div.attrs({
+	id: 'image_container',
+})`
 	width: 45%;
+	height: 100%;
+`;
+
+export const SuggestImageLabel = styled.label`
+	width: 100%;
 	height: 100%;
 	border: 1px solid #707070;
 	font-family: Noto Sans CJK KR;
-	color: #898989;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: #898989;
 	font-size: 20px;
+	cursor: pointer;
+`;
+
+export const SuggestImageInput = styled.input.attrs({
+	placeholder: '이미지를 넣어주세요',
+	type: 'file',
+	accept: 'image/png, image/jpeg',
+})`
+	display: none;
 `;
 
 export const SuggestDividingLine = styled.div`
@@ -109,7 +125,9 @@ export const SuggestRightTitle = styled.h3`
 	margin-left: 10px;
 `;
 
-export const SuggestRightInput = styled.textarea`
+export const SuggestRightInput = styled.textarea.attrs({
+	placeholder: '캠페인에 관한 것을 적어주세요.',
+})`
 	width: calc(90% - 15px);
 	height: calc(90% - 10px);
 	padding-top: 10px;
