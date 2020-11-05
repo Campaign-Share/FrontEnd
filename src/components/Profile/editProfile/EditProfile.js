@@ -19,7 +19,6 @@ const EditProfile = () => {
 	useEffect(() => {
 		console.log(profile_uri);
 		if (!profile_uri) return;
-
 		setUserImg(
 			`https://campaignshare.s3.ap-northeast-2.amazonaws.com/${profile_uri}?a=${Date.now()}`,
 		);
