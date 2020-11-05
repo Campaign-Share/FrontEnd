@@ -1,5 +1,6 @@
 const SIGNUP_EMAIL = 'SIGNUP_EMAIL';
 const SIGNUP_INPUT = 'SIGNUP_INPUT';
+const SIGNUP_AUTH = 'SIGNUP_AUTH';
 const SIGNUP_IMG = 'SIGNUP_IMG';
 
 export const signUpEmail = (email) => ({
@@ -7,14 +8,19 @@ export const signUpEmail = (email) => ({
 	email,
 });
 
-export const signUpInput = ({ name, nickname, id, password, userImg }) => ({
+export const signUpInput = ({ name, nickname, id, password }) => ({
 	type: SIGNUP_INPUT,
 	payload: {
-		name: '',
-		nickname: '',
-		id: '',
-		password: '',
+		name: name,
+		nickname: nickname,
+		id: id,
+		password: password,
 	},
+});
+
+export const signUpAuth = (authCode) => ({
+	type: SIGNUP_AUTH,
+	authCode,
 });
 
 export const signUpImg = (img) => ({
@@ -24,6 +30,7 @@ export const signUpImg = (img) => ({
 
 const signUpState = {
 	email: '',
+	authCode: '',
 	data: {
 		name: '',
 		nickname: '',
@@ -36,9 +43,9 @@ const signUpState = {
 export const signUpReducer = (state = signUpState, action) => {
 	switch (action.type) {
 		case SIGNUP_EMAIL:
-			return ({ ...state, email: action.email });
+			return { ...state, email: action.email };
 		case SIGNUP_INPUT:
-			return ({
+			return {
 				...state,
 				data: {
 					name: action.payload.name,
@@ -46,12 +53,18 @@ export const signUpReducer = (state = signUpState, action) => {
 					id: action.payload.id,
 					password: action.payload.password,
 				},
-			});
+			};
 		case SIGNUP_IMG:
-			return ({
+			return {
 				...state,
 				img: action.img,
-			});
-		default: return state;
+			};
+		case SIGNUP_AUTH:
+			return {
+				...state,
+				authCode: action.authCode,
+			};
+		default:
+			return state;
 	}
 };
