@@ -1,56 +1,67 @@
 import axios from 'axios';
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Auth, Email, SignUp, SignUpImg } from '../../components/User/SignUp';
-import signUpReducer from '../../modules/SignUp';
+import requestApiWithAccessToken from '../../APIrequest';
 
 const SignUpContainer = (props) => {
 	const url = props.match.url;
 	let component;
-	// const signUp = () => {
-	// };
+
 	if (url === '/signUp/email') {
-		component = <Email />;
+		component = <Email userEmail={userEmail} />;
 	} else if (url === '/signUp/auth') {
-		component = <Auth />;
+		component = <Auth userAuth={userAuth} />;
 	} else if (url === '/signUp/img') {
-		component = <SignUpImg />;
+		component = <SignUpImg userImg={userImg} />;
 	} else {
-		component = <SignUp signUpInput={signUpData} />;
+		component = (
+			<SignUp
+				userName={name}
+				userNickname={nickname}
+				userId={id}
+				userPassword={password}
+			/>
+		);
 	}
 
-	const signUpData = ({ name, nickname, id, password }) => {
-		const { signUpInput } = this.props;
-		signUpInput({ name, nickname, id, password });
-	};
+	const {
+		userEmail,
+		name,
+		nickname,
+		id,
+		password,
+		userImg,
+		userAuth,
+	} = useSelector((state) => ({
+		userEmail: state.signUpReducer.email,
+		userAuth: state.signUpReducer.authCode,
+		userName: state.signUpReducer.data.name,
+		userNickname: state.signUpReducer.data.nickname,
+		userId: state.signUpReducer.data.id,
+		userPassword: state.signUpReducer.data.password,
+		userImg: state.signUpReducer.img,
+	}));
 
-	const joinEmail =(email) => {
-		const { signUpEmail } = this.props;
-		signUpEmail(email);
-	}
+	useEffect(() => {
+		console.log(userEmail);
+		requestApiWithAccessToken('/v1/email/verify', userEmail, [], 'post').then(
+			(res) => {
+				console.log(res);
+			},
+		);
+	}, [userEmail]);
+
+	useEffect(() => {
+		console.log(userAuth);
+		requestApiWithAccessToken(
+			'/v1/email/verify',
+			{ userEmail, userAuth },
+			[],
+			'put',
+		);
+	}, [userAuth]);
 
 	return <React.Fragment>{component}</React.Fragment>;
 };
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		signUpInput: ({ name, nickname, id, password }) => {
-			dispatch(signUpReducer.signUpInput({ name, nickname, id, password }));
-		},
-		signUpEmail: (email) => {
-			dispatch(signUpReducer.signUpEmail(email));
-		},
-		SignUpImg: (img) => {
-			dispatch(signUpReducer.signUpImg(img));
-		},
-	};
-};
-const mapStateToProps = (state) => ({
-	email: state.email,
-	name: state.name,
-	nickname: state.nickname,
-	id: state.id,
-	password: state.password,
-	img: state.img,
-});
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpContainer);
+export default SignUpContainer;
