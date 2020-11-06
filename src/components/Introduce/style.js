@@ -7,6 +7,10 @@ export const MainWrapper = styled.div`
 	background-repeat: no-repeat;
 	flex: 1;
 	height: 100%;
+
+	* {
+		font-family: 'Noto Sans KR' !important;
+	}
 `;
 
 export const TopWrapper = styled.div`
@@ -32,7 +36,7 @@ export const LinkWrapper = styled.div`
 
 export const Link = styled.a`
 	margin-left: 6.25rem;
-	font-family: Noto Sans CJK KR;
+	font-family: 'Noto Sans KR';
 	color: white;
 	font-size: 1.438rem;
 	text-decoration: none;
@@ -58,7 +62,7 @@ export const TextWrapper = styled.div`
 export const TextTitle = styled.h1`
 	width: 37.81rem;
 	height: 4.375rem;
-	font-family: Noto Sans CJK KR;
+	font-family: 'Noto Sans KR';
 	margin: 0;
 	font-size: 3.125rem;
 	display: block;

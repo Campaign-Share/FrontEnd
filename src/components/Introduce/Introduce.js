@@ -14,7 +14,7 @@ const Introduce = () => {
 				</S.LogoWrapper>
 				<S.LinkWrapper>
 					<S.Link href="/login">Login</S.Link>
-					<S.Link href="/signUp">Join Us</S.Link>
+					<S.Link href="/signUp/email">Join Us</S.Link>
 				</S.LinkWrapper>
 			</S.TopWrapper>
 			<S.BodyWrapper>
