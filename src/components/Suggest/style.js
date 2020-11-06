@@ -21,6 +21,7 @@ export const Header = styled.div`
 export const HeaderIcon = styled.img`
 	width: 50px;
 	margin-right: 2%;
+	cursor: pointer;
 `;
 
 export const BodyWrapper = styled.div`
@@ -46,15 +47,34 @@ export const SuggestWrapper = styled.div`
 
 export const SuggestTitle = styled.input.attrs({
 	placeholder: '제목',
+	autoComplete: 'off',
 })`
-	margin-top: 4%;
+	margin-top: 2%;
 	width: 30%;
-	height: 8%;
+	height: 6%;
 	text-align: center;
 	border: none;
 	border-bottom: 1px solid #d1d1d1;
 	font-family: Noto Sans CJK KR;
 	font-size: 23px;
+	color: #909090;
+
+	:focus {
+		outline: none;
+	}
+`;
+
+export const SuggestSubTitle = styled.input.attrs({
+	placeholder: '부제목',
+	autoComplete: 'off',
+})`
+	width: 20%;
+	height: 4%;
+	text-align: center;
+	border: none;
+	border-bottom: 1px solid #d1d1d1;
+	font-family: Noto Sans CJK KR;
+	font-size: 18px;
 	color: #909090;
 
 	:focus {
@@ -71,7 +91,7 @@ export const SuggestBodyWrapper = styled.div`
 `;
 
 export const SuggestLeftWrapper = styled.div`
-	width: 50%;
+	width: 40%;
 	height: 80%;
 	display: flex;
 	justify-content: center;
@@ -95,13 +115,10 @@ export const SuggestImageLabel = styled.label`
 	color: #898989;
 	font-size: 20px;
 	cursor: pointer;
+	text-align: center;
 `;
 
-export const SuggestImageInput = styled.input.attrs({
-	placeholder: '이미지를 넣어주세요',
-	type: 'file',
-	accept: 'image/png, image/jpeg',
-})`
+export const SuggestImageInput = styled.input`
 	display: none;
 `;
 
@@ -112,7 +129,7 @@ export const SuggestDividingLine = styled.div`
 `;
 
 export const SuggestRightWrapper = styled.div`
-	width: 50%;
+	width: 60%;
 	height: 80%;
 	display: flex;
 	flex-direction: column;
@@ -123,22 +140,21 @@ export const SuggestRightTitle = styled.h3`
 	font-family: Noto Sans CJK KR;
 	margin: 0;
 	margin-left: 10px;
+	font-size: 15px;
 `;
 
-export const SuggestRightInput = styled.textarea.attrs({
-	placeholder: '캠페인에 관한 것을 적어주세요.',
-})`
+export const SuggestRightInput = styled.textarea`
 	width: calc(90% - 15px);
-	height: calc(90% - 10px);
+	height: calc((90% - 10px) / 2);
 	padding-top: 10px;
 	padding-left: 15px;
 	border: 1px solid #707070;
 	margin-left: 10px;
-	margin-top: 10px;
+	margin-top: 5px;
 	border-radius: 24px;
 	font-family: Noto Sans CJK KR;
 	color: #b3b3b3;
-	font-size: 18px;
+	font-size: 12px;
 
 	resize: none;
 	:focus {
@@ -149,6 +165,28 @@ export const SuggestRightInput = styled.textarea.attrs({
 export const SuggestBottomWrapper = styled.div`
 	width: 92%;
 	height: 13%;
+	display: flex;
+`;
+
+export const SuggestBottomLeftWrapper = styled.div`
+	width: 50%;
+	display: flex;
+	justify-content: flex-start;
+`;
+
+export const SuggestPeriodInput = styled.input`
+	width: 11rem;
+	height: 2rem;
+	font-family: Noto Sans CJK KR;
+	color: #b3b3b3;
+
+	:focus {
+		outline: none;
+	}
+`;
+
+export const SuggestBottomRightWrapper = styled.div`
+	width: 50%;
 	display: flex;
 	justify-content: flex-end;
 `;
