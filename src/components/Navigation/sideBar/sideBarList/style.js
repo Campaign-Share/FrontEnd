@@ -6,7 +6,8 @@ export const ItemBox = styled.div`
 	height: 50px;
 	margin-top: 30px;
 	display: flex;
-
+	width:180px;
+	cursor:pointer;
 	&:hover {
 		img {
 			background: url(${(props) => props.activeImg});
