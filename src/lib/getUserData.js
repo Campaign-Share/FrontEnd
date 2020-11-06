@@ -9,4 +9,4 @@ const getUserInfoFromAPI = async () => {
 	);
 };
 
-export default getUserInfoFromAPI
+export default getUserInfoFromAPI;
