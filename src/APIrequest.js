@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'http://15.164.206.37:80';
-const testToken = `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ1NTg2NjksImV4cCI6MTYwNDY0NTA2OSwidXVpZCI6InVzZXItNDI3Mzg4Mjk4MzMyIiwidHlwZSI6ImFjY2Vzc190b2tlbiJ9.bq0JfwwwYEIBoTeeixF6VgXVfIC1BBvJX90JXOiZRvQ"`;
+const testToken = `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDQ2MzAyOTksImV4cCI6MTYwNDcxNjY5OSwidXVpZCI6InVzZXItMTA2ODA4MjMxMzI3IiwidHlwZSI6ImFjY2Vzc190b2tlbiJ9.WZF2gqZ8VyPOo22T3gkBKpYv9ltEufjtcbssu9zLmVc"`;
 //local에서 빼는 식으로 해야할 듯
 export const requestApi = async (url, body, header, method) => {
 	try {

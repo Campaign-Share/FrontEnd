@@ -9,7 +9,7 @@ const UserProfileInfo = ({ userInfo }) => {
 		<S.UserDataBoxWrap>
 			<S.UserdataBox>
 				<S.UserImgBox>
-					<S.UserImg src={userInfo.userData.profile_uri ? `https://campaignshare.s3.ap-northeast-2.amazonaws.com/${userInfo.userData.profile_uri}`:profileImg} />
+					<S.UserImg src={userInfo.userData.profile_uri ? `https://campaignshare.s3.ap-northeast-2.amazonaws.com/${userInfo.userData.profile_uri}?a=${Date.now()}`:profileImg} />
 				</S.UserImgBox>
 				<S.UserId>ID : {userInfo.ID}</S.UserId>
 				<S.UserName>NickName: {userInfo.nick_name}</S.UserName>

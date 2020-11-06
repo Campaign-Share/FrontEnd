@@ -13,19 +13,26 @@ const EditPassword = () => {
 		};
 	});
 	const ChangePassword = useCallback(() => {
-		if (input.change === input.check) {
-			requestApiWithAccessToken(
-				`/v1/users/uuid/${user_uuid}/password`,
-				{ current_pw: input.now, revision_pw: input.change },
-				{},
-				'put',
-			).then((res) => {
-				if (res.data.status === 200) alert('비밀번호를 수정했습니다.');
-				else if (res.data.status === 409)
-					alert('현재 비밀번호가 잘못되었습니다.');
-				else console.log(res.data.status);
-			});
-		} else alert('새 비밀번호가 서로 다릅니다.');
+		if (input.now && input.change && input.check) {
+			if (input.change === input.check) {
+				requestApiWithAccessToken(
+					`/v1/users/uuid/${user_uuid}/password`,
+					{ current_pw: input.now, revision_pw: input.change },
+					{},
+					'put',
+				).then((res) => {
+					if (res.data.status === 200) alert('비밀번호를 수정했습니다.');
+					else if (res.data.status === 409)
+						alert('현재 비밀번호가 잘못되었습니다.');
+					else if (res.data.status === 400)
+						alert('4글자 이상으로 입력해주세요');
+					else console.log(res);
+				});
+			} else alert('새 비밀번호가 서로 다릅니다.');
+		}
+		else{
+			alert('입력값이 없습니다.')
+		}
 	}, [input]);
 	const secession = () => {
 		if (confirm('정말로 탈퇴하시겠습니까?')) {
@@ -72,16 +79,18 @@ const EditPassword = () => {
 									name="now"></S.Input>
 							</S.InputPasswordBox>
 							<S.InputPasswordBox>
-								<S.text>새 비밀번호 : </S.text>
+								<S.text type="password">새 비밀번호 : </S.text>
 								<S.Input
+									type="password"
 									placeholder="Password"
 									value={input.change}
 									onChange={inputChange}
 									name="change"></S.Input>
 							</S.InputPasswordBox>
 							<S.InputPasswordBox>
-								<S.text>새 비밀번호 확인 : </S.text>
+								<S.text type="password">새 비밀번호 확인 : </S.text>
 								<S.Input
+									type="password"
 									placeholder="Password"
 									value={input.new}
 									onChange={inputChange}

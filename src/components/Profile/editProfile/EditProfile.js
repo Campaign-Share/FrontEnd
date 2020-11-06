@@ -45,7 +45,8 @@ const EditProfile = () => {
 	const changeName = useCallback(() => {
 		const formData = new FormData();
 		formData.append('nickName', newName);
-		formData.append('profile', severImg);
+		
+		severImg && formData.append('profile', severImg);
 		requestApiWithAccessToken(
 			`/v1/users/uuid/${uuid}`,
 			formData,
@@ -54,7 +55,7 @@ const EditProfile = () => {
 		).then((res) => {
 			res.data.status === 200
 				? alert('정보가 변경되었습니다.')
-				: console.log(res);
+				: console.log(res.data.status);
 		});
 	}, [newName, userImg, severImg]);
 	const goToChangePassword = useCallback(() => {
@@ -87,7 +88,7 @@ const EditProfile = () => {
 						<S.NameInput value={newName} onChange={inputNewName}></S.NameInput>
 						<S.BtnBox>
 							<S.EditButton onClick={changeName}>완료</S.EditButton>
-							<S.ChangePassword onClick={goToChangePassword}>
+							<S.ChangePassword onClick={goToChangePassword} type='password'>
 								{' '}
 								비밀번호 변경하기
 							</S.ChangePassword>

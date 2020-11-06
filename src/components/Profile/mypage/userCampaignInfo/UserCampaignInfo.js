@@ -18,15 +18,15 @@ const UserCampaignInfo = ({ userInfo }) => {
 				<CampaignHowMuch></CampaignHowMuch>
 				<S.GraphBox>
 					<S.StickBox>
-						<S.Stick color={'#ABC9C7'} />
-						<S.Stick color={`#61A5B3`} />
-						<S.Stick color={`#78BBA8`} />
+						<S.Stick color={'#ABC9C7'} height={count.a}/>
+						<S.Stick color={`#61A5B3`} height={count.b}/>
+						<S.Stick color={`#78BBA8`} height={count.c}/>
 					</S.StickBox>
 					<S.Line />
 					<S.NumberBox>
-						<S.Number height={count.a}>{count.a}</S.Number>
-						<S.Number height={count.b}>{count.b}</S.Number>
-						<S.Number height={count.c}>{count.c}</S.Number>
+						<S.Number >{count.a}</S.Number>
+						<S.Number >{count.b}</S.Number>
+						<S.Number >{count.c}</S.Number>
 					</S.NumberBox>
 				</S.GraphBox>
 			</S.UserCampaign>

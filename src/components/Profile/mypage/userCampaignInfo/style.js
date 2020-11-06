@@ -30,10 +30,12 @@ export const StickBox = styled.div`
 `;
 export const Stick = styled.div`
 	max-height:300px;
+	height:0px;
+	transition:height 1s;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	height: 100px;
+	height: ${props => props.height}px;
 	width: 20%;
 	background-color: ${props=>props.color};
 	border-radius: 1rem 1rem 0 0;
