@@ -8,13 +8,13 @@ export const signUpEmail = (email) => ({
 	email,
 });
 
-export const signUpInput = ({ name, nickname, id, password }) => ({
+export const signUpInput = (name, nickname, id, password) => ({
 	type: SIGNUP_INPUT,
 	payload: {
-		name: name,
-		nickname: nickname,
-		id: id,
-		password: password,
+		name,
+		nickname,
+		id,
+		password,
 	},
 });
 
@@ -37,7 +37,7 @@ const signUpState = {
 		id: '',
 		password: '',
 	},
-	img: '',
+	img: {},
 };
 
 export const signUpReducer = (state = signUpState, action) => {
