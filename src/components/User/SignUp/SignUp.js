@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import * as L from '../Login/Style';
 import * as S from './Style';
+import { signUpInput } from '../../../modules/SignUp';
 import background from '../../../assets/img/background.png';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-const SignUp = (signUpInput) => {
+const SignUp = ({ data, email }) => {
 	let [name, setName] = useState('');
 	let [nickname, setNickName] = useState('');
 	let [id, setId] = useState('');
 	let [password, setPassword] = useState('');
 	let [isPassword, setIsPassword] = useState(false);
 	let [isId, setIsId] = useState(false);
-
-	const config = {};
 	const nameChange = (e) => {
 		e.preventDefault();
 		setName(e.target.value);
 	};
+
+	const history = useHistory();
 
 	const nickChange = (e) => {
 		setNickName(e.target.value);
@@ -31,15 +34,9 @@ const SignUp = (signUpInput) => {
 	};
 
 	const isCheck = (str) => {
+		console.log(email);
 		const re = /^[a-zA-Z0-9]{4,12}$/;
 		return re.test(str) ? true : false;
-	};
-
-	const data = {
-		name: name,
-		nickname: nickname,
-		id: id,
-		password: password,
 	};
 
 	let isPasswordStyle = isPassword ? 'visible' : 'hidden';
@@ -50,13 +47,11 @@ const SignUp = (signUpInput) => {
 			setIsPassword(true);
 		} else setIsPassword(false);
 
+		data(name, nickname, id, password);
+
 		console.log(name, nickname, id, password);
 		if (isCheck(id) === false) return setIsId(true);
 		else return setIsId(false);
-
-		if (setIsPassword(false) && setId(false)) {
-			signUpInput();
-		}
 	};
 
 	return (

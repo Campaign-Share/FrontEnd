@@ -76,6 +76,7 @@ export const UserBtn = styled.button`
 	margin-top: ${(props) => {
 		if (props.email || props.auth) return '240px';
 		else if (props.signUp) return '100px';
+		else if (props.profile) return '50px';
 		else return '150px';
 	}};
 
