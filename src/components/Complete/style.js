@@ -105,4 +105,8 @@ export const LinkButton = styled.button`
 	font-weight: bold;
 	border: none;
 	box-shadow: 0.1875rem 0.1875rem 0.4375rem 0.0625rem rgba(112, 112, 112, 0.3);
+
+	:focus {
+		outline: none;
+	}
 `;
