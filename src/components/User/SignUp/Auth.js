@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import * as L from '../Login/Style';
 import * as S from './Style';
 import background from '../../../assets/img/background.png';
-import { useDispatch } from 'react-redux';
-import { signUpAuth } from '../../../modules/SignUp';
 
-const Auth = (userAuth) => {
+const Auth = ({ auth, email }) => {
 	let [isAuth, setIsAuth] = useState(false);
 	let [code, setCode] = useState('');
 	let isAuthStyle = isAuth ? 'visible' : 'hidden';
@@ -13,13 +12,17 @@ const Auth = (userAuth) => {
 	const codeValue = (e) => {
 		setCode(e.target.value);
 	};
-
+	const history = useHistory();
 	const authCheck = () => {
 		auth(code);
+		console.log(code, email);
+		history.push({
+			pathname: '/signUp/input',
+			state: {
+				email: email,
+			},
+		});
 	};
-	const dispatch = useDispatch();
-	const auth = (userAuth) => dispatch(signUpAuth(userAuth));
-
 	return (
 		<L.UserContainer url={background}>
 			<L.UserBox auth>

@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import * as L from '../Login/Style';
 import * as S from './Style';
-import signUpInput from '../../../modules/SignUp';
+import { signUpInput } from '../../../modules/SignUp';
 import background from '../../../assets/img/background.png';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-const SignUp = () => {
+const SignUp = ({ data, email }) => {
 	let [name, setName] = useState('');
 	let [nickname, setNickName] = useState('');
 	let [id, setId] = useState('');
@@ -18,10 +19,7 @@ const SignUp = () => {
 		setName(e.target.value);
 	};
 
-	const dispatch = useDispatch();
-	const userData = ({ userName, userNickname, userId, userPassword }) => {
-		dispatch(signUpInput({ userName, userNickname, userId, userPassword }));
-	};
+	const history = useHistory();
 
 	const nickChange = (e) => {
 		setNickName(e.target.value);
@@ -36,6 +34,7 @@ const SignUp = () => {
 	};
 
 	const isCheck = (str) => {
+		console.log(email);
 		const re = /^[a-zA-Z0-9]{4,12}$/;
 		return re.test(str) ? true : false;
 	};
@@ -48,7 +47,7 @@ const SignUp = () => {
 			setIsPassword(true);
 		} else setIsPassword(false);
 
-		userData({ name, nickname, id, password });
+		data(name, nickname, id, password);
 
 		console.log(name, nickname, id, password);
 		if (isCheck(id) === false) return setIsId(true);
