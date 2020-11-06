@@ -7,4 +7,8 @@ export const MainWrapper = styled.div`
 	background-repeat: no-repeat;
 	flex: 1;
 	height: 100%;
+
+	* {
+		font-family: 'Noto Sans KR' !important;
+	}
 `;
