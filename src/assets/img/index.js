@@ -26,3 +26,4 @@ export { default as report } from './report.png';
 export { default as search } from './search.png';
 export { default as upload } from './upload.png';
 export { default as uploadFocus } from './uploadFocus.png';
+export { default as defaultImg } from './defaultImg.jpg';

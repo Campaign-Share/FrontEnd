@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import * as L from '../Login/Style';
 import * as S from './Style';
 import background from '../../../assets/img/background.png';
 
-const Email = () => {
+const Email = ({ joinEmail }) => {
 	let [email, setEmail] = useState('');
 	let [isEmail, setIsEmail] = useState(false);
+
+	const history = useHistory();
 
 	const emailChange = (e) => {
 		const button = document.getElementById('button');
@@ -19,13 +22,18 @@ const Email = () => {
 
 	const onEmail = () => {
 		if (emailCheck(email) === false) {
-			document.getElementById('email').value = null;
 			setIsEmail(true);
-			setEmail('');
+			document.getElementById('email').value = null;
 			console.log(email);
 		} else {
-			//서버 코드
-			console.log('okay');
+			console.log(email);
+			joinEmail(email);
+			history.push({
+				pathname: '/signUp/auth',
+				state: {
+					email: email,
+				},
+			});
 		}
 	};
 	let isEmailStyle = isEmail ? 'visible' : 'hidden';
