@@ -6,6 +6,7 @@ export const SideBox = styled.div`
 	background-color: #D7E3DE;
 `;
 export const Logo = styled.img`
+cursor:pointer;
 	height:70px;
 	width:70px;
 	padding-top:10px;

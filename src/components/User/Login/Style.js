@@ -1,21 +1,27 @@
 import styled, { css } from 'styled-components';
 
 export const UserContainer = styled.div`
-	width: 100%;
-	height: 100%;
 	text-align: center;
 	background-image: url(${(props) => props.url});
 	background-repeat: no-repeat;
 	background-size: 100% 700px;
+	padding-top: ${(props) => {
+		if (props.join) return '60px';
+		else return '80px';
+	}};
 `;
 
 export const UserBox = styled.div`
 	width: 33%;
-	height: 80%;
+	height: ${(props) => {
+		if (props.join) return '650px';
+		else if (props.email || props.auth) return '600px';
+		else return '600px';
+	}};
 	box-shadow: 6px 6px 6px rgb(0, 0, 0, 0.22);
 	background-color: white;
 	border-radius: 50px;
-	margin: 60px 0px 20px 520px;
+	margin: 0px 0px 0px 520px;
 `;
 
 export const ContentSection = styled.div`
@@ -61,14 +67,16 @@ export const UserBtn = styled.button`
 	width: 120px;
 	height: 40px;
 	border: none;
+	outline: none;
 	border-radius: 100px;
 	background-color: #e7e7e7;
 	color: #aeaeae;
 	font-size: 18px;
 	font-weight: 800;
 	margin-top: ${(props) => {
-		if (props.email) return '280px';
+		if (props.email || props.auth) return '240px';
 		else if (props.signUp) return '100px';
+		else if (props.profile) return '50px';
 		else return '150px';
 	}};
 
