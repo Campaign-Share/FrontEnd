@@ -26,8 +26,7 @@ export const Id = styled(Name).attrs({
 	placeholder: 'ID',
 })`
 	display: inline-block;
-	width: 50%;
-	margin: 40px 10px 0px -110px;
+	margin: 40px 10px 0px -100px;
 `;
 
 export const IdBtn = styled.button`
