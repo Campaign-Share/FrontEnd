@@ -11,16 +11,13 @@ const Auth = ({ auth, email }) => {
 
 	const codeValue = (e) => {
 		setCode(e.target.value);
+		const button = document.getElementById('button');
+		button.style.backgroundColor = '#d3e2dc';
+		if (e.target.value == '') button.style.background = '#e7e7e7';
 	};
 	const history = useHistory();
 	const authCheck = () => {
 		auth(code);
-		// history.push({
-		// 	pathname: '/signUp/input',
-		// 	state: {
-		// 		email: email,
-		// 	},
-		// });
 	};
 	return (
 		<L.UserContainer url={background}>

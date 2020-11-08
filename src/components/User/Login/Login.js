@@ -17,22 +17,10 @@ const Login = ({ login }) => {
 
 	const pwChange = (e) => {
 		setPw(e.target.value);
+		const button = document.getElementById('button');
+		button.style.backgroundColor = '#d3e2dc';
+		if (e.target.value == '') button.style.background = '#e7e7e7';
 	};
-
-	// useEffect(() => {
-	// 	loginInfo.id && loginInfo.password && setIsActive(true);
-	// }, [loginInfo]);
-
-	// const changeLoginInfo = useCallback((e) => {
-	// 	const { name, value } = e.target;
-	// 	setId(e.target.value);
-	// 	setPw(e.target.value);
-	// 	setLoginInfo((prev) => ({
-	// 		...prev,
-	// 		[name]: value,
-	// 	}));
-	// 	if (loginInfo.id == '' || loginInfo.password == '') setIsActive(false);
-	// }, []);
 
 	const loginBtn = () => {
 		login(id, pw);
@@ -47,7 +35,7 @@ const Login = ({ login }) => {
 						<S.Password onChange={pwChange} name="password"></S.Password>
 					</S.InputBox>
 				</S.ContentSection>
-				<S.UserBtn isActive={isActive} onClick={loginBtn}>
+				<S.UserBtn onClick={loginBtn} id="button">
 					로그인
 				</S.UserBtn>
 			</S.UserBox>
