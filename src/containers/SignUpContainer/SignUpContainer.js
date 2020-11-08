@@ -123,25 +123,22 @@ const SignUpContainer = (props) => {
 			'post',
 		).then((res) => {
 			console.log(res);
-			switch (res.data.status) {
-				case 201: {
-					const confirmBox = confirm(
-						'회원가입이 되었습니다. 로그인을 해 주세요!',
-					);
-					if (confirmBox) {
-						history.push({
-							pathname: '/login',
-						});
-					} else {
-						history.push({
-							pathname: '/introduce',
-						});
-					}
+			if (res.data.status == '201') {
+				const confirmBox = confirm(
+					'회원가입이 되었습니다. 로그인을 해 주세요!',
+				);
+				if (confirmBox) {
+					history.push({
+						pathname: '/login',
+					});
+				} else {
+					history.push({
+						pathname: '/introduce',
+					});
 				}
-				case 400: {
-					return alert('이름을 두 글자 이상 입력해 주세요.');
-				}
-			}
+			} else if (res.data.status == '400') {
+				alert('이름을 두 글자 이상 입력해 주세요.');
+			} else return 0;
 		});
 	});
 
