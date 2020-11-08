@@ -1,43 +1,16 @@
 import React from 'react';
 import * as S from './style';
 
-import BackgroundIMG from '../../assets/img/background.png';
-import Logo from '../../assets/img/Logo.png';
-import group2 from '../../assets/img/group2.png';
+import CompleteTopWrapper from './CompleteTopWrapper/CompleteTopWrapper';
+import CompleteBodyWrapper from './CompleteBodyWrapper/CompleteBodyWrapper';
 
-const Complete = ({ history }) => {
+import { background } from '../../assets/img';
+
+const Complete = () => {
 	return (
-		<S.MainWrapper url={BackgroundIMG}>
-			<S.TopWrapper>
-				<S.LogoWrapper>
-					<S.Logo src={Logo} />
-				</S.LogoWrapper>
-			</S.TopWrapper>
-			<S.BodyWrapper>
-				<S.LeftImgWrapper>
-					<S.LeftBackgroundImg src={group2} />
-				</S.LeftImgWrapper>
-				<S.RightWrapper>
-					<S.TextWrapper>
-						<S.TextTitle>WELCOME TO THE CAMPAIGN SHARE</S.TextTitle>
-						<S.TextDividingLine />
-						<S.TextExplanation>
-							캠페인 쉐어에 가입하신 것을 환영합니다.
-							<br />
-							로그인 하여 다양한 캠페인들을 만나보세요!
-						</S.TextExplanation>
-					</S.TextWrapper>
-					<S.LinkWrapper>
-						{/* onClick -> history.push로 url 변경 */}
-						<S.LinkButton onClick={() => history.push('/introduce')}>
-							소개 페이지
-						</S.LinkButton>
-						<S.LinkButton onClick={() => history.push('/login')}>
-							로그인
-						</S.LinkButton>
-					</S.LinkWrapper>
-				</S.RightWrapper>
-			</S.BodyWrapper>
+		<S.MainWrapper url={background}>
+			<CompleteTopWrapper />
+			<CompleteBodyWrapper />
 		</S.MainWrapper>
 	);
 };

@@ -1,34 +1,56 @@
 import React from 'react';
 import * as S from './style';
+import Modal from '../Modal/Modal';
 import SideBar from '../Navigation/sideBar/SideBar';
-import { profile } from '../../assets/img';
+import SuggestHeader from './SuggestHeader/SuggestHeader';
+import SuggestBodyWrapper from './SuggestBodyWrapper/SuggestBodyWrapper';
+import SuggestBottomWrapper from './SuggestBottomWrapper/SuggestBottomWrapper';
 
-const Suggest = () => {
+const Suggest = ({
+	isModal,
+	setIsModal,
+	suggestForm,
+	setSuggestForm,
+	onSubmitForm,
+}) => {
+	const onChangeForm = (e) => {
+		if ([e.target.name] == 'periodDay') {
+			setSuggestForm({
+				...suggestForm,
+				[e.target.name]: +e.target.value,
+			});
+		}
+		setSuggestForm({
+			...suggestForm,
+			[e.target.name]: e.target.value,
+		});
+	};
+
 	return (
 		<S.MainWrapper>
+			{isModal && <Modal setIsModal={setIsModal} />}
 			<SideBar />
 			<S.RightWrapper>
-				<S.Header>
-					<S.HeaderIcon src={profile} />
-				</S.Header>
+				<SuggestHeader />
 				<S.BodyWrapper>
 					<S.SuggestWrapper>
-						<S.SuggestTitle />
-						<S.SuggestBodyWrapper>
-							<S.SuggestLeftWrapper>
-								<S.SuggestImageInput>이미지를 넣어주세요</S.SuggestImageInput>
-							</S.SuggestLeftWrapper>
-							<S.SuggestDividingLine />
-							<S.SuggestRightWrapper>
-								<S.SuggestRightTitle>
-									캠페인 설명 & 참여 방법
-								</S.SuggestRightTitle>
-								<S.SuggestRightInput placeholder="캠페인에 관한 것을 적어주세요." />
-							</S.SuggestRightWrapper>
-						</S.SuggestBodyWrapper>
-						<S.SuggestBottomWrapper>
-							<S.SuggestSubmitBtn>등록</S.SuggestSubmitBtn>
-						</S.SuggestBottomWrapper>
+						<S.SuggestTitle
+							placeholder="제목"
+							autoComplete="off"
+							name="title"
+							onChange={onChangeForm}
+						/>
+						<S.SuggestSubTitle
+							placeholder="부제목"
+							autoComplete="off"
+							name="subTitle"
+							onChange={onChangeForm}
+						/>
+						<SuggestBodyWrapper onChangeForm={onChangeForm} />
+						<SuggestBottomWrapper
+							onChangeForm={onChangeForm}
+							onSubmitForm={onSubmitForm}
+						/>
 					</S.SuggestWrapper>
 				</S.BodyWrapper>
 			</S.RightWrapper>
