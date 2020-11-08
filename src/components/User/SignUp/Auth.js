@@ -15,13 +15,12 @@ const Auth = ({ auth, email }) => {
 	const history = useHistory();
 	const authCheck = () => {
 		auth(code);
-		console.log(code, email);
-		history.push({
-			pathname: '/signUp/input',
-			state: {
-				email: email,
-			},
-		});
+		// history.push({
+		// 	pathname: '/signUp/input',
+		// 	state: {
+		// 		email: email,
+		// 	},
+		// });
 	};
 	return (
 		<L.UserContainer url={background}>

@@ -24,16 +24,8 @@ const Email = ({ joinEmail }) => {
 		if (emailCheck(email) === false) {
 			setIsEmail(true);
 			document.getElementById('email').value = null;
-			console.log(email);
 		} else {
-			console.log(email);
 			joinEmail(email);
-			history.push({
-				pathname: '/signUp/auth',
-				state: {
-					email: email,
-				},
-			});
 		}
 	};
 	let isEmailStyle = isEmail ? 'visible' : 'hidden';
