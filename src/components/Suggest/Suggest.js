@@ -28,7 +28,7 @@ const Suggest = ({
 
 	return (
 		<S.MainWrapper>
-			{isModal && <Modal setIsModal={setIsModal} />}
+			{isModal && <SuggestConfirmModal setIsModal={setIsModal} />}
 			<SideBar />
 			<S.RightWrapper>
 				<SuggestHeader />
