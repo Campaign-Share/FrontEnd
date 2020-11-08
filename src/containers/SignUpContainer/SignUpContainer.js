@@ -17,26 +17,6 @@ const SignUpContainer = (props) => {
 	const history = useHistory();
 	let component;
 
-	// useEffect(() => {
-	// 	console.log(url);
-	// 	if (url === '/signUp/email') {
-	// 		component = <Email joinEmail={joinEmail} />;
-	// 	} else if (url === '/signUp/auth') {
-	// 		component = <Auth auth={authEmail} />;
-	// 	} else if (url === '/signUp/img') {
-	// 		component = <SignUpImg userImg={userImg} />;
-	// 	} else {
-	// 		component = (
-	// 			<SignUp
-	// 				userName={name}
-	// 				userNickname={nickname}
-	// 				userId={id}
-	// 				userPassword={password}
-	// 			/>
-	// 		);
-	// 	}
-	// });
-
 	const { email, name, nickname, id, password, userImg, code } = useSelector(
 		(state) => ({
 			email: state.signUpReducer.email,
@@ -80,6 +60,19 @@ const SignUpContainer = (props) => {
 			'post',
 		)
 			.then((res) => {
+				console.log(res.data);
+				switch (res.data.status) {
+					case 200: {
+						return history.push({
+							pathname: '/signUp/auth',
+							state: {
+								email: email,
+							},
+						});
+					}
+					case 409:
+						return alert('이미 가입된 이메일입니다.');
+				}
 				console.log(res);
 			})
 			.catch((error) => {
@@ -95,7 +88,19 @@ const SignUpContainer = (props) => {
 			{ 'Content-Type': 'application/json' },
 			'put',
 		).then((res) => {
-			console.log();
+			console.log(res.data);
+			switch (res.data.status) {
+				case 200: {
+					return history.push({
+						pathname: '/signUp/input',
+						state: {
+							email: email,
+						},
+					});
+				}
+				case 409:
+					return alert('인증 코드가 올바르지 않습니다.');
+			}
 		});
 	});
 
@@ -116,35 +121,45 @@ const SignUpContainer = (props) => {
 			data,
 			{ 'Content-Type': 'multipart/form-data' },
 			'post',
-		);
-		// .then((res) => {
-		// 	console.log(res);
-		// 	if (res.response.status == '200') {
-		// 		const confirmBox = confirm(
-		// 			'회원가입이 되었습니다. 로그인을 해 주세요!',
-		// 		);
-		// 		if (confirmBox) {
-		// 			history.push({
-		// 				pathname: '/login',
-		// 			});
-		// 		} else {
-		// 			history.push({
-		// 				pathname: '/introduce',
-		// 			});
-		// 		}
-		// 	}
-		// });
+		).then((res) => {
+			console.log(res);
+			switch (res.data.status) {
+				case 201: {
+					const confirmBox = confirm(
+						'회원가입이 되었습니다. 로그인을 해 주세요!',
+					);
+					if (confirmBox) {
+						history.push({
+							pathname: '/login',
+						});
+					} else {
+						history.push({
+							pathname: '/introduce',
+						});
+					}
+				}
+				case 400: {
+					return alert('이름을 두 글자 이상 입력해 주세요.');
+				}
+			}
+		});
 	});
 
-	if (url === '/signUp/email') {
-		component = <Email joinEmail={joinEmail} />;
-	} else if (url === '/signUp/auth') {
-		component = <Auth auth={authEmail} email={email} />;
-	} else if (url === '/signUp/img') {
-		component = <SignUpImg userImage={image} />;
-	} else if (url === '/signUp/input') {
-		component = <SignUp data={userData} />;
+	switch (url) {
+		case '/signUp/email':
+			return (component = <Email joinEmail={joinEmail} />);
+
+		case '/signUp/auth':
+			return (component = component = <Auth auth={authEmail} email={email} />);
+
+		// case '/signUp/img':
+		// 	component = <SignUpImg userImage={image} />;
+		case '/signUp/input':
+			return (component = <SignUp data={userData} />);
+		default:
+			return 0;
 	}
+
 	return <React.Fragment>{component}</React.Fragment>;
 };
 export default SignUpContainer;
