@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { requestApiWithAccessToken } from '../../APIrequest';
 
 import Suggest from '../../components/Suggest/Suggest';
 
-const MainContainer = ({ history }) => {
+const MainContainer = () => {
 	const [suggestForm, setSuggestForm] = useState({
 		title: '',
 		subTitle: '',
@@ -14,6 +14,8 @@ const MainContainer = ({ history }) => {
 	});
 	const [posterImg, setPosterImg] = useState();
 	const [isModal, setIsModal] = useState(false);
+
+	const history = useHistory();
 
 	const checkPeriod = () => {
 		if (suggestForm.periodDay > 30) {
@@ -51,7 +53,7 @@ const MainContainer = ({ history }) => {
 			// 	alert()
 			// }
 			if (res.data.status == '401') {
-				history.push('/login');
+				// history.push('/login');
 				return;
 			}
 			if (res.data.status == '409') {
