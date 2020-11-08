@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
 
-const Modal = ({ setIsModal }) => {
+const SuggestConfirmModal = ({ setIsModal }) => {
 	return (
 		<S.MainWrapper>
 			<S.ModalWrapper>
@@ -22,4 +22,4 @@ const Modal = ({ setIsModal }) => {
 	);
 };
 
-export default Modal;
+export default SuggestConfirmModal;
