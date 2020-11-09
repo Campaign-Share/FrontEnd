@@ -65,14 +65,13 @@ const SignUp = ({ data }) => {
 						<S.NickName onChange={nickChange} />
 						<S.IdBox>
 							<S.Id onChange={idChange} />
-							<S.IdBtn onClick={isCheck}>중복 체크 </S.IdBtn>
 						</S.IdBox>
 						<S.IsError style={{ visibility: isIdStyle }}>
 							4~12자의 영문 대소문자와 숫자
 						</S.IsError>
 						<S.Password id="password" onChange={passwordChange} />
 						<S.IsError style={{ visibility: isPasswordStyle }}>
-							비밀번호는 8자 이상으로 설정해 주세요.
+							비밀번호는 4자 이상으로 설정해 주세요.
 						</S.IsError>
 					</L.InputBox>
 					<L.UserBtn signUp onClick={joinBtn} isActive={isActive}>
