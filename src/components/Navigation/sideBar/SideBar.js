@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style.js';
 import Logo from '../../../assets/img/Logo.png';
-import SideBarList from './sideBarList/SideBarList.js'
+import SideBarList from './sideBarList/SideBarList.js';
 const SideBar = () => {
 	return (
 		<S.SideBox>

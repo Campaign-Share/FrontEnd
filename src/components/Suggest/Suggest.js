@@ -27,9 +27,8 @@ const Suggest = ({
 	};
 
 	return (
-		<S.MainWrapper>
+		<>
 			{isModal && <SuggestConfirmModal setIsModal={setIsModal} />}
-			<SideBar />
 			<S.RightWrapper>
 				<SuggestHeader />
 				<S.BodyWrapper>
@@ -46,7 +45,10 @@ const Suggest = ({
 							name="subTitle"
 							onChange={onChangeForm}
 						/>
-						<SuggestBodyWrapper onChangeForm={onChangeForm} />
+						<SuggestBodyWrapper
+							onChangeForm={onChangeForm}
+							setSuggestForm={setSuggestForm}
+						/>
 						<SuggestBottomWrapper
 							onChangeForm={onChangeForm}
 							onSubmitForm={onSubmitForm}
@@ -54,7 +56,7 @@ const Suggest = ({
 					</S.SuggestWrapper>
 				</S.BodyWrapper>
 			</S.RightWrapper>
-		</S.MainWrapper>
+		</>
 	);
 };
 
