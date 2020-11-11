@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const MainWrapper = styled.div`
-	display: flex;
-`;
-
 export const RightWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -37,7 +33,7 @@ export const SuggestTitle = styled.input`
 	height: 6%;
 	text-align: center;
 	border: none;
-	border-bottom: 0.0625rem solid #d1d1d1;
+	border-bottom: 1px solid #d1d1d1;
 	font-family: Noto Sans CJK KR;
 	font-size: 1.438rem;
 	color: #909090;
@@ -52,7 +48,7 @@ export const SuggestSubTitle = styled.input.attrs({})`
 	height: 4%;
 	text-align: center;
 	border: none;
-	border-bottom: 0625rem solid #d1d1d1;
+	border-bottom: 1px solid #d1d1d1;
 	font-family: Noto Sans CJK KR;
 	font-size: 1.125rem;
 	color: #909090;

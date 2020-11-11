@@ -14,7 +14,7 @@ const EditProfile = () => {
 		};
 	});
 	const [newName, setNewName] = useState(nick_name);
-	const [userImg, setUserImg] = useState(); // 사용자 입장에서 보여주기만 하는 미리보기 사진
+	const [userImg, setUserImg] = useState(profile_uri?`https://campaignshare.s3.ap-northeast-2.amazonaws.com/${profile_uri}?a=${Date.now()}`:inputImg); // 사용자 입장에서 보여주기만 하는 미리보기 사진
 	const [severImg, setSeverImg] = useState(); //서버에 보내는 state
 	useEffect(() => {
 		console.log(profile_uri);
@@ -37,7 +37,6 @@ const EditProfile = () => {
 		(e) => {
 			setUserImg(URL.createObjectURL(e.target.files[0]));
 			setSeverImg(e.target.files[0]);
-
 		},
 		[userImg, severImg],
 	);
@@ -45,7 +44,7 @@ const EditProfile = () => {
 	const changeName = useCallback(() => {
 		const formData = new FormData();
 		formData.append('nickName', newName);
-		
+
 		severImg && formData.append('profile', severImg);
 		requestApiWithAccessToken(
 			`/v1/users/uuid/${uuid}`,
@@ -88,7 +87,7 @@ const EditProfile = () => {
 						<S.NameInput value={newName} onChange={inputNewName}></S.NameInput>
 						<S.BtnBox>
 							<S.EditButton onClick={changeName}>완료</S.EditButton>
-							<S.ChangePassword onClick={goToChangePassword} type='password'>
+							<S.ChangePassword onClick={goToChangePassword} type="password">
 								{' '}
 								비밀번호 변경하기
 							</S.ChangePassword>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SuggestBottomWrapper = styled.div`
 	width: 92%;
-	height: 13%;
+	height: 8%;
 	display: flex;
 `;
 
@@ -17,6 +17,8 @@ export const SuggestPeriodInput = styled.input`
 	height: 2rem;
 	font-family: Noto Sans CJK KR;
 	color: #b3b3b3;
+	border: none;
+	border-bottom: 1px solid #aecfc0;
 
 	:focus {
 		outline: none;
