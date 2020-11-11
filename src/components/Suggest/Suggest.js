@@ -27,9 +27,8 @@ const Suggest = ({
 	};
 
 	return (
-		<S.MainWrapper>
+		<>
 			{isModal && <SuggestConfirmModal setIsModal={setIsModal} />}
-			<SideBar />
 			<S.RightWrapper>
 				<SuggestHeader />
 				<S.BodyWrapper>
@@ -57,7 +56,7 @@ const Suggest = ({
 					</S.SuggestWrapper>
 				</S.BodyWrapper>
 			</S.RightWrapper>
-		</S.MainWrapper>
+		</>
 	);
 };
 

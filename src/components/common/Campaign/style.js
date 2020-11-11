@@ -54,7 +54,41 @@ export const CampaignTitle = styled.h2`
 	color: #000000;
 `;
 
+export const CampaignTags = styled.p`
+	color: #78bba8;
+	font-size: 15px;
+	font-family: Noto Sans CJK KR;
+	margin: 0;
+	margin-top: 8px;
+`;
+
 export const CampaignGraphWrapper = styled.div`
 	width: 90%;
 	height: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
+export const CampaignLikeIcon = styled.img`
+	width: 25px;
+`;
+
+export const CampaignDisagreeGraph = styled.div`
+	width: 180px;
+	height: 20px;
+	background-color: #e3e3e3;
+	margin: 0 10px;
+	border: none;
+	border-radius: 22px;
+	position: relative;
+`;
+
+export const CampaignAgreeGraph = styled.div`
+	/* width: calc(100% * ${(props) => props.agreeWidth}) px; */
+	background-color: #bed9d7;
+`;
+
+export const CampaignDislikeIcon = styled.img`
+	width: 25px;
 `;

@@ -14,12 +14,11 @@ import MainContainer from './containers/MainContainer/MainContainer';
 const Routing = () => {
 	return (
 		<Switch>
+			<Route path="/main" component={MainContainer} />
 			<Route path="/introduce" exact component={IntroduceContainer} />
 			<Route path="/complete" exact component={CompleteContainer} />
-			<Route path="/ranking" exact component={RankingContainer} />
 			<Route path="/mypage" exact component={MypageContainer} />
 			<Route path="/editprofile" exact component={EditProfileContainer} />
-			<Route path="/suggest" exact component={MainContainer} />
 			<Route path="/login" exact component={LoginContainer} />
 			<Route path="/editPassword" exact component={EditPasswordContainer} />
 			<Route
