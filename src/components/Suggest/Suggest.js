@@ -46,7 +46,10 @@ const Suggest = ({
 							name="subTitle"
 							onChange={onChangeForm}
 						/>
-						<SuggestBodyWrapper onChangeForm={onChangeForm} />
+						<SuggestBodyWrapper
+							onChangeForm={onChangeForm}
+							setSuggestForm={setSuggestForm}
+						/>
 						<SuggestBottomWrapper
 							onChangeForm={onChangeForm}
 							onSubmitForm={onSubmitForm}

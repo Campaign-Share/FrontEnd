@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SuggestBodyWrapper = styled.div`
 	width: 100%;
-	height: 75%;
+	height: 80%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -10,14 +10,16 @@ export const SuggestBodyWrapper = styled.div`
 
 export const SuggestLeftWrapper = styled.div`
 	width: 40%;
-	height: 80%;
+	height: 90%;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 `;
 
 export const SuggestImageContainer = styled.div`
-	width: 45%;
-	height: 100%;
+	width: 60%;
+	height: 85%;
 `;
 
 export const SuggestImageLabel = styled.label`
@@ -38,18 +40,34 @@ export const SuggestImageInput = styled.input`
 	display: none;
 `;
 
+export const SuggestTagsInput = styled.input`
+	width: 45%;
+	height: 10%;
+	margin-top: 10px;
+	border: none;
+	border-bottom: 1px solid #aecfc0;
+	font-family: Noto Sans CJK KR;
+	font-size: 15px;
+	color: #adadad;
+
+	:focus {
+		outline: none;
+	}
+`;
+
 export const SuggestDividingLine = styled.div`
 	width: 0.0625rem;
-	height: 80%;
+	height: 90%;
 	background-color: #707070;
 `;
 
 export const SuggestRightWrapper = styled.div`
-	width: 60%;
-	height: 80%;
+	width: calc(60% - 1.875rem);
+	height: 90%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	margin-left: 1.875rem;
 `;
 
 export const SuggestRightTitle = styled.h3`

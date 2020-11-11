@@ -10,6 +10,7 @@ const MainContainer = () => {
 		subTitle: '',
 		introduction: '',
 		participation: '',
+		tags: '',
 		periodDay: 0,
 	});
 	const [posterImg, setPosterImg] = useState();
@@ -35,10 +36,24 @@ const MainContainer = () => {
 		}
 	};
 
+	const distinguishTags = () => {
+		let newTags = suggestForm.tags.split(' ');
+		if (newTags.length > 4) {
+			alert('태그는 5개까지만 작성가능합니다.');
+			setIsError(true);
+			return;
+		}
+		setSuggestForm({
+			...suggestForm,
+			tags: newTags.join('|').replace('#', ''),
+		});
+	};
+
 	const onSubmitForm = async () => {
 		setIsError(false);
 		checkPeriod();
 		onClickBtn();
+		distinguishTags();
 		if (isError === false) {
 			var formData = new FormData();
 			formData.append('title', suggestForm.title);
@@ -46,6 +61,7 @@ const MainContainer = () => {
 			formData.append('poster', suggestForm.poster);
 			formData.append('introduction', suggestForm.introduction);
 			formData.append('participation', suggestForm.participation);
+			formData.append('tags', suggestForm.tags);
 			formData.append('periodDay', suggestForm.periodDay);
 			try {
 				const res = await requestApiWithAccessToken(

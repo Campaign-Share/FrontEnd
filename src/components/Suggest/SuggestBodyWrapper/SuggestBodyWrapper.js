@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as S from './style';
 
-const SuggestBodyWrapper = ({ onChangeForm }) => {
+const SuggestBodyWrapper = ({ onChangeForm, setSuggestForm }) => {
 	const [isImage, setIsImage] = useState(false);
 
 	const onChangeImgForm = (e) => {
@@ -55,6 +55,11 @@ const SuggestBodyWrapper = ({ onChangeForm }) => {
 						</S.SuggestImageLabel>
 					)}
 				</S.SuggestImageContainer>
+				<S.SuggestTagsInput
+					placeholder="#태그설정"
+					name="tags"
+					onChange={onChangeForm}
+				/>
 			</S.SuggestLeftWrapper>
 			<S.SuggestDividingLine />
 			<S.SuggestRightWrapper>
