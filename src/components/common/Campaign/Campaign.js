@@ -6,7 +6,6 @@ import { good, bad } from '../../../assets/img';
 const Campaign = () => {
 	const agree = 10;
 	const disagree = 2;
-	const agreeWidth = agree / (agree + disagree);
 
 	return (
 		<S.MainWrapper>
@@ -22,7 +21,12 @@ const Campaign = () => {
 			<S.CampaignGraphWrapper>
 				<S.CampaignLikeIcon src={good} />
 				<S.CampaignDisagreeGraph>
-					<S.CampaignAgreeGraph agreeWidth={agreeWidth}></S.CampaignAgreeGraph>
+					<S.CampaignFlexDiv flex={agree} isFull={disagree === 0}>
+						<S.CampaignAgreeNumber>{agree}</S.CampaignAgreeNumber>
+					</S.CampaignFlexDiv>
+					<S.CampaignFlexDiv flex={disagree}>
+						<S.CampaignDisagreeNumber>{disagree}</S.CampaignDisagreeNumber>
+					</S.CampaignFlexDiv>
 				</S.CampaignDisagreeGraph>
 				<S.CampaignDislikeIcon src={bad} />
 			</S.CampaignGraphWrapper>
