@@ -45,6 +45,8 @@ const EditPassword = () => {
 				res.status === 200
 					? (() => {
 							alert('삭제가 완료되었습니다.');
+							localStorage.removeItem('access_token');
+							localStorage.removeItem('user_uuid');
 							history.push('/introduce');
 					  })()
 					: console.log(res.status);

@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import * as L from '../Login/Style';
 import * as S from './Style';
 import background from '../../../assets/img/background.png';
 
-const Auth = () => {
+const Auth = ({ auth, email }) => {
 	let [isAuth, setIsAuth] = useState(false);
 	let [code, setCode] = useState('');
 	let isAuthStyle = isAuth ? 'visible' : 'hidden';
 
 	const codeValue = (e) => {
 		setCode(e.target.value);
+		const button = document.getElementById('button');
+		button.style.backgroundColor = '#d3e2dc';
+		if (e.target.value == '') button.style.background = '#e7e7e7';
 	};
-
+	const history = useHistory();
 	const authCheck = () => {
-		setIsAuth(true);
+		auth(code);
 	};
 	return (
 		<L.UserContainer url={background}>
@@ -27,7 +31,7 @@ const Auth = () => {
 							placeholder="Code"
 							id="email"
 							onChange={codeValue}></S.Email>
-						<S.IsError style={{ visibility: isAuthStyle }}>
+						<S.IsError style={{ visibility: isAuthStyle }} auth>
 							코드가 올바르지 않습니다.
 						</S.IsError>
 					</L.InputBox>

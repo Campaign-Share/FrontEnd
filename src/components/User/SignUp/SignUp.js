@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import * as L from '../Login/Style';
 import * as S from './Style';
+import { signUpInput } from '../../../modules/SignUp';
 import background from '../../../assets/img/background.png';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-const SignUp = (signUpInput) => {
+const SignUp = ({ data }) => {
 	let [name, setName] = useState('');
 	let [nickname, setNickName] = useState('');
 	let [id, setId] = useState('');
 	let [password, setPassword] = useState('');
 	let [isPassword, setIsPassword] = useState(false);
 	let [isId, setIsId] = useState(false);
-
-	const config = {};
+	let [isActive, setIsActive] = useState(false);
 	const nameChange = (e) => {
 		e.preventDefault();
 		setName(e.target.value);
 	};
+
+	const history = useHistory();
 
 	const nickChange = (e) => {
 		setNickName(e.target.value);
@@ -28,6 +32,7 @@ const SignUp = (signUpInput) => {
 
 	const passwordChange = (e) => {
 		setPassword(e.target.value);
+		setIsActive(true);
 	};
 
 	const isCheck = (str) => {
@@ -35,28 +40,19 @@ const SignUp = (signUpInput) => {
 		return re.test(str) ? true : false;
 	};
 
-	const data = {
-		name: name,
-		nickname: nickname,
-		id: id,
-		password: password,
-	};
-
 	let isPasswordStyle = isPassword ? 'visible' : 'hidden';
 	let isIdStyle = isId ? 'visible' : 'hidden';
 
 	const joinBtn = () => {
-		if (password.length < 8) {
+		if (password.length < 4) {
 			setIsPassword(true);
 		} else setIsPassword(false);
+
+		data(name, nickname, id, password);
 
 		console.log(name, nickname, id, password);
 		if (isCheck(id) === false) return setIsId(true);
 		else return setIsId(false);
-
-		if (setIsPassword(false) && setId(false)) {
-			signUpInput();
-		}
 	};
 
 	return (
@@ -69,17 +65,16 @@ const SignUp = (signUpInput) => {
 						<S.NickName onChange={nickChange} />
 						<S.IdBox>
 							<S.Id onChange={idChange} />
-							<S.IdBtn onClick={isCheck}>중복 체크 </S.IdBtn>
 						</S.IdBox>
 						<S.IsError style={{ visibility: isIdStyle }}>
 							4~12자의 영문 대소문자와 숫자
 						</S.IsError>
 						<S.Password id="password" onChange={passwordChange} />
 						<S.IsError style={{ visibility: isPasswordStyle }}>
-							비밀번호는 8자 이상으로 설정해 주세요.{' '}
+							비밀번호는 4자 이상으로 설정해 주세요.
 						</S.IsError>
 					</L.InputBox>
-					<L.UserBtn signUp onClick={joinBtn}>
+					<L.UserBtn signUp onClick={joinBtn} isActive={isActive}>
 						회원가입
 					</L.UserBtn>
 				</L.ContentSection>

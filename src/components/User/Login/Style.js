@@ -70,12 +70,13 @@ export const UserBtn = styled.button`
 	outline: none;
 	border-radius: 100px;
 	background-color: #e7e7e7;
-	color: #aeaeae;
+	color: white;
 	font-size: 18px;
 	font-weight: 800;
 	margin-top: ${(props) => {
 		if (props.email || props.auth) return '240px';
 		else if (props.signUp) return '100px';
+		else if (props.profile) return '50px';
 		else return '150px';
 	}};
 
@@ -83,6 +84,5 @@ export const UserBtn = styled.button`
 		props.isActive &&
 		css`
 			background-color: #d3e2dc;
-			color: #6f6f6f;
 		`}
 `;

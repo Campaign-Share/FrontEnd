@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import * as L from '../Login/Style';
 import * as S from './Style';
 import background from '../../../assets/img/background.png';
 
-const Email = () => {
+const Email = ({ joinEmail }) => {
 	let [email, setEmail] = useState('');
 	let [isEmail, setIsEmail] = useState(false);
+
+	const history = useHistory();
 
 	const emailChange = (e) => {
 		const button = document.getElementById('button');
 		button.style.backgroundColor = '#d3e2dc';
+		button.style.color = 'white';
+		if (e.target.value == '') button.style.background = '#e7e7e7';
 		setEmail(e.target.value);
 	};
 	const emailCheck = (str) => {
@@ -19,13 +24,10 @@ const Email = () => {
 
 	const onEmail = () => {
 		if (emailCheck(email) === false) {
-			document.getElementById('email').value = null;
 			setIsEmail(true);
-			setEmail('');
-			console.log(email);
+			document.getElementById('email').value = null;
 		} else {
-			//서버 코드
-			console.log('okay');
+			joinEmail(email);
 		}
 	};
 	let isEmailStyle = isEmail ? 'visible' : 'hidden';
@@ -45,7 +47,6 @@ const Email = () => {
 							이메일 형식이 올바르지 않습니다.
 						</S.IsError>
 					</L.InputBox>
-
 					<L.UserBtn onClick={onEmail} id="button" email>
 						다음
 					</L.UserBtn>
