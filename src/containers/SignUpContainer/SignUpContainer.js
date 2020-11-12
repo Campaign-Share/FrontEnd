@@ -70,13 +70,10 @@ const SignUpContainer = (props) => {
 							},
 						});
 					}
-					case 409:
-						return alert('이미 가입된 이메일입니다.');
 				}
-				console.log(res);
 			})
 			.catch((error) => {
-				console.log(error);
+				alert('이미 가입된 이메일입니다.');
 			});
 	});
 
@@ -87,21 +84,23 @@ const SignUpContainer = (props) => {
 			{ email: email, auth_code: code },
 			{ 'Content-Type': 'application/json' },
 			'put',
-		).then((res) => {
-			console.log(res.data);
-			switch (res.data.status) {
-				case 200: {
-					return history.push({
-						pathname: '/signUp/input',
-						state: {
-							email: email,
-						},
-					});
+		)
+			.then((res) => {
+				console.log(res.data);
+				switch (res.data.status) {
+					case 200: {
+						return history.push({
+							pathname: '/signUp/input',
+							state: {
+								email: email,
+							},
+						});
+					}
 				}
-				case 409:
-					return alert('인증 코드가 올바르지 않습니다.');
-			}
-		});
+			})
+			.catch((error) => {
+				alert('인증 코드가 올바르지 않습니다.');
+			});
 	});
 
 	const signUpData = useCallback((id, password, name, nickname, email) => {

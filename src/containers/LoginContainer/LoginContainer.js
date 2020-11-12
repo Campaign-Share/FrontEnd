@@ -25,7 +25,6 @@ const LoginContainer = () => {
 			{ 'Content-Type': 'application/json' },
 			'post',
 		).then((res) => {
-			console.log(res.data);
 			switch (res.data.status) {
 				case 200: {
 					history.push({
