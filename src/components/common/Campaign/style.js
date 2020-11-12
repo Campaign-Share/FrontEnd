@@ -81,14 +81,39 @@ export const CampaignDisagreeGraph = styled.div`
 	margin: 0 10px;
 	border: none;
 	border-radius: 22px;
+	display: flex;
 	position: relative;
-`;
-
-export const CampaignAgreeGraph = styled.div`
-	/* width: calc(100% * ${(props) => props.agreeWidth}) px; */
-	background-color: #bed9d7;
 `;
 
 export const CampaignDislikeIcon = styled.img`
 	width: 25px;
+`;
+
+export const CampaignFlexDiv = styled.div`
+	&:nth-child(1) {
+		background-color: #bed9d7;
+		border-top-left-radius: 22px;
+		border-bottom-left-radius: 22px;
+		${(props) => props.isFull && 'border-radius:22px;'}
+	}
+
+	flex: ${(props) => props.flex};
+`;
+
+export const CampaignAgreeNumber = styled.p`
+	position: absolute;
+	top: -13px;
+	left: 10px;
+	font-size: 13px;
+	color: white;
+	font-family: Noto Sans CJK KR;
+`;
+
+export const CampaignDisagreeNumber = styled.p`
+	position: absolute;
+	top: -13px;
+	left: 160px;
+	font-size: 13px;
+	color: white;
+	font-family: Noto Sans CJK KR;
 `;

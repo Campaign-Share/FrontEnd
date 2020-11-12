@@ -2,13 +2,11 @@ import React from 'react';
 import * as S from './style';
 
 import CampaignSearchHeader from '../common/CampaignSearchHeader/CampaignSearchHeader';
-import SideBar from '../Navigation/sideBar/SideBar';
 import Campaign from '../common/Campaign/Campaign';
 
 const ViewSuggested = () => {
 	return (
-		<S.MainWrapper>
-			<SideBar />
+		<>
 			<S.RightWrapper>
 				<CampaignSearchHeader />
 				<S.SortTextWrapper>
@@ -22,7 +20,7 @@ const ViewSuggested = () => {
 					<Campaign />
 				</S.BodyWrapper>
 			</S.RightWrapper>
-		</S.MainWrapper>
+		</>
 	);
 };
 
