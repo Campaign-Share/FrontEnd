@@ -25,6 +25,7 @@ export const SortText = styled.p`
 	border-bottom: 2px solid
 		${(props) => (props.selected ? '#9DC3C1' : '#707070')};
 	text-align: center;
+	cursor: pointer;
 `;
 
 export const BodyWrapper = styled.div`
