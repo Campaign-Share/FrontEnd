@@ -7,7 +7,6 @@ const Ranking = () => {
 	return (
 		<React.Fragment>
 			<S.RankingContainer>
-				<SideBar />
 				<S.ContentContainer>
 					<S.HeaderBox>이달의 명예의 전당</S.HeaderBox>
 					<S.UserContainer>

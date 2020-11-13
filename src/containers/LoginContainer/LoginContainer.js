@@ -29,7 +29,7 @@ const LoginContainer = () => {
 			switch (res.data.status) {
 				case 200: {
 					history.push({
-						pathname: '/introduce',
+						pathname: '/main/ranking',
 					});
 
 					localStorage.setItem(
