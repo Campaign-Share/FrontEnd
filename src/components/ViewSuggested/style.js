@@ -17,13 +17,13 @@ export const SortTextWrapper = styled.div`
 `;
 
 export const SortText = styled.p`
-	color: ${(props) => (props.selected ? '#9DB3B6' : '#535353')};
+	color: ${(props) => (props.id === props.selected ? '#9DB3B6' : '#535353')};
 	font-family: Noto Sans CJK KR;
 	width: 70px;
 	margin: 0;
 	margin-right: 30px;
 	border-bottom: 2px solid
-		${(props) => (props.selected ? '#9DC3C1' : '#707070')};
+		${(props) => (props.id === props.selected ? '#9DC3C1' : '#707070')};
 	text-align: center;
 	cursor: pointer;
 `;
