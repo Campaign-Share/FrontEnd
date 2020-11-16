@@ -27,6 +27,7 @@ const LoginContainer = () => {
 		).then((res) => {
 			switch (res.data.status) {
 				case 200: {
+					alert('로그인이 되었습니다.');
 					history.push({
 						pathname: '/introduce',
 					});
