@@ -4,6 +4,9 @@ import SideBar from '../../components/Navigation/sideBar/SideBar';
 import RankingContainer from '../RankingContainer/RankingContainer';
 import ViewSuggestedContainer from './ViewSuggestedContainer/ViewSuggestedContainer';
 import SuggestContainer from './SuggestContainer/SuggestContainer';
+import ListContainer from '../profileContainer/ListContainer/ListContainer';
+import Campaign from '../../components/common/Campaign/Campaign';
+import SearchContainer from '../SearchContainer/SearchContainer';
 
 const MainContainer = () => {
 	return (
@@ -19,6 +22,22 @@ const MainContainer = () => {
 						component={ViewSuggestedContainer}
 					/>
 					<Route exact path="/main/suggest" component={SuggestContainer} />
+					<Route
+						path="/main/mypage/enterList"
+						exact
+						component={ListContainer}
+					/>
+					<Route
+						path="/main/mypage/acceptList"
+						exact
+						component={ListContainer}
+					/>
+					<Route
+						path="/main/mypage/refusalList"
+						exact
+						component={ListContainer}
+					/>
+					<Route path="/main/search" exact component={SearchContainer} />
 					<Redirect path="/main/*" to="/main/suggest" />
 				</Switch>
 			</BrowserRouter>

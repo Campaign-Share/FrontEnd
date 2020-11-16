@@ -25,9 +25,9 @@ const LoginContainer = () => {
 			{ 'Content-Type': 'application/json' },
 			'post',
 		).then((res) => {
-			console.log(res.data);
 			switch (res.data.status) {
 				case 200: {
+					alert('로그인이 되었습니다.');
 					history.push({
 						pathname: '/main/ranking',
 					});

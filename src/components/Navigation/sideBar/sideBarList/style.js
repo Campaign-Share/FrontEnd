@@ -1,21 +1,24 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+export const ItemHover = css`
+	background-color: #8db4a2;
+	border-radius: 25px;
+	color: white;
+`;
 export const ItemBox = styled.div`
-	padding-top: 10px;
-	width: 80;
-	height: 50px;
-	margin-top: 30px;
+	padding: 10px 0px 0px 15px;
+	width: 80px;
+	height: 40px;
+	margin-top: 50px;
 	display: flex;
-	width:180px;
-	cursor:pointer;
+	width: 180px;
+	cursor: pointer;
 	&:hover {
-		img {
-			background: url(${(props) => props.activeImg});
-		}
+		${ItemHover}
 	}
 `;
 export const ItemImg = styled.img`
-	width: 30px;
+	width: 29px;
 	height: 30px;
 	margin-right: 20px;
 `;
@@ -25,4 +28,7 @@ export const ItemText = styled.div`
 	align-items: center;
 	height: 30px;
 	color: #8d8d8d;
+	&:hover {
+		color: white;
+	}
 `;

@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as S from './style';
-
-// search 이미지 삽입 중
 import { profile, search } from '../../../assets/img';
 
-const CampaignSearchHeader = () => {
+const CampaignSearchHeader = ({ getSearch }) => {
 	const history = useHistory();
+	let [value, setValue] = useState('');
 
+	const inputChange = (e) => {
+		setValue(e.target.value);
+	};
+	const inputFocus = () => {
+		history.push('/main/search');
+	};
+
+	const onSearch = () => {
+		if (value.charAt(0) == '#') {
+			const values = value.substr(1);
+			getSearch(values);
+		} else {
+			alert('잘못된 검색입니다. 태그로 검색해 주세요.');
+		}
+	};
 	return (
 		<S.Header>
 			<S.SearchBarWrapper>
-				<S.SearchBar placeholder="Search" />
-				<S.SearchIcon src={search} />
+				<S.SearchBar
+					placeholder="Search"
+					onChange={inputChange}
+					onFocus={inputFocus}
+				/>
+				<S.SearchIcon src={search} onClick={onSearch} />
 			</S.SearchBarWrapper>
 			<S.HeaderIcon src={profile} onClick={() => history.push('/mypage')} />
 		</S.Header>
