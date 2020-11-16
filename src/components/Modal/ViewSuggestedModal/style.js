@@ -21,7 +21,7 @@ export const ModalWrapper = styled.div`
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	border-radius: 51px;
+	border-radius: 3.188rem;
 	z-index: 100;
 `;
 
@@ -37,9 +37,9 @@ export const LeftWrapper = styled.div`
 `;
 
 export const Poster = styled.img`
-	margin-top: 50px;
-	width: 375px;
-	height: 500px;
+	margin-top: 3.125rem;
+	width: 23.44rem;
+	height: 31.25rem;
 `;
 
 export const RightWrapper = styled.div`
@@ -49,20 +49,20 @@ export const RightWrapper = styled.div`
 
 export const ModalTextWrapper = styled.div`
 	width: 85%;
-	margin: 60px 0 0 40px;
+	margin: 3.75rem 0 0 2.5rem;
 `;
 
 export const ModalPublisher = styled.h2`
 	margin: 0;
-	font-size: 18px;
+	font-size: 1.125rem;
 	font-family: Noto Sans CJK KR;
 	color: #353535;
 `;
 
 export const ModalSubTitle = styled.h3`
 	margin: 0;
-	margin-top: 50px;
-	font-size: 15px;
+	margin-top: 3.125rem;
+	font-size: 0.9375rem;
 	text-align: center;
 	font-family: Noto Sans CJK KR;
 	color: #535353;
@@ -71,32 +71,32 @@ export const ModalSubTitle = styled.h3`
 export const ModalTitle = styled.h1`
 	color: #000000;
 	margin: 0;
-	margin-top: 20px;
-	font-size: 23px;
+	margin-top: 1.25rem;
+	font-size: 1.438rem;
 	text-align: center;
 `;
 
 export const ModalIntroduction = styled.p`
 	margin: 0;
-	margin-top: 50px;
+	margin-top: 3.125rem;
 	font-family: Noto Sans CJK KR;
 	color: #535353;
 `;
 
 export const ModalBtnWrapper = styled.div`
-	margin-top: 110px;
+	margin-top: 6.875rem;
 	width: 90%;
 	display: flex;
 	justify-content: flex-end;
 `;
 
 export const ModalAgreeBtn = styled.button`
-	width: 100px;
-	height: 35px;
-	margin-right: 20px;
+	width: 6.25rem;
+	height: 2.188rem;
+	margin-right: 1.25rem;
 	background-color: #ffffff;
 	border: 2px solid #d2d2d2;
-	border-radius: 21px;
+	border-radius: 1.313rem;
 	font-family: Noto Sans CJK KR;
 
 	:focus {
@@ -105,11 +105,11 @@ export const ModalAgreeBtn = styled.button`
 `;
 
 export const ModalDisagreeBtn = styled.button`
-	width: 100px;
-	height: 35px;
+	width: 6.25rem;
+	height: 2.188rem;
 	background-color: #ffffff;
 	border: 2px solid #d2d2d2;
-	border-radius: 21px;
+	border-radius: 1.313rem;
 	font-family: Noto Sans CJK KR;
 
 	:focus {
@@ -131,21 +131,25 @@ export const ModalReportWrapper = styled.div`
 `;
 
 export const ModalReportBtn = styled.button`
-	margin-top: 20px;
-	width: 110px;
-	height: 30px;
-	border-radius: 21px;
+	margin-top: 1.25rem;
+	width: 6.875rem;
+	height: 1.875rem;
+	border-radius: 1.313rem;
 	border: 2px solid #d2d2d2;
 	background-color: white;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	:focus {
+		outline: none;
+	}
 `;
 
 export const ModalReportIcon = styled.img`
-	width: 20px;
+	width: 1.25rem;
 	display: inline;
-	margin-right: 5px;
+	margin-right: 0.3125rem;
 `;
 
 export const ModalReportText = styled.p`
