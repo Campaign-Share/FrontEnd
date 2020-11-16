@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const RankingContainer = styled.section`
-	display: flex;
+	width: 79%;
 `;
 
 export const ContentContainer = styled.div`
@@ -9,14 +9,14 @@ export const ContentContainer = styled.div`
 `;
 
 export const HeaderBox = styled.div`
-	width: 20%;
+	width: 22%;
 	height: 45px;
 	background-color: #b1ccc0;
 	border-radius: 50px;
 	color: white;
 	box-shadow: 0px 3px 10px rgb(0, 0, 0, 0.48);
-	margin: 80px 485px 0px 490px;
-	font-size: 23px;
+	margin: 80px 0px 0px 510px;
+	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
 	line-height: 45px;
@@ -24,7 +24,8 @@ export const HeaderBox = styled.div`
 `;
 
 export const UserContainer = styled.div`
-	padding: 20px 0px 0px 200px;
+	margin: 20px 0px 0px 220px;
+	width: 100%;
 `;
 
 export const SecondBox = styled.div`

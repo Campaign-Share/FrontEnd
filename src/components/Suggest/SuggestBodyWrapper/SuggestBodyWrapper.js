@@ -16,8 +16,8 @@ const SuggestBodyWrapper = ({ onChangeForm, setSuggestForm }) => {
 
 		reader.onload = function (event) {
 			const img = document.createElement('img');
-			img.style.maxWidth = '100%';
-			img.style.maxHeight = '100%';
+			img.style.width = '100%';
+			img.style.height = '100%';
 			img.setAttribute('src', event.target.result);
 			img.addEventListener('click', removeThumbnail);
 			img.id = 'posterImg';
