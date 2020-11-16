@@ -9,17 +9,18 @@ export const MainWrapper = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 100px;
 `;
 
 export const Poster = styled.img`
 	padding-top: 1.25rem;
 	width: 90%;
-	height: calc(70% - 1.25rem);
+	height: calc(65% - 1.25rem);
 `;
 
 export const CampaignTextWrapper = styled.div`
 	width: 90%;
-	height: 19%;
+	height: 24%;
 	margin-top: 1%;
 	display: flex;
 	flex-direction: column;
@@ -27,7 +28,7 @@ export const CampaignTextWrapper = styled.div`
 
 export const CampaignPublisher = styled.h3`
 	font-size: 0.9375rem;
-	width: 3.125rem;
+	min-width: 3.125rem;
 	margin: 0;
 	border-bottom: 2px solid #b8d4c8;
 `;
