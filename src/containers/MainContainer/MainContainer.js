@@ -12,7 +12,6 @@ const MainContainer = () => {
 				<SideBar />
 				<Switch>
 					<Route exact path="/main/ranking" component={RankingContainer} />
-
 					{/* <Route exact path="/main/viewInProgress" component={} /> */}
 					<Route
 						exact
