@@ -30,9 +30,10 @@ export const SortText = styled.p`
 
 export const BodyWrapper = styled.div`
 	width: 90%;
-	height: calc(100% - 165px);
+	min-height: calc(100% - 165px);
 	margin-left: 5%;
 	margin-top: 20px;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 `;
