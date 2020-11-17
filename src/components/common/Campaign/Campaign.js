@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './style';
 
-import { good, bad } from '../../../assets/img';
+import { good, bad, member } from '../../../assets/img';
 
 const Campaign = ({ onClick, props }) => {
 	return (
@@ -15,6 +15,7 @@ const Campaign = ({ onClick, props }) => {
 					<S.CampaignTags>#동물 #기부 #클레어스</S.CampaignTags>
 				</S.CampaignSummaryWrapper>
 			</S.CampaignTextWrapper>
+
 			<S.CampaignGraphWrapper>
 				<S.CampaignLikeIcon src={good} />
 				<S.CampaignDisagreeGraph>
