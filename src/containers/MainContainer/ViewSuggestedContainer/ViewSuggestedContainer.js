@@ -1,14 +1,47 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCampaignList } from '../../../modules/viewSuggested';
 import ViewSuggestedModal from '../../../components/Modal/ViewSuggestedModal/ViewSuggestedModal';
 import ViewSuggested from '../../../components/ViewSuggested/ViewSuggested';
+import { requestApiWithAccessToken } from '../../../APIrequest';
+
+import ViewInProgressModal from '../../../components/Modal/ViewInProgressModal/ViewInProgressModal';
 
 const ViewSuggestedContainer = () => {
-	const modalData = useSelector((state) => state.viewSuggested);
+	const dispatch = useDispatch();
+	const viewSuggestedRedux = useSelector((state) => state.viewSuggested);
+
+	const getCampaign = async () => {
+		let count = 6,
+			start = viewSuggestedRedux.index,
+			sortBy = viewSuggestedRedux.sortBy;
+
+		const res = await requestApiWithAccessToken(
+			'/v1/campaigns/sorted-by/' +
+				sortBy +
+				'?start=' +
+				start +
+				'&count=' +
+				count +
+				'&state=pending',
+			{},
+			{},
+			'get',
+		);
+		dispatch(getCampaignList(res.data));
+	};
+
+	useEffect(() => {
+		try {
+			getCampaign();
+		} catch (err) {
+			console.error(err);
+		}
+	}, [viewSuggestedRedux.sortBy]);
 
 	return (
 		<>
-			{modalData.onModal && <ViewSuggestedModal />}
+			{viewSuggestedRedux.onModal && <ViewInProgressModal />}
 			<ViewSuggested />
 		</>
 	);
