@@ -6,8 +6,8 @@ import { report } from '../../../assets/img';
 
 const viewSuggestedModal = () => {
 	const dispatch = useDispatch();
-	const modalOffDispatch = () => {
-		dispatch(modalOff());
+	const modalOffDispatch = (e) => {
+		if (e.currentTarget === e.target) dispatch(modalOff());
 	};
 
 	return (
