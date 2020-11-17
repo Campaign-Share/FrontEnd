@@ -1,7 +1,7 @@
-export const GET_CAMPAIGN_LIST = 'viewSuggsted/GET_CAMPAIGN_LIST';
-export const CHANGE_SORT_BY = 'viewSuggested/CHANGE_SORT_BY';
-export const MODAL_ON = 'viewSuggested/MODAL_ON';
-export const MODAL_OFF = 'viewSuggested/MODAL_OFF';
+export const GET_CAMPAIGN_LIST = 'viewInProgress/GET_CAMPAIGN_LIST';
+export const CHANGE_SORT_BY = 'viewInProgress/CHANGE_SORT_BY';
+export const MODAL_ON = 'viewInProgress/MODAL_ON';
+export const MODAL_OFF = 'viewInProgress/MODAL_OFF';
 
 export const getCampaignList = (payload) => ({
 	type: GET_CAMPAIGN_LIST,
@@ -25,7 +25,7 @@ const initialState = {
 	campaigns: [],
 };
 
-export default function viewSuggestedReducer(state = initialState, action) {
+export default function viewInProgressReducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_CAMPAIGN_LIST:
 			return {

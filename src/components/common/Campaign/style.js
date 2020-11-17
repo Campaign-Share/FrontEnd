@@ -64,12 +64,18 @@ export const CampaignTitle = styled.h2`
 	color: #000000;
 `;
 
+export const CampaignTagsWrapper = styled.div`
+	display: flex;
+`;
+
 export const CampaignTags = styled.p`
 	color: #78bba8;
 	font-size: 0.9375rem;
 	font-family: Noto Sans CJK KR;
-	margin: 0.5rem 0.3rem 0rem 0rem;
 	font-weight: 500;
+	margin: 0;
+	margin-top: 0.5rem;
+	margin-right: 10px;
 `;
 
 export const CampaignGraphWrapper = styled.div`
@@ -137,3 +143,31 @@ export const Member = styled.img`
 	height: auto;
 	margin-right: 5px;
 `;
+
+export const CampaignParticipationWrapper = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+`;
+
+export const CampaignParticipationDiv = styled.div`
+	margin-right: 30px;
+	height: 20px;
+	display: flex;
+`;
+
+export const CampaignParticipationIcon = styled.img`
+	width: 30px;
+	height: 20px;
+	margin-right: 5px;
+`;
+
+export const CampaignParticipationText = styled.p`
+	margin: 0;
+	height: 20px;
+	font-size: 15px;
+	font-family: Noto Sans CJK KR;
+	color: #353535;
+`;
+

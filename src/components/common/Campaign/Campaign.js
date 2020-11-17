@@ -3,35 +3,53 @@ import * as S from './style';
 
 import { good, bad, member } from '../../../assets/img';
 
-const Campaign = ({ onClick, props }) => {
+const Campaign = ({ onClick, props, isSuggested }) => {
 	return (
 		<S.MainWrapper onClick={onClick}>
-			<S.Poster src="https://www.urbanbrush.net/web/wp-content/uploads/edd/2018/09/urbanbrush-20180908081303886995.png" />
+			<S.Poster
+				src={`http://campaignshare.s3.ap-northeast-2.amazonaws.com/${props.post_uri}`}
+			/>
 			<S.CampaignTextWrapper>
 				<S.CampaignPublisher>{props.user_uuid}</S.CampaignPublisher>
 				<S.CampaignSummaryWrapper>
 					<S.CampaignSubtitle>{props.sub_title}</S.CampaignSubtitle>
 					<S.CampaignTitle>{props.title}</S.CampaignTitle>
-					<S.CampaignTags>#동물 #기부 #클레어스</S.CampaignTags>
+					<S.CampaignTagsWrapper>
+						{props.campaign_tags.map((item) => (
+							<S.CampaignTags>{item.replace(/'/g, '')}</S.CampaignTags>
+						))}
+					</S.CampaignTagsWrapper>
 				</S.CampaignSummaryWrapper>
 			</S.CampaignTextWrapper>
-
-			<S.CampaignGraphWrapper>
-				<S.CampaignLikeIcon src={good} />
-				<S.CampaignDisagreeGraph>
-					<S.CampaignFlexDiv
-						flex={props.agree_number}
-						isFull={props.disagree_number === 0}>
-						<S.CampaignAgreeNumber>{props.agree_number}</S.CampaignAgreeNumber>
-					</S.CampaignFlexDiv>
-					<S.CampaignFlexDiv flex={props.disagree_number}>
-						<S.CampaignDisagreeNumber>
-							{props.disagree_number}
-						</S.CampaignDisagreeNumber>
-					</S.CampaignFlexDiv>
-				</S.CampaignDisagreeGraph>
-				<S.CampaignDislikeIcon src={bad} />
-			</S.CampaignGraphWrapper>
+			{isSuggested ? (
+				<S.CampaignGraphWrapper>
+					<S.CampaignLikeIcon src={good} />
+					<S.CampaignDisagreeGraph>
+						<S.CampaignFlexDiv
+							flex={props.agree_number}
+							isFull={props.disagree_number === 0}>
+							<S.CampaignAgreeNumber>
+								{props.agree_number}
+							</S.CampaignAgreeNumber>
+						</S.CampaignFlexDiv>
+						<S.CampaignFlexDiv flex={props.disagree_number}>
+							<S.CampaignDisagreeNumber>
+								{props.disagree_number}
+							</S.CampaignDisagreeNumber>
+						</S.CampaignFlexDiv>
+					</S.CampaignDisagreeGraph>
+					<S.CampaignDislikeIcon src={bad} />
+				</S.CampaignGraphWrapper>
+			) : (
+				<S.CampaignParticipationWrapper>
+					<S.CampaignParticipationDiv>
+						<S.CampaignParticipationIcon src={member} />
+						<S.CampaignParticipationText>
+							{props.participation_number}
+						</S.CampaignParticipationText>
+					</S.CampaignParticipationDiv>
+				</S.CampaignParticipationWrapper>
+			)}
 		</S.MainWrapper>
 	);
 };

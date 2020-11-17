@@ -10,17 +10,17 @@ export const Header = styled.div`
 `;
 
 export const SearchBarWrapper = styled.div`
-	width: 230px;
-	height: 25px;
+	width: 14.38rem;
+	height: 1.563rem;
 	border-bottom: 2px solid #aecfc0;
 	display: flex;
-	margin-right: 40px;
+	margin-right: 2.5rem;
 `;
 
 export const SearchBar = styled.input`
-	width: 200px;
+	width: 12.5rem;
 	border: none;
-	font-size: 18px;
+	font-size: 1.125rem;
 	font-family: Noto Sans CJK KR;
 	color: #adadad;
 
@@ -30,7 +30,7 @@ export const SearchBar = styled.input`
 `;
 
 export const SearchIcon = styled.img`
-	height: 23px;
+	height: 1.438rem;
 `;
 
 export const HeaderIcon = styled.img`
