@@ -21,72 +21,8 @@ export const modalOff = () => ({
 const initialState = {
 	onModal: false,
 	sortBy: 'create-time',
-	campaigns: [
-		{
-			campaign_uuid: 'campaign-052138654235',
-			user_uuid: 'user-619165338425',
-			state: 'pending',
-			title: '첫번째',
-			sub_title: 'ㅎㅇㅎㅇ',
-			introduction: '1111',
-			participation: '1 1',
-			start_date: '2020-11-05',
-			end_date: '2020-11-07',
-			post_uri: 'campaign/posters/campaign-052138654235',
-			campaign_tags: ['adsadsadsadsadsads', 'qweqwer', 'qewr', 'qwe'],
-			agree_number: 3,
-			disagree_number: 2,
-			participation_number: 0,
-		},
-		{
-			campaign_uuid: 'campaign-11512361761',
-			user_uuid: 'user-23512512342',
-			state: 'pending',
-			title: '두번째',
-			sub_title: null,
-			introduction: '2222',
-			participation: '2 2',
-			start_date: '2020-11-05',
-			end_date: '2020-11-07',
-			post_uri: 'campaign/posters/campaign-052138654235',
-			campaign_tags: ['adsadsadsadsadsads', 'qweqwer', 'qewr', 'qwe'],
-			agree_number: 3,
-			disagree_number: 2,
-			participation_number: 0,
-		},
-		{
-			campaign_uuid: 'campaign-12314123',
-			user_uuid: 'user-1512312314123',
-			state: 'pending',
-			title: '세번째',
-			sub_title: null,
-			introduction: '3333',
-			participation: '3 3',
-			start_date: '2020-11-05',
-			end_date: '2020-11-07',
-			post_uri: 'campaign/posters/campaign-052138654235',
-			campaign_tags: ['adsadsadsadsadsads', 'qweqwer', 'qewr', 'qwe'],
-			agree_number: 3,
-			disagree_number: 2,
-			participation_number: 0,
-		},
-		{
-			campaign_uuid: 'campaign-123141511123',
-			user_uuid: 'user-15123123141312123',
-			state: 'pending',
-			title: '네번재',
-			sub_title: null,
-			introduction: '4444',
-			participation: '4 4',
-			start_date: '2020-11-05',
-			end_date: '2020-11-07',
-			post_uri: 'campaign/posters/campaign-052138654235',
-			campaign_tags: ['adsadsadsadsadsads', 'qweqwer', 'qewr', 'qwe'],
-			agree_number: 3,
-			disagree_number: 2,
-			participation_number: 0,
-		},
-	],
+	index: 0,
+	campaigns: [],
 };
 
 export default function viewSuggestedReducer(state = initialState, action) {
@@ -94,12 +30,15 @@ export default function viewSuggestedReducer(state = initialState, action) {
 		case GET_CAMPAIGN_LIST:
 			return {
 				...state,
-				campaigns: action.payload.campaigns,
+				campaigns: state.campaigns.concat(action.payload.campaigns),
+				index: state.index + 6,
 			};
 		case CHANGE_SORT_BY:
 			return {
 				...state,
 				sortBy: action.payload,
+				index: 0,
+				campaigns: [],
 			};
 		case MODAL_ON:
 			return {
