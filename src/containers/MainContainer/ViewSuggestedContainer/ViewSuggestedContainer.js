@@ -32,11 +32,7 @@ const ViewSuggestedContainer = () => {
 	};
 
 	useEffect(() => {
-		try {
-			getCampaign();
-		} catch (err) {
-			console.error(err);
-		}
+		getCampaign();
 	}, [viewSuggestedRedux.sortBy]);
 
 	return (
