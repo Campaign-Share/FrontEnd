@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
-	width: 80%;
+	width: 100%;
 	height: 4.375rem;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	margin-bottom: 20px;
 `;
 
 export const SearchBarWrapper = styled.div`
