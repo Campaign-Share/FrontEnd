@@ -30,11 +30,7 @@ const ViewInProgressContainer = () => {
 	};
 
 	useEffect(() => {
-		try {
-			getCampaign();
-		} catch (err) {
-			console.error(err);
-		}
+		getCampaign();
 	}, [viewInProgressRedux.sortBy]);
 
 	return (
