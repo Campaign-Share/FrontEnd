@@ -74,6 +74,7 @@ const ViewSuggested = () => {
 							key={item.campaign_uuid}
 							props={item}
 							onClick={onModalDispatch}
+							isSuggested={true}
 						/>
 					))}
 				</S.BodyWrapper>
