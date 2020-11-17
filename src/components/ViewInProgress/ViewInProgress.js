@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { modalOn, changeSortBy } from '../../modules/viewSuggested';
+import { modalOn, changeSortBy } from '../../modules/viewInProgress';
 import * as S from './style';
 
 import CampaignSearchHeader from '../common/CampaignSearchHeader/CampaignSearchHeader';
 import Campaign from '../common/Campaign/Campaign';
 
-const ViewSuggested = () => {
+const ViewInProgress = () => {
 	const [isSelected, setIsSelected] = useState('1');
 	const campaignList = useSelector((store) => store.viewSuggested.campaigns);
 	const dispatch = useDispatch();
@@ -74,7 +74,7 @@ const ViewSuggested = () => {
 							key={item.campaign_uuid}
 							props={item}
 							onClick={onModalDispatch}
-							isSuggested={true}
+							isSuggested={false}
 						/>
 					))}
 				</S.BodyWrapper>
@@ -83,4 +83,4 @@ const ViewSuggested = () => {
 	);
 };
 
-export default ViewSuggested;
+export default ViewInProgress;
