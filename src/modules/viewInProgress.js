@@ -1,0 +1,56 @@
+export const GET_CAMPAIGN_LIST = 'viewInProgress/GET_CAMPAIGN_LIST';
+export const CHANGE_SORT_BY = 'viewInProgress/CHANGE_SORT_BY';
+export const MODAL_ON = 'viewInProgress/MODAL_ON';
+export const MODAL_OFF = 'viewInProgress/MODAL_OFF';
+
+export const getCampaignList = (payload) => ({
+	type: GET_CAMPAIGN_LIST,
+	payload,
+});
+export const changeSortBy = (payload) => ({
+	type: CHANGE_SORT_BY,
+	payload,
+});
+export const modalOn = () => ({
+	type: MODAL_ON,
+});
+export const modalOff = () => ({
+	type: MODAL_OFF,
+});
+
+const initialState = {
+	onModal: false,
+	sortBy: 'create-time',
+	index: 0,
+	campaigns: [],
+};
+
+export default function viewInProgressReducer(state = initialState, action) {
+	switch (action.type) {
+		case GET_CAMPAIGN_LIST:
+			return {
+				...state,
+				campaigns: state.campaigns.concat(action.payload.campaigns),
+				index: state.index + 6,
+			};
+		case CHANGE_SORT_BY:
+			return {
+				...state,
+				sortBy: action.payload,
+				index: 0,
+				campaigns: [],
+			};
+		case MODAL_ON:
+			return {
+				...state,
+				onModal: true,
+			};
+		case MODAL_OFF:
+			return {
+				...state,
+				onModal: false,
+			};
+		default:
+			return state;
+	}
+}
