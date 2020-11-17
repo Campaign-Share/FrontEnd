@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RankingContainer = styled.section`
+export const RankingContainer = styled.div`
 	width: 79%;
 `;
 
@@ -15,7 +15,7 @@ export const HeaderBox = styled.div`
 	border-radius: 50px;
 	color: white;
 	box-shadow: 0px 3px 10px rgb(0, 0, 0, 0.48);
-	margin: 80px 0px 0px 510px;
+	margin: 40px 0px 0px 510px;
 	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
@@ -28,6 +28,13 @@ export const UserContainer = styled.div`
 	width: 100%;
 `;
 
+export const User = styled.p`
+	margin: 0 auto;
+	font-size: 13px;
+	border-bottom: 2px solid #b8d4c8;
+	width: 40%;
+	color: #91a89e;
+`;
 export const SecondBox = styled.div`
 	width: 20%;
 	height: 300px;
@@ -65,8 +72,7 @@ export const UserImg = styled.img`
 	width: 110px;
 	height: 110px;
 	border-radius: 50%;
-	background-color: #8db4a2;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 `;
 
 export const UserInfo = styled.p`
