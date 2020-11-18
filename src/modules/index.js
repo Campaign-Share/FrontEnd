@@ -6,6 +6,7 @@ import editProfileReducer from './EditProfle';
 import editPasswordReducer from './EditPassword';
 import viewInProgressReducer from './viewInProgress';
 import viewSuggestedReducer from './viewSuggested';
+import reportModalReducer from './reportModal';
 
 const rootReducer = combineReducers({
 	mypage: mypageReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
 	editPassword: editPasswordReducer,
 	viewInProgress: viewInProgressReducer,
 	viewSuggested: viewSuggestedReducer,
+	reportModal: reportModalReducer,
 	signUpReducer,
 	loginReducer,
 });
