@@ -27,29 +27,33 @@ export const ModalWrapper = styled.div`
 
 export const BodyWrapper = styled.div`
 	display: flex;
+	width: 100%;
+	height: 86%;
 `;
 
 export const LeftWrapper = styled.div`
 	width: 40%;
-	height: 86%;
+	height: 100%;
 	display: flex;
 	justify-content: flex-end;
+	align-items: flex-end;
 `;
 
 export const Poster = styled.img`
 	margin-top: 3.125rem;
-	width: 23.44rem;
-	height: 31.25rem;
+	width: 24.5rem;
+	height: 30rem;
 `;
 
 export const RightWrapper = styled.div`
 	width: 60%;
-	height: 86%;
+	height: 100%;
 `;
 
 export const ModalTextWrapper = styled.div`
 	width: 85%;
-	margin: 3.75rem 0 0 2.5rem;
+	height: calc(90% - 4.5rem);
+	margin: 4.5rem 0 0 2.5rem;
 `;
 
 export const ModalPublisher = styled.h2`
@@ -71,7 +75,7 @@ export const ModalSubTitle = styled.h3`
 export const ModalTitle = styled.h1`
 	color: #000000;
 	margin: 0;
-	margin-top: 1.25rem;
+	margin-top: 0.5rem;
 	font-size: 1.438rem;
 	text-align: center;
 `;
@@ -84,20 +88,23 @@ export const ModalIntroduction = styled.p`
 `;
 
 export const ModalBtnWrapper = styled.div`
-	margin-top: 6.875rem;
 	width: 90%;
+	height: 10%;
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
 `;
 
 export const ModalAgreeBtn = styled.button`
 	width: 6.25rem;
 	height: 2.188rem;
 	margin-right: 1.25rem;
-	background-color: #ffffff;
+	background-color: ${(props) => (props.selected == 1 ? '#9DC3C1' : '#ffffff')};
+	color: ${(props) => (props.selected == 1 ? '#FFFFFF' : '#000000')};
 	border: 2px solid #d2d2d2;
 	border-radius: 1.313rem;
 	font-family: Noto Sans CJK KR;
+	cursor: pointer;
 
 	:focus {
 		outline: none;
@@ -107,10 +114,12 @@ export const ModalAgreeBtn = styled.button`
 export const ModalDisagreeBtn = styled.button`
 	width: 6.25rem;
 	height: 2.188rem;
-	background-color: #ffffff;
+	background-color: ${(props) => (props.selected == 2 ? '#9DC3C1' : '#ffffff')};
+	color: ${(props) => (props.selected == 2 ? '#FFFFFF' : '#000000')};
 	border: 2px solid #d2d2d2;
 	border-radius: 1.313rem;
 	font-family: Noto Sans CJK KR;
+	cursor: pointer;
 
 	:focus {
 		outline: none;
@@ -140,6 +149,7 @@ export const ModalReportBtn = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
 
 	:focus {
 		outline: none;
