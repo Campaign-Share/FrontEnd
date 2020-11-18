@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCampaignList } from '../../../modules/viewInProgress';
+import ReportModal from '../../../components/Modal/ReportModal/ReportModal';
 import ViewInProgressModal from '../../../components/Modal/ViewInProgressModal/ViewInProgressModal';
 import ViewInProgress from '../../../components/ViewInProgress/ViewInProgress';
 import { requestApiWithAccessToken } from '../../../APIrequest';
 
 const ViewInProgressContainer = () => {
 	const dispatch = useDispatch();
+	const reportModalRedux = useSelector((state) => state.reportModal);
 	const viewInProgressRedux = useSelector((state) => state.viewInProgress);
 
 	const getCampaign = async () => {
@@ -36,9 +38,10 @@ const ViewInProgressContainer = () => {
 
 	return (
 		<>
-			{viewInProgressRedux.onModal && (
-				<ViewInProgressModal modalCaller="viewInProgress" />
+			{reportModalRedux.onReportModal && (
+				<ReportModal modalCaller="viewInProgress" />
 			)}
+			{viewInProgressRedux.onModal && <ViewInProgressModal />}
 			<ViewInProgress />
 		</>
 	);
