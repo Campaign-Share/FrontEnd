@@ -1,35 +1,59 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { modalOff } from '../../../modules/viewSuggested';
 import * as S from './style';
 import { report } from '../../../assets/img';
+import { requestApiWithAccessToken } from '../../../APIrequest';
 
-const viewSuggestedModal = () => {
+const ViewInProgressModal = () => {
+	const [userNickname, setUserNickname] = useState('');
 	const dispatch = useDispatch();
+	const campaignUuid = useSelector(
+		(state) => state.viewInProgress.modalCampaign,
+	);
+	const campaignList = useSelector((state) => state.viewInProgress.campaigns);
+	const modalCampaignInfo = campaignList.find(
+		(item) => item.campaign_uuid == campaignUuid,
+	);
+
 	const modalOffDispatch = (e) => {
 		if (e.currentTarget === e.target) dispatch(modalOff());
 	};
+
+	const getUserNickname = async () => {
+		const res = await requestApiWithAccessToken(
+			'/v1/users/with-uuids',
+			{
+				user_uuids: [modalCampaignInfo.user_uuid],
+			},
+			{},
+			'post',
+		);
+		return res.data.user_informs[0].user_id;
+	};
+
+	useEffect(() => {
+		getUserNickname().then((nickname) => {
+			setUserNickname(nickname);
+		});
+	}, [modalCampaignInfo]);
 
 	return (
 		<S.MainWrapper onClick={modalOffDispatch}>
 			<S.ModalWrapper>
 				<S.BodyWrapper>
 					<S.LeftWrapper>
-						<S.Poster src="https://img1.bizhows.com/bhfile01/__CM_FILE_DATA/201911/20/18/1481579_1574242985072.jpg" />
+						<S.Poster
+							src={`http://campaignshare.s3.ap-northeast-2.amazonaws.com/${modalCampaignInfo.post_uri}`}
+						/>
 					</S.LeftWrapper>
 					<S.RightWrapper>
 						<S.ModalTextWrapper>
-							<S.ModalPublisher>Klairs X jOGUMAN STUDiO</S.ModalPublisher>
-							<S.ModalSubTitle>클레어스 6th 기부 프로젝트</S.ModalSubTitle>
-							<S.ModalTitle>GO CRUELTY FREE: LET US BE!</S.ModalTitle>
+							<S.ModalPublisher>{userNickname}</S.ModalPublisher>
+							<S.ModalSubTitle>{modalCampaignInfo.sub_title}</S.ModalSubTitle>
+							<S.ModalTitle>{modalCampaignInfo.title}</S.ModalTitle>
 							<S.ModalIntroduction>
-								세계 실험동물의 날을 맞아 진행하는 GO CRUELTY FREE: LET US BE!는
-								클레어스의 여섯 번째 기부 프로젝트입니다. 반려동물과의 산책이
-								컨셉인 캠페인 굿즈는 풉백으로 사용 가능한 미니 파우치, 손수건,
-								드링크 백 등으로 조구만 스튜디오의 일러스트가 그러져있습니다.
-								클레어스 공식몰에서 캠페인 굿즈를 구매하면 자동으로 참여할 수
-								있습니다. 더불어 SNS 제품 리뷰, 해시태그 포스팅 등의 방법으로
-								캠페인에 동참하실 수 있습니다.{' '}
+								{modalCampaignInfo.introduction}
 							</S.ModalIntroduction>
 						</S.ModalTextWrapper>
 						<S.ModalJoinWrapper>
@@ -50,4 +74,4 @@ const viewSuggestedModal = () => {
 	);
 };
 
-export default viewSuggestedModal;
+export default ViewInProgressModal;
