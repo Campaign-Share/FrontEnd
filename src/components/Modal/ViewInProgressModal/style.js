@@ -27,6 +27,8 @@ export const ModalWrapper = styled.div`
 
 export const BodyWrapper = styled.div`
 	display: flex;
+	width: 100%;
+	height: 86%;
 `;
 
 export const LeftWrapper = styled.div`
@@ -34,12 +36,13 @@ export const LeftWrapper = styled.div`
 	height: 100%;
 	display: flex;
 	justify-content: flex-end;
+	align-items: flex-end;
 `;
 
 export const Poster = styled.img`
 	margin-top: 3.125rem;
-	width: 23.44rem;
-	height: 31.25rem;
+	width: 24.5rem;
+	height: 30rem;
 `;
 
 export const RightWrapper = styled.div`
@@ -49,8 +52,8 @@ export const RightWrapper = styled.div`
 
 export const ModalTextWrapper = styled.div`
 	width: 85%;
-	height: 70%;
-	margin: 3.75rem 0 0 2.5rem;
+	height: calc(90% - 4.5rem);
+	margin: 4.5rem 0 0 2.5rem;
 `;
 
 export const ModalPublisher = styled.h2`
@@ -85,12 +88,11 @@ export const ModalIntroduction = styled.p`
 `;
 
 export const ModalJoinWrapper = styled.div`
-	width: 35.63rem;
-	height: 3.125rem;
-	position: absolute;
-	top: 34.69rem;
+	width: 90%;
+	height: 10%;
 	display: flex;
 	justify-content: flex-end;
+	align-items: center;
 `;
 
 export const ModalJoinButton = styled.button`
@@ -102,6 +104,7 @@ export const ModalJoinButton = styled.button`
 	border-radius: 1.625rem;
 	font-family: Noto Sans CJK KR;
 	font-size: 1.125rem;
+	cursor: pointer;
 
 	:focus {
 		outline: none;
@@ -131,6 +134,7 @@ export const ModalReportBtn = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
 
 	:focus {
 		outline: none;
