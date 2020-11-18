@@ -28,7 +28,7 @@ const MainContainer = () => {
 					/>
 					<Route exact path="/main/suggest" component={SuggestContainer} />
 					<Route
-						path="/main/mypage/enterList"
+						path="/main/mypage/participationList"
 						exact
 						component={ListContainer}
 					/>

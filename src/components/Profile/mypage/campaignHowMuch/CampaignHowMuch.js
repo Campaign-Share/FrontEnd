@@ -12,7 +12,7 @@ const CampaignHowMuch = () => {
 	const itemClick = (item) => {
 		switch (item) {
 			case '참여한 캠페인': {
-				history.push(`/main/mypage/enterList`);
+				history.push(`/main/mypage/participationList`);
 				break;
 			}
 			case '수락된 캠페인': {
