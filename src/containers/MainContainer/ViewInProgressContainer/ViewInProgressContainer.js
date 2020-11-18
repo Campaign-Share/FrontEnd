@@ -30,12 +30,15 @@ const ViewInProgressContainer = () => {
 	};
 
 	useEffect(() => {
+		// 초기 6개
 		getCampaign();
 	}, [viewInProgressRedux.sortBy]);
 
 	return (
 		<>
-			{viewInProgressRedux.onModal && <ViewInProgressModal />}
+			{viewInProgressRedux.onModal && (
+				<ViewInProgressModal modalCaller="viewInProgress" />
+			)}
 			<ViewInProgress />
 		</>
 	);
