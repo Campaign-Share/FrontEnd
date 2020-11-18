@@ -6,7 +6,7 @@ import { cancel, check, checkBox } from '../../../assets/img';
 import { requestApiWithAccessToken } from '../../../APIrequest';
 
 const ReportModal = ({ modalCaller }) => {
-	const [isSubmit, setIsSubmit] = useState(true);
+	const [isSubmit, setIsSubmit] = useState(false);
 	const [imgNumber, setImgNumber] = useState('');
 	const [reason, setReason] = useState('');
 	const dispatch = useDispatch();
