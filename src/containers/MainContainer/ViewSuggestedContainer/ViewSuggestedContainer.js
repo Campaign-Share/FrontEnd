@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCampaignList } from '../../../modules/viewSuggested';
+import ReportModal from '../../../components/Modal/ReportModal/ReportModal';
 import ViewSuggestedModal from '../../../components/Modal/ViewSuggestedModal/ViewSuggestedModal';
 import ViewSuggested from '../../../components/ViewSuggested/ViewSuggested';
 import { requestApiWithAccessToken } from '../../../APIrequest';
 
-import ViewInProgressModal from '../../../components/Modal/ViewInProgressModal/ViewInProgressModal';
-
 const ViewSuggestedContainer = () => {
 	const dispatch = useDispatch();
+	const reportModalRedux = useSelector((state) => state.reportModal);
 	const viewSuggestedRedux = useSelector((state) => state.viewSuggested);
 
 	const getCampaign = async () => {
@@ -32,12 +32,16 @@ const ViewSuggestedContainer = () => {
 	};
 
 	useEffect(() => {
+		// 초기 6개
 		getCampaign();
 	}, [viewSuggestedRedux.sortBy]);
 
 	return (
 		<>
-			{viewSuggestedRedux.onModal && <ViewInProgressModal />}
+			{reportModalRedux.onReportModal && (
+				<ReportModal modalCaller="viewSuggested" />
+			)}
+			{viewSuggestedRedux.onModal && <ViewSuggestedModal />}
 			<ViewSuggested />
 		</>
 	);

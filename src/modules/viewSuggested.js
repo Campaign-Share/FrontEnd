@@ -11,8 +11,9 @@ export const changeSortBy = (payload) => ({
 	type: CHANGE_SORT_BY,
 	payload,
 });
-export const modalOn = () => ({
+export const modalOn = (payload) => ({
 	type: MODAL_ON,
+	payload,
 });
 export const modalOff = () => ({
 	type: MODAL_OFF,
@@ -20,6 +21,7 @@ export const modalOff = () => ({
 
 const initialState = {
 	onModal: false,
+	modalCampaign: '',
 	sortBy: 'create-time',
 	index: 0,
 	campaigns: [],
@@ -44,11 +46,13 @@ export default function viewSuggestedReducer(state = initialState, action) {
 			return {
 				...state,
 				onModal: true,
+				modalCampaign: action.payload,
 			};
 		case MODAL_OFF:
 			return {
 				...state,
 				onModal: false,
+				modalCampaign: '',
 			};
 		default:
 			return state;
