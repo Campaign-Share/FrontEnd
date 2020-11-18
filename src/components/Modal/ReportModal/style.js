@@ -11,10 +11,10 @@ export const Container = styled.div`
 
 export const MainWrapper = styled.div`
 	position: absolute;
-	top: 320px;
-	left: 640px;
-	width: 250px;
-	height: 300px;
+	top: 20rem;
+	left: 40rem;
+	width: 15.63rem;
+	height: 18.75rem;
 	background-color: white;
 	box-shadow: 0px 3px 8px #9dc3c1;
 	display: flex;
@@ -30,17 +30,17 @@ export const BodyWrapper = styled.div`
 `;
 
 export const ReportCheckboxWrapper = styled.div`
-	width: calc(100% - 15px);
+	width: calc(100% - 0.9375rem);
 	height: 60%;
-	padding-top: 15px;
+	padding-top: 0.9375rem;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 `;
 
 export const ReportTitle = styled.h3`
-	width: 80px;
-	font-size: 18px;
+	width: 5rem;
+	font-size: 1.125rem;
 	color: #737373;
 	font-family: Noto Sans CJK KR;
 	border-bottom: 2px solid #707070;
@@ -50,25 +50,25 @@ export const ReportTitle = styled.h3`
 
 export const ReportCheckboxText = styled.p`
 	margin: 0;
-	margin-top: 20px;
-	margin-bottom: 10px;
+	margin-top: 1.25rem;
+	margin-bottom: 0.625rem;
 	color: #000000;
 	font-family: Noto Sans CJK KR;
 `;
 
 export const ReportCheckboxDiv = styled.div`
 	display: flex;
-	margin-left: 20px;
-	margin-bottom: 5px;
+	margin-left: 1.25rem;
+	margin-bottom: 0.3125rem;
 `;
 
 export const ReportCheckboxImg = styled.img`
-	margin-right: 10px;
+	margin-right: 0.625rem;
 	cursor: pointer;
 `;
 
 export const ReportCheckBoxExplanation = styled.p`
-	font-size: 13px;
+	font-size: 0.8125rem;
 	font-family: Noto Sans CJK KR;
 	color: #000000;
 	margin: 0;
@@ -85,8 +85,8 @@ export const ReportReasonWrapper = styled.div`
 export const ReportReasonText = styled.p`
 	font-family: Noto Sans CJK KR;
 	margin: 0;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 0.625rem;
+	margin-bottom: 0.625rem;
 `;
 
 export const ReportReasonInput = styled.input`
@@ -109,13 +109,13 @@ export const ReportBtnWrapper = styled.div`
 `;
 
 export const ReportBtn = styled.button`
-	width: 60px;
-	height: 23px;
+	width: 3.75rem;
+	height: 1.438rem;
 	background-color: #cdcdcd;
 	color: #404040;
 	font-family: Noto Sans CJK KR;
 	border: none;
-	border-radius: 12px;
+	border-radius: 0.75rem;
 	text-align: center;
 
 	:focus {
@@ -125,10 +125,10 @@ export const ReportBtn = styled.button`
 
 export const CompleteMainWrapper = styled.div`
 	position: absolute;
-	top: 470px;
-	left: 640px;
-	width: 300px;
-	height: 150px;
+	top: 29.38rem;
+	left: 40rem;
+	width: 18.75rem;
+	height: 9.375rem;
 	background-color: white;
 	box-shadow: 0px 3px 8px #9dc3c1;
 	display: flex;
@@ -144,10 +144,10 @@ export const CompleteTopWrapper = styled.div`
 `;
 
 export const CompleteCloseImg = styled.img`
-	width: 22px;
-	height: 22px;
-	margin-top: 10px;
-	margin-right: 10px;
+	width: 1.375rem;
+	height: 1.375rem;
+	margin-top: 0.625rem;
+	margin-right: 0.625rem;
 	cursor: pointer;
 `;
 
@@ -160,7 +160,7 @@ export const CompleteBodyWrapper = styled.div`
 
 export const CompleteText = styled.p`
 	font-family: Noto Sans CJK KR;
-	font-size: 13px;
+	font-size: 0.8125rem;
 	text-align: center;
-	margin-top: 30px;
+	margin-top: 1.875rem;
 `;
