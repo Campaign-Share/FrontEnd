@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { modalOff } from '../../../modules/viewSuggested';
+import { modalOff } from '../../../modules/viewInProgress';
+import { reportModalOn } from '../../../modules/reportModal';
 import * as S from './style';
 import { report } from '../../../assets/img';
 import { requestApiWithAccessToken } from '../../../APIrequest';
@@ -17,7 +18,12 @@ const ViewInProgressModal = () => {
 	);
 
 	const modalOffDispatch = (e) => {
+		console.log('hello');
 		if (e.currentTarget === e.target) dispatch(modalOff());
+	};
+
+	const reportModalOnDispatch = () => {
+		dispatch(reportModalOn());
 	};
 
 	const getUserNickname = async () => {
@@ -63,7 +69,7 @@ const ViewInProgressModal = () => {
 				</S.BodyWrapper>
 				<S.ModalBottomWrapper>
 					<S.ModalReportWrapper>
-						<S.ModalReportBtn>
+						<S.ModalReportBtn onClick={reportModalOnDispatch}>
 							<S.ModalReportIcon src={report} />
 							<S.ModalReportText>신고하기</S.ModalReportText>
 						</S.ModalReportBtn>
