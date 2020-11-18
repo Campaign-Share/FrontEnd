@@ -34,8 +34,8 @@ const ViewSuggested = () => {
 		setIsSelected(id);
 	};
 
-	const onModalDispatch = () => {
-		dispatch(modalOn());
+	const onModalDispatch = (campaign_uuid) => {
+		dispatch(modalOn(campaign_uuid));
 	};
 
 	const sortTextArray = [
