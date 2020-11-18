@@ -8,7 +8,7 @@ import Campaign from '../common/Campaign/Campaign';
 
 const ViewInProgress = () => {
 	const [isSelected, setIsSelected] = useState('1');
-	const campaignList = useSelector((store) => store.viewSuggested.campaigns);
+	const campaignList = useSelector((store) => store.viewInProgress.campaigns);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -34,8 +34,8 @@ const ViewInProgress = () => {
 		setIsSelected(id);
 	};
 
-	const onModalDispatch = () => {
-		dispatch(modalOn());
+	const onModalDispatch = (campaign_uuid) => {
+		dispatch(modalOn(campaign_uuid));
 	};
 
 	const sortTextArray = [
