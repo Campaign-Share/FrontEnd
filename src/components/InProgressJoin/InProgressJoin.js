@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as S from './style';
+import { modalOn } from '../../modules/inProgressJoin';
 import SuggestHeader from '../Suggest/SuggestHeader/SuggestHeader';
 import { file } from '../../assets/img';
 import { requestApiWithAccessToken } from '../../APIrequest';
 
 const InProgressJoin = () => {
-	const [isFull, setIsFull] = useState(false);
 	const [text, setText] = useState('');
 	const [attachments, setAttachments] = useState();
+	const dispatch = useDispatch();
 	const campaignUuid = useSelector(
 		(state) => state.viewInProgress.modalCampaign,
 	);
@@ -34,6 +35,7 @@ const InProgressJoin = () => {
 		console.log(text);
 		console.log(attachments);
 		await requestApiWithAccessToken(`/v1/participations`, formData, {}, 'post');
+		dispatch(modalOn());
 	};
 
 	return (
@@ -75,7 +77,7 @@ const InProgressJoin = () => {
 						</S.InProgressRightWrapper>
 					</S.InProgressBodyWrapper>
 					<S.InProgressBottomWrapper>
-						<S.InProgressJoinBtn isFull={isFull} onClick={onBtnClick}>
+						<S.InProgressJoinBtn isFull onClick={onBtnClick}>
 							참여
 						</S.InProgressJoinBtn>
 					</S.InProgressBottomWrapper>
