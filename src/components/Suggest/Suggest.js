@@ -1,7 +1,6 @@
 import React from 'react';
 import * as S from './style';
 import SuggestConfirmModal from '../SuggestConfirmModal/SuggestConfirmModal';
-import SideBar from '../Navigation/sideBar/SideBar';
 import SuggestHeader from './SuggestHeader/SuggestHeader';
 import SuggestBodyWrapper from './SuggestBodyWrapper/SuggestBodyWrapper';
 import SuggestBottomWrapper from './SuggestBottomWrapper/SuggestBottomWrapper';

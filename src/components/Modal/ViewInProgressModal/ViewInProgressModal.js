@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalOff } from '../../../modules/viewInProgress';
 import { reportModalOn } from '../../../modules/reportModal';
@@ -9,6 +10,7 @@ import { requestApiWithAccessToken } from '../../../APIrequest';
 const ViewInProgressModal = () => {
 	const [userNickname, setUserNickname] = useState('');
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const campaignUuid = useSelector(
 		(state) => state.viewInProgress.modalCampaign,
 	);
@@ -18,7 +20,6 @@ const ViewInProgressModal = () => {
 	);
 
 	const modalOffDispatch = (e) => {
-		console.log('hello');
 		if (e.currentTarget === e.target) dispatch(modalOff());
 	};
 
@@ -63,7 +64,10 @@ const ViewInProgressModal = () => {
 							</S.ModalIntroduction>
 						</S.ModalTextWrapper>
 						<S.ModalJoinWrapper>
-							<S.ModalJoinButton>참여하기</S.ModalJoinButton>
+							<S.ModalJoinButton
+								onClick={() => history.push('/main/inProgressJoin')}>
+								참여하기
+							</S.ModalJoinButton>
 						</S.ModalJoinWrapper>
 					</S.RightWrapper>
 				</S.BodyWrapper>
