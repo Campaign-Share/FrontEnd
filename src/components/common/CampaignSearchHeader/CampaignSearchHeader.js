@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as S from './style';
 import { profile, search } from '../../../assets/img';
+import { useSelector } from 'react-redux';
+import Campaign from '../Campaign/Campaign';
 
 const CampaignSearchHeader = ({ getSearch }) => {
 	const history = useHistory();
@@ -23,17 +25,19 @@ const CampaignSearchHeader = ({ getSearch }) => {
 		}
 	};
 	return (
-		<S.Header>
-			<S.SearchBarWrapper>
-				<S.SearchBar
-					placeholder="Search"
-					onChange={inputChange}
-					onFocus={inputFocus}
-				/>
-				<S.SearchIcon src={search} onClick={onSearch} />
-			</S.SearchBarWrapper>
-			<S.HeaderIcon src={profile} onClick={() => history.push('/mypage')} />
-		</S.Header>
+		<React.Fragment>
+			<S.Header>
+				<S.SearchBarWrapper>
+					<S.SearchBar
+						placeholder="Search"
+						onChange={inputChange}
+						onFocus={inputFocus}
+					/>
+					<S.SearchIcon src={search} onClick={onSearch} />
+				</S.SearchBarWrapper>
+				<S.HeaderIcon src={profile} onClick={() => history.push('/mypage')} />
+			</S.Header>
+		</React.Fragment>
 	);
 };
 
