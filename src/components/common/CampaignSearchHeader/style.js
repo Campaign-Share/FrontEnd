@@ -38,3 +38,10 @@ export const HeaderIcon = styled.img`
 	margin-right: 2%;
 	cursor: pointer;
 `;
+
+export const SearchSection = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1;
+	padding-left: 400px;
+`;

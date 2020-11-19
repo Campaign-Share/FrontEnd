@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const RankingContainer = styled.div`
-	width: 79%;
+	width: calc(100% - 315px);
+	padding-left: 300px;
 `;
 
 export const ContentContainer = styled.div`

@@ -18,23 +18,14 @@ export const ListContainer = styled.div`
 
 export const HeaderBox = styled.div`
 	width: 100%;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 `;
-export const textBox = styled.div`
-	display: inline-block;
-	width: 13%;
-	border-bottom: 2px solid gray;
-	text-align: center;
-	margin-right: 40px;
-	&:hover {
-		border-bottom: 2px solid #9dc3c1;
-	}
-`;
-export const Filtering = styled.span`
-	font-size: 20px;
-	color: gray;
-	&:hover {
-		color: #9dc3c1;
-	}
+
+export const Filtering = styled.a`
+	width: 140px;
+	margin-right: 30px;
+	border-bottom: 3px solid
+		${(props) => (props.id == props.pick ? '#9dc3c1' : '#535353')};
+	color: ${(props) => (props.id == props.pick ? '#9dc3c1' : '#535353')};
 	cursor: pointer;
 `;
