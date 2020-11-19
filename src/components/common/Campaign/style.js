@@ -6,10 +6,17 @@ export const MainWrapper = styled.div`
 	border-radius: 1.375rem;
 	border: 1px solid #707070;
 	display: flex;
+	height: 580px;
+	margin-right: 40px;
+	border-radius: 22px;
+	border: 1px solid rgb(112, 112, 112, 0.16);
+	box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.16);
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 100px;
+
+	margin-top: 20px;
 `;
 
 export const Poster = styled.img`
@@ -31,6 +38,8 @@ export const CampaignPublisher = styled.h3`
 	min-width: 3.125rem;
 	margin: 0;
 	border-bottom: 2px solid #b8d4c8;
+	width: 55%;
+	text-align: center;
 `;
 
 export const CampaignSummaryWrapper = styled.div`
@@ -41,7 +50,7 @@ export const CampaignSummaryWrapper = styled.div`
 	flex: 1;
 `;
 
-export const CampaignSubtitle = styled.h3`
+export const CampaignSubtitle = styled.h4`
 	font-size: 0.9375rem;
 	margin: 0;
 	font-family: Noto Sans CJK KR;
@@ -49,7 +58,7 @@ export const CampaignSubtitle = styled.h3`
 `;
 
 export const CampaignTitle = styled.h2`
-	font-size: 1.125rem;
+	font-size: 1.06rem;
 	margin: 0;
 	font-family: Noto Sans CJK KR;
 	color: #000000;
@@ -63,6 +72,7 @@ export const CampaignTags = styled.p`
 	color: #78bba8;
 	font-size: 0.9375rem;
 	font-family: Noto Sans CJK KR;
+	font-weight: 500;
 	margin: 0;
 	margin-top: 0.5rem;
 	margin-right: 10px;
@@ -124,6 +134,16 @@ export const CampaignDisagreeNumber = styled.p`
 	font-family: Noto Sans CJK KR;
 `;
 
+export const CampaignMember = styled.div`
+	margin: 10px 0px 0px 240px;
+`;
+
+export const Member = styled.img`
+	width: 25px;
+	height: auto;
+	margin-right: 5px;
+`;
+
 export const CampaignParticipationWrapper = styled.div`
 	width: 100%;
 	display: flex;
@@ -150,3 +170,4 @@ export const CampaignParticipationText = styled.p`
 	font-family: Noto Sans CJK KR;
 	color: #353535;
 `;
+

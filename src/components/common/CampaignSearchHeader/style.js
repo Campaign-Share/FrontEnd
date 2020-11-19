@@ -6,6 +6,7 @@ export const Header = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	margin-bottom: 20px;
 `;
 
 export const SearchBarWrapper = styled.div`

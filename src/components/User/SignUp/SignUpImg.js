@@ -19,7 +19,9 @@ const SignUpImg = ({ userImage }) => {
 	};
 
 	const imgBtn = () => {
-		userImage(file);
+		const form = new FormData();
+		form.append()
+		userImage(form);
 		console.log(file);
 	};
 

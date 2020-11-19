@@ -13,6 +13,8 @@ const Email = ({ joinEmail }) => {
 	const emailChange = (e) => {
 		const button = document.getElementById('button');
 		button.style.backgroundColor = '#d3e2dc';
+		button.style.color = 'white';
+		if (e.target.value == '') button.style.background = '#e7e7e7';
 		setEmail(e.target.value);
 	};
 	const emailCheck = (str) => {
@@ -24,16 +26,8 @@ const Email = ({ joinEmail }) => {
 		if (emailCheck(email) === false) {
 			setIsEmail(true);
 			document.getElementById('email').value = null;
-			console.log(email);
 		} else {
-			console.log(email);
 			joinEmail(email);
-			history.push({
-				pathname: '/signUp/auth',
-				state: {
-					email: email,
-				},
-			});
 		}
 	};
 	let isEmailStyle = isEmail ? 'visible' : 'hidden';
@@ -53,7 +47,6 @@ const Email = ({ joinEmail }) => {
 							이메일 형식이 올바르지 않습니다.
 						</S.IsError>
 					</L.InputBox>
-
 					<L.UserBtn onClick={onEmail} id="button" email>
 						다음
 					</L.UserBtn>

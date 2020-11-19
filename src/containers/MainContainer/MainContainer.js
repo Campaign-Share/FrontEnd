@@ -6,6 +6,9 @@ import ViewInProgressContainer from './ViewInProgressContainer/ViewInProgressCon
 import ViewSuggestedContainer from './ViewSuggestedContainer/ViewSuggestedContainer';
 import SuggestContainer from './SuggestContainer/SuggestContainer';
 import InProgressJoin from './InProgressJoinContainer/InProgressJoinContainer';
+import ListContainer from '../profileContainer/ListContainer/ListContainer';
+import Campaign from '../../components/common/Campaign/Campaign';
+import SearchContainer from '../SearchContainer/SearchContainer';
 
 const MainContainer = () => {
 	return (
@@ -26,6 +29,22 @@ const MainContainer = () => {
 					/>
 					<Route exact path="/main/suggest" component={SuggestContainer} />
 					<Route exact path="/main/inProgressJoin" component={InProgressJoin} />
+					<Route
+						path="/main/mypage/participationList"
+						exact
+						component={ListContainer}
+					/>
+					<Route
+						path="/main/mypage/acceptList"
+						exact
+						component={ListContainer}
+					/>
+					<Route
+						path="/main/mypage/refusalList"
+						exact
+						component={ListContainer}
+					/>
+					<Route path="/main/search" exact component={SearchContainer} />
 					<Redirect path="/main/*" to="/main/suggest" />
 				</Switch>
 			</BrowserRouter>

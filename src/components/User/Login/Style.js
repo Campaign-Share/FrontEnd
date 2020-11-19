@@ -70,7 +70,7 @@ export const UserBtn = styled.button`
 	outline: none;
 	border-radius: 100px;
 	background-color: #e7e7e7;
-	color: #aeaeae;
+	color: white;
 	font-size: 18px;
 	font-weight: 800;
 	margin-top: ${(props) => {
@@ -84,6 +84,5 @@ export const UserBtn = styled.button`
 		props.isActive &&
 		css`
 			background-color: #d3e2dc;
-			color: #6f6f6f;
 		`}
 `;
