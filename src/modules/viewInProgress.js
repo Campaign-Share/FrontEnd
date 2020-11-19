@@ -23,7 +23,6 @@ const initialState = {
 	onModal: false,
 	modalCampaign: '',
 	sortBy: 'create-time',
-	index: 0,
 	campaigns: [],
 };
 
@@ -33,13 +32,11 @@ export default function viewInProgressReducer(state = initialState, action) {
 			return {
 				...state,
 				campaigns: state.campaigns.concat(action.payload.campaigns),
-				index: state.index + 6,
 			};
 		case CHANGE_SORT_BY:
 			return {
 				...state,
 				sortBy: action.payload,
-				index: 0,
 				campaigns: [],
 			};
 		case MODAL_ON:
