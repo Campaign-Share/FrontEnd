@@ -5,6 +5,7 @@ import RankingContainer from '../RankingContainer/RankingContainer';
 import ViewInProgressContainer from './ViewInProgressContainer/ViewInProgressContainer';
 import ViewSuggestedContainer from './ViewSuggestedContainer/ViewSuggestedContainer';
 import SuggestContainer from './SuggestContainer/SuggestContainer';
+import InProgressJoin from './InProgressJoinContainer/InProgressJoinContainer';
 import ListContainer from '../profileContainer/ListContainer/ListContainer';
 import Campaign from '../../components/common/Campaign/Campaign';
 import SearchContainer from '../SearchContainer/SearchContainer';
@@ -27,6 +28,7 @@ const MainContainer = () => {
 						component={ViewSuggestedContainer}
 					/>
 					<Route exact path="/main/suggest" component={SuggestContainer} />
+					<Route exact path="/main/inProgressJoin" component={InProgressJoin} />
 					<Route
 						path="/main/mypage/participationList"
 						exact
