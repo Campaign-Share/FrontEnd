@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
-export const MainWrapper = styled.div`
-	display: flex;
-`;
-
 export const RightWrapper = styled.div`
 	flex: 1;
+	padding-left: 300px;
+	width: calc(100% - 300px);
 `;
 
 export const SortTextWrapper = styled.div`
