@@ -23,7 +23,6 @@ const ListContainer = (props) => {
 			'get',
 		).then((res) => {
 			dispatch(campaignList(res.data.campaigns));
-			console.log(res.data.campaigns);
 		});
 	});
 
@@ -51,17 +50,17 @@ const ListContainer = (props) => {
 
 	switch (url) {
 		case '/main/mypage/participationList': {
-			list = <CampaignsList />;
+			list = <CampaignsList isSuggested={false} />;
 			onParticipationList();
 			break;
 		}
 		case '/main/mypage/acceptList': {
-			list = <CampaignsList />;
+			list = <CampaignsList isSuggested={true} />;
 			onAcceptList();
 			break;
 		}
 		case '/main/mypage/refusalList': {
-			list = <CampaignsList />;
+			list = <CampaignsList isSuggested={true} />;
 			onRefusalList();
 			break;
 		}

@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 
 export const SideBox = styled.div`
-	height: auto;
+	height: 100%;
 	width: 300px;
-	/* top: 0;
-	left: 0;
-	right: 0; */
 	background-color: #d7e3de;
-	/* position: fixed; */
+	position: fixed;
 `;
 export const Logo = styled.img`
 	cursor: pointer;

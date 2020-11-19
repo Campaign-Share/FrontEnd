@@ -1,13 +1,25 @@
 const MODAL = 'MODAL';
 const LIST = 'LIST';
+const SEARCH = 'SEARCH';
+const USER = 'USER';
 
 export const campaignList = (payload) => ({
 	type: LIST,
 	payload,
 });
 
-export const campaingModal = () => ({
+export const campaignModal = () => ({
 	type: MODAL,
+});
+
+export const campaignSearch = (payload) => ({
+	type: SEARCH,
+	payload,
+});
+
+export const user = (payload) => ({
+	type: USER,
+	payload,
 });
 
 const initialState = {
@@ -28,6 +40,7 @@ const initialState = {
 			participation_number: 0,
 		},
 	],
+	user_uuids: [{ user_uuid: '' }],
 };
 
 export const campaignListReducer = (state = initialState, action) => {
@@ -42,7 +55,18 @@ export const campaignListReducer = (state = initialState, action) => {
 				...state,
 				modal: true,
 			};
-
+		case SEARCH: {
+			return {
+				...state,
+				campaigns: action.payload,
+			};
+		}
+		case USER: {
+			return {
+				...state,
+				user_uuids: action.payload,
+			};
+		}
 		default:
 			return state;
 	}
