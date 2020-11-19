@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './style';
 import { modalOn } from '../../modules/inProgressJoin';
@@ -7,6 +7,10 @@ import { file } from '../../assets/img';
 import { requestApiWithAccessToken } from '../../APIrequest';
 
 const InProgressJoin = () => {
+	const [campaignInfo, setCampaignInfo] = useState({
+		title: '',
+		participationWay: '',
+	});
 	const [text, setText] = useState('');
 	const [attachments, setAttachments] = useState();
 	const dispatch = useDispatch();
@@ -38,21 +42,38 @@ const InProgressJoin = () => {
 		dispatch(modalOn());
 	};
 
+	const getCampaignInfo = async (e) => {
+		const res = await requestApiWithAccessToken(
+			`/v1/campaigns/uuid/${campaignUuid}`,
+			{},
+			{},
+			'get',
+		);
+		return res;
+	};
+
+	useEffect(() => {
+		getCampaignInfo().then((res) =>
+			setCampaignInfo({
+				...campaignInfo,
+				title: res.data.title,
+				participationWay: res.data.participation,
+			}),
+		);
+		console.log(campaignInfo);
+	}, []);
+
 	return (
 		<S.RightWrapper>
 			<SuggestHeader />
 			<S.BodyWrapper>
 				<S.InProgressWrapper>
-					<S.InProgressTitle>GO CRUELTY FREE: LET US BE!</S.InProgressTitle>
+					<S.InProgressTitle>{campaignInfo.title}</S.InProgressTitle>
 					<S.InProgressBodyWrapper>
 						<S.InProgressLeftWrapper>
 							<S.InProgressLeftTitle>참여 방법</S.InProgressLeftTitle>
 							<S.InProgressLeftExplanation>
-								클레어스 공식몰에서 캠페인 굿즈를 구매하면
-								<br />
-								자동으로 참여할 수 있습니다. SNS 제품 리뷰,
-								<br />
-								해시태그 포스팅 등의 방법으로 캠페인에 동참하실 수 있습니다.{' '}
+								{campaignInfo.participationWay}
 							</S.InProgressLeftExplanation>
 						</S.InProgressLeftWrapper>
 						<S.InProgressDividingLine />
