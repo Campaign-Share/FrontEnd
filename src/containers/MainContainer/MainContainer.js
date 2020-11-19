@@ -11,7 +11,7 @@ import SearchContainer from '../SearchContainer/SearchContainer';
 
 const MainContainer = () => {
 	return (
-		<div style={{ display: 'flex' }}>
+		<div style={{ display: 'flex', height: '100%' }}>
 			<BrowserRouter>
 				<SideBar />
 				<Switch>
