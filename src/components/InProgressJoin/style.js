@@ -4,6 +4,8 @@ export const RightWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex: 1;
+	padding-left: 300px;
+	width: calc(100% - 300px);
 `;
 
 export const BodyWrapper = styled.div`

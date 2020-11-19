@@ -85,6 +85,12 @@ const ViewSuggestedModal = () => {
 							<S.ModalIntroduction>
 								{modalCampaignInfo.introduction}
 							</S.ModalIntroduction>
+							<S.ModalParticipationExplanation>
+								참여 방법
+							</S.ModalParticipationExplanation>
+							<S.ModalParticipation>
+								{modalCampaignInfo.participation}
+							</S.ModalParticipation>
 						</S.ModalTextWrapper>
 						<S.ModalBtnWrapper>
 							<S.ModalAgreeBtn onClick={voteAgree} selected={selected}>
