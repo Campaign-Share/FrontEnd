@@ -5,6 +5,7 @@ import RankingContainer from '../RankingContainer/RankingContainer';
 import ViewInProgressContainer from './ViewInProgressContainer/ViewInProgressContainer';
 import ViewSuggestedContainer from './ViewSuggestedContainer/ViewSuggestedContainer';
 import SuggestContainer from './SuggestContainer/SuggestContainer';
+import InProgressJoin from './InProgressJoinContainer/InProgressJoinContainer';
 
 const MainContainer = () => {
 	return (
@@ -24,6 +25,7 @@ const MainContainer = () => {
 						component={ViewSuggestedContainer}
 					/>
 					<Route exact path="/main/suggest" component={SuggestContainer} />
+					<Route exact path="/main/inProgressJoin" component={InProgressJoin} />
 					<Redirect path="/main/*" to="/main/suggest" />
 				</Switch>
 			</BrowserRouter>
