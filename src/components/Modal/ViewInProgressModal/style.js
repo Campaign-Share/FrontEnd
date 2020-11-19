@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MainWrapper = styled.div`
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -82,8 +82,23 @@ export const ModalTitle = styled.h1`
 
 export const ModalIntroduction = styled.p`
 	margin: 0;
-	margin-top: 3.125rem;
+	margin-top: 2rem;
 	font-family: Noto Sans CJK KR;
+	height: 25%;
+	color: #535353;
+`;
+
+export const ModalParticipationExplanation = styled.p`
+	margin: 0;
+	font-size: 20px;
+	font-family: Noto Sans CJK KR;
+`;
+
+export const ModalParticipation = styled.p`
+	margin: 0;
+	margin-top: 10px;
+	font-family: Noto Sans CJK KR;
+	height: 25%;
 	color: #535353;
 `;
 
