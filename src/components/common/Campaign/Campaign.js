@@ -10,7 +10,7 @@ const Campaign = ({ onClick, props, isSuggested }) => {
 				src={`http://campaignshare.s3.ap-northeast-2.amazonaws.com/${props.post_uri}`}
 			/>
 			<S.CampaignTextWrapper>
-				<S.CampaignPublisher>{props.user_uuid}</S.CampaignPublisher>
+				<S.CampaignPublisher>{props.nick_name}</S.CampaignPublisher>
 				<S.CampaignSummaryWrapper>
 					<S.CampaignSubtitle>{props.sub_title}</S.CampaignSubtitle>
 					<S.CampaignTitle>{props.title}</S.CampaignTitle>
