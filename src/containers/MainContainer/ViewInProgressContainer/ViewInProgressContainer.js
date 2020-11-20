@@ -65,15 +65,19 @@ const ViewInProgressContainer = () => {
 	};
 
 	useEffect(() => {
-		getCampaign();
-	}, []);
+		setIndex(0);
+	}, [viewInProgressRedux.sortBy]);
+
+	useEffect(() => {
+		if (index === 0) getCampaign();
+	}, [index]);
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
-	}, [viewInProgressRedux.sortBy, index]);
+	}, [index]);
 
 	return (
 		<>
