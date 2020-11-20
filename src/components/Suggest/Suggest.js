@@ -11,6 +11,7 @@ const Suggest = ({
 	suggestForm,
 	setSuggestForm,
 	onSubmitForm,
+	setPosterImg,
 }) => {
 	const onChangeForm = (e) => {
 		if ([e.target.name] == 'periodDay') {
@@ -46,7 +47,7 @@ const Suggest = ({
 						/>
 						<SuggestBodyWrapper
 							onChangeForm={onChangeForm}
-							setSuggestForm={setSuggestForm}
+							setPosterImg={setPosterImg}
 						/>
 						<SuggestBottomWrapper
 							onChangeForm={onChangeForm}
