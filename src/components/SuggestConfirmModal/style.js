@@ -51,4 +51,8 @@ export const ModalConfirmButton = styled.button`
 	border-radius: 26px;
 	font-size: 18px;
 	font-family: Noto Sans CJK KR;
+
+	:focus {
+		outline: none;
+	}
 `;

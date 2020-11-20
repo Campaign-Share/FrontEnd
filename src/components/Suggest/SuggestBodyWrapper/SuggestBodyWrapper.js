@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import * as S from './style';
 
-const SuggestBodyWrapper = ({ onChangeForm, setSuggestForm }) => {
+const SuggestBodyWrapper = ({ onChangeForm, setPosterImg }) => {
 	const [isImage, setIsImage] = useState(false);
 
-	const onChangeImgForm = (e) => {
-		setSuggestForm({
-			...suggestForm,
-			[e.target.name]: e.target.files[0],
-		});
+	const onChangeImg = (e) => {
+		setPosterImg(e.target.files[0]);
 	};
 
 	const setThumbnail = (event) => {
@@ -26,14 +23,14 @@ const SuggestBodyWrapper = ({ onChangeForm, setSuggestForm }) => {
 
 		reader.readAsDataURL(event.target.files[0]);
 		setIsImage(true);
-		onChangeImgForm(event);
+		onChangeImg(event);
 	};
 
 	const removeThumbnail = (e) => {
 		const img = document.querySelector('#posterImg');
 		img.parentNode.removeChild(img);
 		setIsImage(false);
-		onChangeImgForm(e);
+		onChangeImg(e);
 	};
 
 	return (
