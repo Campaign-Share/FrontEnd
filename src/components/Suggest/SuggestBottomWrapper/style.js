@@ -40,4 +40,8 @@ export const SuggestSubmitBtn = styled.button`
 	border: none;
 	font-family: Noto Sans CJK KR;
 	font-size: 1.125rem;
+
+	:focus {
+		outline: none;
+	}
 `;
