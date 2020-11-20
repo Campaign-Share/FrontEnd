@@ -38,7 +38,6 @@ const ViewSuggestedContainer = () => {
 			sortBy = viewSuggestedRedux.sortBy;
 
 		setFetching(true);
-		console.log(count, sortBy);
 		const res = await requestApiWithAccessToken(
 			'/v1/campaigns/sorted-by/' +
 				sortBy +
