@@ -10,11 +10,10 @@ const Mypage = () => {
 	const userInfo = useSelector((store) => store.mypage);
 	const history = useHistory();
 	const gotoEditProfile = useCallback(() => {
-		history.push(`/editprofile`);
+		history.push(`/main/editprofile`);
 	}, []);
 	return (
 		<S.Container>
-			<SideBar></SideBar>
 			<S.Body>
 				<S.HeaderEnd>
 					<S.EditProfileBtn onClick={gotoEditProfile}>
@@ -22,8 +21,8 @@ const Mypage = () => {
 					</S.EditProfileBtn>
 				</S.HeaderEnd>
 				<S.MainInfo>
-					<UserProfileInfo userInfo={userInfo}/>
-					<UserCampaignInfo userInfo={userInfo}/>
+					<UserProfileInfo userInfo={userInfo} />
+					<UserCampaignInfo userInfo={userInfo} />
 				</S.MainInfo>
 			</S.Body>
 		</S.Container>
