@@ -2,8 +2,6 @@ import React, { useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as S from './style';
 import { profile, search } from '../../../assets/img';
-import { useSelector } from 'react-redux';
-import Campaign from '../Campaign/Campaign';
 
 const CampaignSearchHeader = ({ getSearch }) => {
 	const history = useHistory();
@@ -15,6 +13,9 @@ const CampaignSearchHeader = ({ getSearch }) => {
 	const inputFocus = () => {
 		history.push('/main/search');
 	};
+	const myPage = () => {
+		history.push('/main/mypage');
+	};
 
 	const onSearch = () => {
 		if (value.charAt(0) == '#') {
@@ -24,6 +25,11 @@ const CampaignSearchHeader = ({ getSearch }) => {
 			alert('잘못된 검색입니다. 태그로 검색해 주세요.');
 		}
 	};
+
+	const searchKey = () => {
+		if (window.event.keyCode == 13) onSearch();
+	};
+
 	return (
 		<React.Fragment>
 			<S.Header>
@@ -32,10 +38,11 @@ const CampaignSearchHeader = ({ getSearch }) => {
 						placeholder="Search"
 						onChange={inputChange}
 						onFocus={inputFocus}
+						onKeyUp={searchKey}
 					/>
 					<S.SearchIcon src={search} onClick={onSearch} />
 				</S.SearchBarWrapper>
-				<S.HeaderIcon src={profile} onClick={() => history.push('/mypage')} />
+				<S.HeaderIcon src={profile} onClick={myPage} />
 			</S.Header>
 		</React.Fragment>
 	);
