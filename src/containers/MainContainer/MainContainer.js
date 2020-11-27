@@ -7,8 +7,9 @@ import ViewSuggestedContainer from './ViewSuggestedContainer/ViewSuggestedContai
 import SuggestContainer from './SuggestContainer/SuggestContainer';
 import InProgressJoin from './InProgressJoinContainer/InProgressJoinContainer';
 import ListContainer from '../profileContainer/ListContainer/ListContainer';
-import Campaign from '../../components/common/Campaign/Campaign';
 import SearchContainer from '../SearchContainer/SearchContainer';
+import MypageContainer from '../profileContainer/MypageContainer';
+import EditProfileContainer from '../profileContainer/EditProfileContainer';
 
 const MainContainer = () => {
 	return (
@@ -16,6 +17,14 @@ const MainContainer = () => {
 			<BrowserRouter>
 				<SideBar />
 				<Switch>
+					<Route
+						path="/main/editprofile"
+						exact
+						component={EditProfileContainer}
+					/>
+
+					<Route path="/main/mypage" exact component={MypageContainer} />
+
 					<Route exact path="/main/ranking" component={RankingContainer} />
 					<Route
 						exact
