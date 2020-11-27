@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import { campaignModal } from '../../../../modules/CampaignList';
 import Campaign from '../../../common/Campaign/Campaign';
 import MyCampaign from '../../../common/Campaign/MyCampaign';
 import CampaignSearchHeader from '../../../common/CampaignSearchHeader/CampaignSearchHeader';
 import * as S from './style';
 
-const CampaignsList = (isSuggested) => {
+const CampaignsList = ({ isSuggested, isSelect }) => {
 	const headerList = [
 		{ id: 1, text: '참여한 캠페인' },
 		{ id: 2, text: '수락된 캠페인' },
@@ -15,31 +16,29 @@ const CampaignsList = (isSuggested) => {
 	];
 
 	let [isPick, setIsPick] = useState('0');
-	const myPageList = useSelector((store) => store.list.campaigns);
 	const dispatch = useDispatch();
 	const history = useHistory();
+
+	const myPageList = useSelector((store) => store.list.campaigns);
+	const campaign = useSelector((store) => store.list.isCampaign);
 
 	const onModal = () => {
 		dispatch(campaingModal());
 	};
-	console.log(isSuggested);
 
 	const listChange = (id) => {
 		setIsPick(id);
 		switch (id) {
 			case 1: {
 				history.push('/main/mypage/participationList');
-				isSuggested = false;
 				break;
 			}
 			case 2: {
 				history.push('/main/mypage/acceptList');
-				isSuggested = true;
 				break;
 			}
 			case 3: {
 				history.push('/main/mypage/refusalList');
-				isSuggested = true;
 				break;
 			}
 		}
@@ -68,6 +67,7 @@ const CampaignsList = (isSuggested) => {
 							key={item.id}
 							id={item.id}
 							pick={isPick}
+							select={isSelect}
 							onClick={() => listChange(item.id)}>
 							{item.text}
 						</S.Filtering>
@@ -78,6 +78,7 @@ const CampaignsList = (isSuggested) => {
 						props={item}
 						onClick={onModal}
 						isSuggested={isSuggested}
+						isCampaign={campaign}
 					/>
 				))}
 			</S.ListContainer>
