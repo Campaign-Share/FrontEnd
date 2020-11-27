@@ -2,13 +2,15 @@ const MODAL = 'MODAL';
 const LIST = 'LIST';
 const SEARCH = 'SEARCH';
 const USER = 'USER';
+const CAMPAIGN_ON = 'CAMPAIGN';
+const CAMPAIGN_OFF = 'CAMPAIGN_OFF';
 
 export const campaignList = (payload) => ({
 	type: LIST,
 	payload,
 });
 
-export const campaignModal = () => ({
+export const onModal = () => ({
 	type: MODAL,
 });
 
@@ -17,13 +19,18 @@ export const campaignSearch = (payload) => ({
 	payload,
 });
 
-export const user = (payload) => ({
-	type: USER,
-	payload,
+export const campaignOn = () => ({
+	type: CAMPAIGN_ON,
+});
+
+export const campaignOff = () => ({
+	type: CAMPAIGN_OFF,
 });
 
 const initialState = {
 	modal: false,
+	isCampaign: false,
+	modalCampaign: '',
 	campaigns: [
 		{
 			campaign_uuid: '',
@@ -38,9 +45,9 @@ const initialState = {
 			agree_number: 0,
 			disagree_number: 0,
 			participation_number: 0,
+			nick_name: '',
 		},
 	],
-	user_uuids: [{ user_uuid: '' }],
 };
 
 export const campaignListReducer = (state = initialState, action) => {
@@ -61,10 +68,16 @@ export const campaignListReducer = (state = initialState, action) => {
 				campaigns: action.payload,
 			};
 		}
-		case USER: {
+		case CAMPAIGN_ON: {
 			return {
 				...state,
-				user_uuids: action.payload,
+				isCampaign: false,
+			};
+		}
+		case CAMPAIGN_OFF: {
+			return {
+				...state,
+				isCampaign: true,
 			};
 		}
 		default:
