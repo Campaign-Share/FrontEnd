@@ -47,56 +47,53 @@ const SuggestContainer = () => {
 			...suggestForm,
 			tags: newTags.join('|').replace('#', ''),
 		});
+		setIsError(true);
 	};
 
 	const onSubmitForm = async () => {
-		setIsError(false);
-		checkPeriod();
-		onClickBtn();
-		distinguishTags();
-		if (isError === false) {
-			var formData = new FormData();
-			formData.append('title', suggestForm.title);
-			formData.append('subTitle', suggestForm.subTitle);
-			formData.append('poster', suggestForm.poster);
-			formData.append('introduction', suggestForm.introduction);
-			formData.append('participation', suggestForm.participation);
-			formData.append('tags', suggestForm.tags);
-			formData.append('periodDay', suggestForm.periodDay);
-			try {
-				const res = await requestApiWithAccessToken(
-					'/v1/campaigns',
-					formData,
-					{},
-					'post',
-				);
-				// if (res.data.status == '400') {
-				// 	alert()
-				// }
-				if (res.data.status == '401') {
-					// history.push('/login');
-					return;
-				}
-				if (res.data.status == '409') {
-					alert('하루 생성 가능 캠페인을 초과했습니다.');
-					return;
-				}
-				setIsModal(true);
-			} catch (error) {
-				console.log(error);
+		// checkPeriod();
+		// onClickBtn();
+		// distinguishTags();
+		console.log(posterImg);
+		var formData = new FormData();
+		formData.append('title', suggestForm.title);
+		formData.append('subTitle', suggestForm.subTitle);
+		formData.append('introduction', suggestForm.introduction);
+		formData.append('participation', suggestForm.participation);
+		formData.append('periodDay', suggestForm.periodDay);
+		formData.append('poster', posterImg);
+		formData.append('tags', suggestForm.tags);
+		try {
+			const res = await requestApiWithAccessToken(
+				'/v1/campaigns',
+				formData,
+				{},
+				'post',
+			);
+			// if (res.data.status == '400') {
+			// 	alert()
+			// }
+			if (res.data.status == '401') {
+				// history.push('/login');
+				return;
 			}
+			if (res.data.status == '409') {
+				alert('하루 생성 가능 캠페인을 초과했습니다.');
+				return;
+			}
+			setIsModal(true);
+		} catch (error) {
+			console.log(error);
 		}
 	};
 
 	return (
 		<Suggest
-			history={history}
 			isModal={isModal}
 			setIsModal={setIsModal}
 			suggestForm={suggestForm}
 			setSuggestForm={setSuggestForm}
 			onSubmitForm={onSubmitForm}
-			posterImg={posterImg}
 			setPosterImg={setPosterImg}
 		/>
 	);

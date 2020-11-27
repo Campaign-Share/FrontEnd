@@ -37,11 +37,11 @@ export const CampaignTextWrapper = styled.div`
 
 export const CampaignPublisher = styled.h3`
 	font-size: 0.9375rem;
-	min-width: 3.125rem;
+	width: 3rem;
 	margin: 0;
 	border-bottom: 2px solid #b8d4c8;
-	width: 55%;
 	text-align: center;
+	white-space: nowrap;
 `;
 
 export const CampaignSummaryWrapper = styled.div`

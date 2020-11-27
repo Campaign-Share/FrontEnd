@@ -8,6 +8,7 @@ import { campaignListReducer } from './CampaignList';
 import viewInProgressReducer from './viewInProgress';
 import viewSuggestedReducer from './viewSuggested';
 import reportModalReducer from './reportModal';
+import inProgressJoinReducer from './inProgressJoin';
 
 const rootReducer = combineReducers({
 	mypage: mypageReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
 	viewInProgress: viewInProgressReducer,
 	viewSuggested: viewSuggestedReducer,
 	reportModal: reportModalReducer,
+	inProgressJoin: inProgressJoinReducer,
 	signUpReducer,
 	loginReducer,
 	list: campaignListReducer,
