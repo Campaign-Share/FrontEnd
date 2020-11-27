@@ -14,7 +14,11 @@ const EditProfile = () => {
 		};
 	});
 	const [newName, setNewName] = useState(nick_name);
-	const [userImg, setUserImg] = useState(profile_uri?`https://campaignshare.s3.ap-northeast-2.amazonaws.com/${profile_uri}?a=${Date.now()}`:inputImg); // 사용자 입장에서 보여주기만 하는 미리보기 사진
+	const [userImg, setUserImg] = useState(
+		profile_uri
+			? `https://campaignshare.s3.ap-northeast-2.amazonaws.com/${profile_uri}?a=${Date.now()}`
+			: inputImg,
+	); // 사용자 입장에서 보여주기만 하는 미리보기 사진
 	const [severImg, setSeverImg] = useState(); //서버에 보내는 state
 	useEffect(() => {
 		console.log(profile_uri);
@@ -66,7 +70,6 @@ const EditProfile = () => {
 	}, []);
 	return (
 		<S.Container>
-			<SideBar></SideBar>
 			<S.MainContainer>
 				<S.HeaderEnd>
 					<S.Logout onClick={logout}>로그아웃</S.Logout>

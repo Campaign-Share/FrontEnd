@@ -7,6 +7,7 @@ export const Container = styled.div`
 `;
 export const Body = styled.div`
 	flex: 1;
+	padding-left: 300px;
 `;
 export const HeaderEnd = styled.div`
 	margin-top: 30px;
@@ -20,10 +21,10 @@ export const EditProfileBtn = styled.button`
 	color: white;
 	width: 120px;
 	height: 40px;
-	cursor:pointer;
+	cursor: pointer;
 	border: solid;
 	border-radius: 2rem;
-	outline:none;
+	outline: none;
 `;
 export const MainInfo = styled.div`
 	width: 100%;
@@ -71,5 +72,5 @@ export const Logout = styled.div`
 	color: red;
 	width: 100%;
 	text-align: center;
-	cursor:pointer;
+	cursor: pointer;
 `;

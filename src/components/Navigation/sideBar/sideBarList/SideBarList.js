@@ -74,8 +74,25 @@ const SideBarList = () => {
 		}
 	};
 
-	const mouseOver = (img) => {
-		setItemImg(img);
+	const mouseOver = (item) => {
+		switch (item.id) {
+			case 1: {
+				setItemImg(medalFocus);
+				break;
+			}
+			case 2: {
+				setItemImg(ingFocus);
+				break;
+			}
+			case 3: {
+				setItemImg(proposalFocus);
+				break;
+			}
+			case 4: {
+				setItemImg(uploadFocus);
+				break;
+			}
+		}
 		setIsItem(true);
 	};
 
@@ -90,9 +107,9 @@ const SideBarList = () => {
 						key={item.id}
 						url={itemUrl}
 						onClick={() => move(item)}
-						onMouseOver={() => mouseOver(item.activeImg)}
+						onMouseOver={() => mouseOver(item)}
 						onMouseLeave={mouseLeave}>
-						<S.ItemImg src={isitem ? itemImg : item.img} id={item.id} />
+						<S.ItemImg src={isitem ? itemImg : item.img} />
 						<S.ItemText url={itemUrl}>{item.text}</S.ItemText>
 					</S.ItemBox>
 				);

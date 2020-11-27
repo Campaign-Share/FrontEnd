@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-	display: flex;
+	width: 100%;
+	padding-left: 300px;
 `;
 
-export const MainContainer = styled.div`
-	flex: 1;
-`;
+export const MainContainer = styled.div``;
 export const HeaderEnd = styled.div`
 	margin-top: 20px;
 	margin-right: 20px;
