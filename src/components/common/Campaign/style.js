@@ -1,22 +1,24 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const MainWrapper = styled.div`
 	width: 20rem;
 	height: 33.13rem;
 	border-radius: 1.375rem;
 	border: 1px solid #707070;
-	display: flex;
-	height: 580px;
-	margin-right: 40px;
-	border-radius: 22px;
+	display: ${(props) => {
+		if (props.isCampaign) return 'none';
+		else return 'flex';
+	}};
+	height: 36.25rem;
+	margin-right: 2.5rem;
+	border-radius: 1.375rem;
 	border: 1px solid rgb(112, 112, 112, 0.16);
-	box-shadow: 5px 5px 8px rgb(0, 0, 0, 0.16);
+	box-shadow: 0.3125rem 0.3125rem 0.5rem rgb(0, 0, 0, 0.16);
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 100px;
-
-	margin-top: 20px;
+	margin-bottom: 6.25rem;
+	margin-top: 1.25rem;
 `;
 
 export const Poster = styled.img`
@@ -75,7 +77,7 @@ export const CampaignTags = styled.p`
 	font-weight: 500;
 	margin: 0;
 	margin-top: 0.5rem;
-	margin-right: 10px;
+	margin-right: 0.625rem;
 `;
 
 export const CampaignGraphWrapper = styled.div`
@@ -139,9 +141,9 @@ export const CampaignMember = styled.div`
 `;
 
 export const Member = styled.img`
-	width: 25px;
+	width: 1.563rem;
 	height: auto;
-	margin-right: 5px;
+	margin-right: 0.3125rem;
 `;
 
 export const CampaignParticipationWrapper = styled.div`
@@ -158,9 +160,9 @@ export const CampaignParticipationDiv = styled.div`
 `;
 
 export const CampaignParticipationIcon = styled.img`
-	width: 30px;
-	height: 20px;
-	margin-right: 5px;
+	width: 1.875rem;
+	height: 1.25rem;
+	margin-right: 0.3125rem;
 `;
 
 export const CampaignParticipationText = styled.p`
@@ -171,3 +173,18 @@ export const CampaignParticipationText = styled.p`
 	color: #353535;
 `;
 
+export const voidContainer = styled.div`
+	display: ${(props) => {
+		if (props.isCampaign) return 'block';
+		else return 'none';
+	}};
+	width: 100%;
+	text-align: center;
+	height: 80%;
+	line-height: 400px;
+`;
+export const voidText = styled.p`
+	font-size: 22px;
+	font-weight: bold;
+	color: #9dc3c1;
+`;
