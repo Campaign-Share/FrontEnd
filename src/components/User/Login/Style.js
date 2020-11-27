@@ -58,6 +58,7 @@ export const Id = styled.input.attrs({
 `;
 
 export const Password = styled(Id).attrs({
+	type: 'password',
 	placeholder: 'Password',
 })`
 	margin-top: 50px;
