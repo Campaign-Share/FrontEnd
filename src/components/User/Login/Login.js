@@ -25,6 +25,11 @@ const Login = ({ login }) => {
 	const loginBtn = () => {
 		login(id, pw);
 	};
+
+	const loginKey = () => {
+		if (window.event.keyCode == 13) loginBtn();
+	};
+
 	return (
 		<S.UserContainer url={background}>
 			<S.UserBox>
@@ -32,7 +37,10 @@ const Login = ({ login }) => {
 					<S.Title>로그인</S.Title>
 					<S.InputBox>
 						<S.Id onChange={idChange} name="id"></S.Id>
-						<S.Password onChange={pwChange} name="password"></S.Password>
+						<S.Password
+							onKeyUp={loginKey}
+							onChange={pwChange}
+							name="password"></S.Password>
 					</S.InputBox>
 				</S.ContentSection>
 				<S.UserBtn onClick={loginBtn} id="button">

@@ -9,7 +9,10 @@ const SuggestHeader = () => {
 
 	return (
 		<S.Header>
-			<S.HeaderIcon src={profile} onClick={() => history.push('/mypage')} />
+			<S.HeaderIcon
+				src={profile}
+				onClick={() => history.push('/main/mypage')}
+			/>
 		</S.Header>
 	);
 };

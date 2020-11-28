@@ -8,7 +8,6 @@ export const SideBox = styled.div`
 `;
 export const Logo = styled.img`
 	cursor: pointer;
-	height: 70px;
 	width: 70px;
 	padding-top: 10px;
 	padding-left: 10px;

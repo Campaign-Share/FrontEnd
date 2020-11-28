@@ -25,6 +25,7 @@ const LoginContainer = () => {
 			{ 'Content-Type': 'application/json' },
 			'post',
 		).then((res) => {
+			console.log(res);
 			switch (res.data.status) {
 				case 200: {
 					alert('로그인이 되었습니다.');
@@ -42,6 +43,7 @@ const LoginContainer = () => {
 					if (res.data.code == '-1031') alert('아이디가 존재하지 않습니다');
 					else if (res.data.code == '-1032')
 						alert('비밀번호가 올바르지 않습니다.');
+					else if (res.data.code == '-1033') alert('정지된 계정입니다.');
 				}
 			}
 		});
