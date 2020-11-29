@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { getCampaignList } from '../../../modules/viewInProgress';
 import ReportModal from '../../../components/Modal/ReportModal/ReportModal';
 import ViewInProgressModal from '../../../components/Modal/ViewInProgressModal/ViewInProgressModal';
@@ -9,6 +10,7 @@ import { requestApiWithAccessToken } from '../../../APIrequest';
 const ViewInProgressContainer = () => {
 	const [fetching, setFetching] = useState(false);
 	const [index, setIndex] = useState(0);
+	const history = useHistory();
 	const dispatch = useDispatch();
 	const reportModalRedux = useSelector((state) => state.reportModal);
 	const viewInProgressRedux = useSelector((state) => state.viewInProgress);
@@ -17,7 +19,7 @@ const ViewInProgressContainer = () => {
 		let count = 6,
 			sortBy = viewInProgressRedux.sortBy;
 
-		const res = await requestApiWithAccessToken(
+		await requestApiWithAccessToken(
 			'/v1/campaigns/sorted-by/' +
 				sortBy +
 				'?start=' +
@@ -28,9 +30,15 @@ const ViewInProgressContainer = () => {
 			{},
 			{},
 			'get',
-		);
-		dispatch(getCampaignList(res.data));
-		setIndex((index) => index + 6);
+		).then((res) => {
+			if (res.data.status !== 200) {
+				alert('인증 오류');
+				history.push('/login');
+				return;
+			}
+			dispatch(getCampaignList(res.data));
+			setIndex((index) => index + 6);
+		});
 	};
 
 	const getMoreCampaignInfo = async () => {
