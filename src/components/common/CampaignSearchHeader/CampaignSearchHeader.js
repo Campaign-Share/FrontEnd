@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import * as S from './style';
 import { profile, search } from '../../../assets/img';
 
-const CampaignSearchHeader = ({ getSearch }) => {
+const CampaignSearchHeader = ({ getSearch, isValue }) => {
 	const history = useHistory();
 	let [value, setValue] = useState('');
 
@@ -21,6 +21,7 @@ const CampaignSearchHeader = ({ getSearch }) => {
 		if (value.charAt(0) == '#') {
 			const values = value.substr(1);
 			getSearch(values);
+			isValue(values);
 		} else {
 			alert('잘못된 검색입니다. 태그로 검색해 주세요.');
 		}
