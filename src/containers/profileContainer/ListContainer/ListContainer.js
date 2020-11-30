@@ -12,9 +12,6 @@ const ListContainer = (props) => {
 	const url = props.match.url;
 	const uuid = localStorage.getItem('user_uuid');
 	const dispatch = useDispatch();
-	const onList = () => {
-		dispatch(campaignList);
-	};
 	let [count, setCount] = useState(6);
 	let [loading, setLoading] = useState(true);
 	let [component, setComponent] = useState(<></>);
