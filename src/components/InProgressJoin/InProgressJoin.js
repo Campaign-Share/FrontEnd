@@ -35,9 +35,6 @@ const InProgressJoin = () => {
 		formData.append('campaignUUID', campaignUuid);
 		formData.append('introduction', text);
 		formData.append('evidence', attachments);
-		console.log(campaignUuid);
-		console.log(text);
-		console.log(attachments);
 		await requestApiWithAccessToken(`/v1/participations`, formData, {}, 'post');
 		dispatch(modalOn());
 	};
@@ -60,7 +57,6 @@ const InProgressJoin = () => {
 				participationWay: res.data.participation,
 			}),
 		);
-		console.log(campaignInfo);
 	}, []);
 
 	return (

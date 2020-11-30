@@ -28,21 +28,35 @@ const ViewInProgressModal = () => {
 	};
 
 	const getUserNickname = async () => {
-		const res = await requestApiWithAccessToken(
+		await requestApiWithAccessToken(
 			'/v1/users/with-uuids',
 			{
 				user_uuids: [modalCampaignInfo.user_uuid],
 			},
 			{},
 			'post',
-		);
-		return res.data.user_informs[0].user_id;
+		).then((res) => {
+			switch (res.data.status) {
+				case 200: {
+					setUserNickname(res.data.user_informs[0].user_id);
+					break;
+				}
+				case 401: {
+					alert('인증 오류');
+					history.push('/login');
+					break;
+				}
+				case 404: {
+					alert('데이터 오류');
+					window.location.reload();
+					break;
+				}
+			}
+		});
 	};
 
 	useEffect(() => {
-		getUserNickname().then((nickname) => {
-			setUserNickname(nickname);
-		});
+		getUserNickname();
 	}, [modalCampaignInfo]);
 
 	return (

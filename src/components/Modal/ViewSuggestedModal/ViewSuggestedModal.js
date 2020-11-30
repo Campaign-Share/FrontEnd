@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { modalOff } from '../../../modules/viewSuggested';
 import { reportModalOn } from '../../../modules/reportModal';
 import * as S from './style';
@@ -9,6 +10,7 @@ import { requestApiWithAccessToken } from '../../../APIrequest';
 const ViewSuggestedModal = () => {
 	const [selected, setSelected] = useState(0);
 	const [userNickname, setUserNickname] = useState('');
+	const history = useHistory();
 	const dispatch = useDispatch();
 	const campaignUuid = useSelector(
 		(state) => state.viewSuggested.modalCampaign,
@@ -38,28 +40,157 @@ const ViewSuggestedModal = () => {
 		return res.data.user_informs[0].user_id;
 	};
 
-	const voteAgree = (e) => {
-		const res = requestApiWithAccessToken(
+	const voteAgree = async (selected) => {
+		if (selected !== 0) {
+			cancelVote(selected);
+			return;
+		}
+		console.log('no');
+		await requestApiWithAccessToken(
 			`/v1/campaigns/uuid/${modalCampaignInfo.campaign_uuid}/actions/agree`,
 			{},
 			{},
 			'post',
-		);
-		setSelected(1);
-		// if (res.status == 409 && res.code == -1071)
-		// 	alert('이미 투표한 캠페인입니다.');
+		).then((res) => {
+			switch (res.data.status) {
+				case 200: {
+					alert('투표에 성공하셨습니다.');
+					setSelected(1);
+					break;
+				}
+				case 401: {
+					alert('인증 오류');
+					history.push('/login');
+					break;
+				}
+				case 404: {
+					alert('투표 오류');
+					window.location.reload();
+					break;
+				}
+				case 409: {
+					if (res.data.code === -1071) {
+						alert('이미 투표한 캠페인입니다.');
+						break;
+					} else if (res.data.code === -1072) {
+						alert('투표하지 않은 캠페인입니다.');
+						break;
+					}
+				}
+			}
+		});
 	};
 
-	const voteDisagree = async (e) => {
+	const voteDisagree = async (selected) => {
+		if (selected !== 0) {
+			cancelVote(selected);
+			return;
+		}
 		await requestApiWithAccessToken(
 			`/v1/campaigns/uuid/${modalCampaignInfo.campaign_uuid}/actions/disagree`,
 			{},
 			{},
 			'post',
-		);
-		setSelected(2);
-		// if (res.state === '409' && res.code === '-1071')
-		// 	alert('이미 투표한 캠페인입니다.');
+		).then((res) => {
+			switch (res.data.status) {
+				case 200: {
+					alert('투표에 성공하셨습니다.');
+					setSelected(2);
+					break;
+				}
+				case 401: {
+					alert('인증 오류');
+					history.push('/login');
+					break;
+				}
+				case 404: {
+					alert('투표 오류');
+					window.location.reload();
+					break;
+				}
+				case 409: {
+					if (res.data.code === -1071) {
+						alert('이미 투표한 캠페인입니다.');
+						break;
+					} else if (res.data.code === -1072) {
+						alert('투표하지 않은 캠페인입니다.');
+						break;
+					}
+				}
+			}
+		});
+	};
+
+	const cancelVote = async (selected) => {
+		if (selected === 1) {
+			await requestApiWithAccessToken(
+				`/v1/campaigns/uuid/${modalCampaignInfo.campaign_uuid}/actions/cancel-agree`,
+				{},
+				{},
+				'post',
+			).then((res) => {
+				switch (res.data.status) {
+					case 200: {
+						alert('투표에 성공하셨습니다.');
+						setSelected(0);
+						break;
+					}
+					case 401: {
+						alert('인증 오류');
+						history.push('/login');
+						break;
+					}
+					case 404: {
+						alert('투표 오류');
+						window.location.reload();
+						break;
+					}
+					case 409: {
+						if (res.data.code === -1071) {
+							alert('이미 투표한 캠페인입니다.');
+							break;
+						} else if (res.data.code === -1072) {
+							alert('투표하지 않은 캠페인입니다.');
+							break;
+						}
+					}
+				}
+			});
+		} else {
+			await requestApiWithAccessToken(
+				`/v1/campaigns/uuid/${modalCampaignInfo.campaign_uuid}/actions/canceldisagree`,
+				{},
+				{},
+				'post',
+			).then((res) => {
+				switch (res.data.status) {
+					case 200: {
+						alert('투표에 성공하셨습니다.');
+						setSelected(0);
+						break;
+					}
+					case 401: {
+						alert('인증 오류');
+						history.push('/login');
+						break;
+					}
+					case 404: {
+						alert('투표 오류');
+						window.location.reload();
+						break;
+					}
+					case 409: {
+						if (res.data.code === -1071) {
+							alert('이미 투표한 캠페인입니다.');
+							break;
+						} else if (res.data.code === -1072) {
+							alert('투표하지 않은 캠페인입니다.');
+							break;
+						}
+					}
+				}
+			});
+		}
 	};
 
 	useEffect(() => {
@@ -93,10 +224,14 @@ const ViewSuggestedModal = () => {
 							</S.ModalParticipation>
 						</S.ModalTextWrapper>
 						<S.ModalBtnWrapper>
-							<S.ModalAgreeBtn onClick={voteAgree} selected={selected}>
+							<S.ModalAgreeBtn
+								onClick={() => voteAgree(selected)}
+								selected={selected}>
 								동의
 							</S.ModalAgreeBtn>
-							<S.ModalDisagreeBtn onClick={voteDisagree} selected={selected}>
+							<S.ModalDisagreeBtn
+								onClick={() => voteDisagree(selected)}
+								selected={selected}>
 								반대
 							</S.ModalDisagreeBtn>
 						</S.ModalBtnWrapper>

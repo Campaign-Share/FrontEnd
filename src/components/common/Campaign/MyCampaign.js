@@ -4,7 +4,6 @@ import { good, bad, member } from '../../../assets/img/index';
 
 const MyCampaign = ({ props, onClick, isSuggested, isCampaign }) => {
 	const imgUrl = 'https://campaignshare.s3.ap-northeast-2.amazonaws.com/';
-
 	return (
 		<React.Fragment>
 			<S.MainWrapper onClick={onClick} isCampaign={isCampaign}>
