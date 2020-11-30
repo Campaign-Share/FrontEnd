@@ -63,6 +63,7 @@ const ListContainer = (props) => {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
 			}
+			console.log(res.data);
 		});
 	});
 
@@ -83,8 +84,6 @@ const ListContainer = (props) => {
 		} else if (url === '/main/mypage/refusalList') {
 			onRefusalList();
 		} else 0;
-
-		setLoading(true);
 		window.addEventListener('scroll', handleScroll);
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
@@ -97,12 +96,12 @@ const ListContainer = (props) => {
 			setComponent(<CampaignsList isSuggested={false} isSelect={1} />);
 		} else if (url === '/main/mypage/acceptList') {
 			onAcceptList();
-			setComponent(<CampaignsList isSuggested={false} isSelect={1} />);
+			setComponent(<CampaignsList isSuggested={true} isSelect={2} />);
 		} else if (url === '/main/mypage/refusalList') {
 			onRefusalList();
-			setComponent(<CampaignsList isSuggested={true} isSelect={3} />);
+			setComponent(<CampaignsList isSuggested={false} isSelect={3} />);
 		} else 0;
-	});
+	}, [url]);
 	return <React.Fragment>{component}</React.Fragment>;
 };
 export default ListContainer;
