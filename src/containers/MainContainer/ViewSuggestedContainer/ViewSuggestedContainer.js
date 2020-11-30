@@ -58,7 +58,6 @@ const ViewSuggestedContainer = () => {
 			{},
 			'get',
 		);
-
 		dispatch(getCampaignList(res.data));
 		setFetching(false);
 		setIndex((index) => index + 6);
