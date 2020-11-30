@@ -43,5 +43,17 @@ export const SearchSection = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	flex: 1;
-	padding-left: 300px;
+	padding-left: 360px;
+	height: 100%;
+`;
+
+export const SearchSpace = styled.div`
+	display: flex;
+	width: 100%;
+`;
+
+export const Space = styled.p`
+	margin: 0 auto;
+	font-size: 20px;
+	color: #abc9c7;
 `;
