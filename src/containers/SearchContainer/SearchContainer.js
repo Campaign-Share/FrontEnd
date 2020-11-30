@@ -19,6 +19,7 @@ const SearchContainer = () => {
 	const viewModal = useSelector((state) => state.viewSuggested);
 	const getSearch = (value) => {
 		if (value) {
+			setFirst(false);
 			requestApiWithAccessToken(
 				`/v1/campaigns/sorted-by/famous?start=0&count=${count}&state=approved&tag=${value}`,
 				{},
@@ -27,7 +28,6 @@ const SearchContainer = () => {
 			).then((res) => {
 				if (res.data.campaigns.length == 0) {
 					setIsSearch(true);
-					setFirst(false);
 				} else {
 					dispatch(campaignSearch(res.data.campaigns));
 					setPosts(res.data.campaigns);
