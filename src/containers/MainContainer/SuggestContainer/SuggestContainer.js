@@ -15,46 +15,26 @@ const SuggestContainer = () => {
 	});
 	const [posterImg, setPosterImg] = useState();
 	const [isModal, setIsModal] = useState(false);
-	const [isError, setIsError] = useState(false);
-
 	const history = useHistory();
 
-	const checkPeriod = () => {
+	const onSubmitForm = () => {
+		// 기간 초과 검사
 		if (suggestForm.periodDay > 30) {
 			alert('기간은 30일을 초과할 수 없습니다.');
-			setIsError(true);
+			return;
 		}
-	};
 
-	const onClickBtn = () => {
-		for (var key in suggestForm) {
-			if (suggestForm[key].length === 0) {
-				alert('빈 칸을 채워주세요');
-				setIsError(true);
-				break;
-			}
-		}
-	};
-
-	const distinguishTags = () => {
+		// 태그 개수 검사
 		let newTags = suggestForm.tags.split(' ');
 		if (newTags.length > 4) {
 			alert('태그는 5개까지만 작성가능합니다.');
-			setIsError(true);
 			return;
 		}
 		setSuggestForm({
 			...suggestForm,
 			tags: newTags.join('|').replace('#', ''),
 		});
-		setIsError(true);
-	};
 
-	const onSubmitForm = async () => {
-		// checkPeriod();
-		// onClickBtn();
-		// distinguishTags();
-		console.log(posterImg);
 		var formData = new FormData();
 		formData.append('title', suggestForm.title);
 		formData.append('subTitle', suggestForm.subTitle);
@@ -63,28 +43,32 @@ const SuggestContainer = () => {
 		formData.append('periodDay', suggestForm.periodDay);
 		formData.append('poster', posterImg);
 		formData.append('tags', suggestForm.tags);
-		try {
-			const res = await requestApiWithAccessToken(
-				'/v1/campaigns',
-				formData,
-				{},
-				'post',
-			);
-			// if (res.data.status == '400') {
-			// 	alert()
-			// }
-			if (res.data.status == '401') {
-				// history.push('/login');
-				return;
-			}
-			if (res.data.status == '409') {
-				alert('하루 생성 가능 캠페인을 초과했습니다.');
-				return;
-			}
-			setIsModal(true);
-		} catch (error) {
-			console.log(error);
-		}
+
+		requestApiWithAccessToken('/v1/campaigns', formData, {}, 'post')
+			.then((res) => {
+				switch (res.data.status) {
+					case 201: {
+						setIsModal(true);
+						break;
+					}
+					case 400: {
+						alert('제목 소개, 참여 방법, 기간을 설정해야 합니다.');
+						break;
+					}
+					case 401: {
+						alert('인증 오류');
+						history.push('/login');
+						break;
+					}
+					case 409: {
+						alert('하루 생성 가능 캠페인 개수를 초과했습니다.');
+						break;
+					}
+				}
+			})
+			.catch((err) => {
+				console.error(err);
+			});
 	};
 
 	return (

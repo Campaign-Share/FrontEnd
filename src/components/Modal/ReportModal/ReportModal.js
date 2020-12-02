@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { reportModalOff } from '../../../modules/reportModal';
 import * as S from './style';
 import { cancel, check, checkBox } from '../../../assets/img';
@@ -10,6 +11,7 @@ const ReportModal = ({ modalCaller }) => {
 	const [imgNumber, setImgNumber] = useState('');
 	const [reason, setReason] = useState('');
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const campaignUuid = useSelector(
 		modalCaller === 'viewSuggested'
 			? (state) => state.viewSuggested.modalCampaign
@@ -43,7 +45,7 @@ const ReportModal = ({ modalCaller }) => {
 			alert('빈 칸을 채워주세요.');
 			return;
 		}
-		const res = await requestApiWithAccessToken(
+		await requestApiWithAccessToken(
 			'/v1/reports',
 			{
 				target_uuid: campaignUuid,
@@ -52,8 +54,28 @@ const ReportModal = ({ modalCaller }) => {
 			},
 			{},
 			'post',
-		);
-		setIsSubmit(true);
+		).then((res) => {
+			switch (res.data.status) {
+				case 201: {
+					setIsSubmit(true);
+					break;
+				}
+				case 401: {
+					alert('인증 오류');
+					history.push('/login');
+					break;
+				}
+				case 404: {
+					alert('캠페인 데이터 오류');
+					window.location.reload();
+					break;
+				}
+				case 409: {
+					alert('이미 신고된 캠페인입니다.');
+					break;
+				}
+			}
+		});
 	};
 
 	return (

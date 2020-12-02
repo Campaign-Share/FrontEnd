@@ -68,16 +68,22 @@ const ViewSuggested = () => {
 						</S.SortText>
 					))}
 				</S.SortTextWrapper>
-				<S.BodyWrapper>
-					{campaignList.map((item) => (
-						<Campaign
-							key={item.campaign_uuid}
-							props={item}
-							onClick={onModalDispatch}
-							isSuggested={true}
-						/>
-					))}
-				</S.BodyWrapper>
+				{campaignList.length === 0 ? (
+					<S.BodyWrapper>
+						<h1>제안된 캠페인이 없습니다.</h1>
+					</S.BodyWrapper>
+				) : (
+					<S.BodyWrapper>
+						{campaignList.map((item) => (
+							<Campaign
+								key={item.campaign_uuid}
+								props={item}
+								onClick={onModalDispatch}
+								isSuggested={true}
+							/>
+						))}
+					</S.BodyWrapper>
+				)}
 			</S.RightWrapper>
 		</>
 	);

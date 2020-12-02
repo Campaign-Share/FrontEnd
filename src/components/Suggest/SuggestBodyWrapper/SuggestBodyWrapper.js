@@ -7,6 +7,9 @@ const SuggestBodyWrapper = ({ onChangeForm, setPosterImg }) => {
 	const onChangeImg = (e) => {
 		setPosterImg(e.target.files[0]);
 	};
+	const onRemoveImg = () => {
+		setPosterImg();
+	};
 
 	const setThumbnail = (event) => {
 		const reader = new FileReader();
@@ -26,11 +29,11 @@ const SuggestBodyWrapper = ({ onChangeForm, setPosterImg }) => {
 		onChangeImg(event);
 	};
 
-	const removeThumbnail = (e) => {
+	const removeThumbnail = () => {
 		const img = document.querySelector('#posterImg');
 		img.parentNode.removeChild(img);
 		setIsImage(false);
-		onChangeImg(e);
+		onRemoveImg();
 	};
 
 	return (
