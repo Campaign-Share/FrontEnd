@@ -10,13 +10,14 @@ import ViewInProgressModal from '../../components/Modal/ViewInProgressModal/View
 
 const SearchContainer = () => {
 	let [posts, setPosts] = useState([]);
-	let [loading, setLoading] = useState(true);
+	let [loading, setLoading] = useState(false);
 	let [count, setCount] = useState(6);
 	let [isSearch, setIsSearch] = useState(false);
 	let [searchValue, setSearchValue] = useState('');
 	let [first, setFirst] = useState(false);
 	const dispatch = useDispatch();
-	const viewModal = useSelector((state) => state.viewSuggested);
+	const viewModal = useSelector((state) => state.viewInProgress);
+
 	const getSearch = (value) => {
 		if (value) {
 			setFirst(false);
@@ -32,12 +33,14 @@ const SearchContainer = () => {
 					dispatch(campaignSearch(res.data.campaigns));
 					setPosts(res.data.campaigns);
 					setIsSearch(false);
+					setLoading(true);
+					console.log(res.data);
 				}
 			});
 		} else setFirst(true);
 	};
 
-	const modal = (campaign_uuid) => {
+	const onModal = (campaign_uuid) => {
 		dispatch(modalOn(campaign_uuid));
 	};
 
@@ -49,9 +52,10 @@ const SearchContainer = () => {
 		const scrollHeight = document.documentElement.scrollHeight - 1;
 		const scrollTop = document.documentElement.scrollTop;
 		const clientHeight = document.documentElement.clientHeight;
-		if (scrollTop + clientHeight >= scrollHeight && loading === true)
+		if (scrollTop + clientHeight >= scrollHeight && loading === true) {
 			setLoading(false);
-		setCount((count) => count + 6);
+			setCount((count) => count + 6);
+		}
 	}, [loading]);
 
 	useEffect(() => {
@@ -69,10 +73,9 @@ const SearchContainer = () => {
 					<CampaignSearchHeader getSearch={getSearch} isValue={isValue} />
 				</S.HeaderSection>
 				{viewModal.onModal && <ViewInProgressModal />}
-
 				<S.ContentSection isSearch={isSearch}>
 					{posts.map((post) => (
-						<Campaign props={post} onClick={modal} />
+						<Campaign props={post} onClick={onModal} />
 					))}
 				</S.ContentSection>
 				{isSearch && (

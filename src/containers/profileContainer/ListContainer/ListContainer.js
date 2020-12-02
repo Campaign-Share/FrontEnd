@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { requestApiWithAccessToken } from '../../../APIrequest';
-import MyCampaign from '../../../components/common/Campaign/MyCampaign';
+import ViewInProgressModal from '../../../components/Modal/ViewInProgressModal/ViewInProgressModal';
 import CampaignsList from '../../../components/Profile/mypage/CampaignList/CampaignsList';
 import {
 	campaignList,
@@ -13,8 +13,9 @@ const ListContainer = (props) => {
 	const uuid = localStorage.getItem('user_uuid');
 	const dispatch = useDispatch();
 	let [count, setCount] = useState(6);
-	let [loading, setLoading] = useState(true);
+	let [loading, setLoading] = useState(false);
 	let [component, setComponent] = useState(<></>);
+	const viewModal = useSelector((state) => state.viewInProgress);
 
 	const onParticipationList = useCallback(() => {
 		requestApiWithAccessToken(
@@ -24,10 +25,13 @@ const ListContainer = (props) => {
 			'get',
 		).then((res) => {
 			console.log(res.data);
-			if (res.data.campaigns.length == 0) dispatch(campaignOff());
-			else {
+			if (res.data.campaigns.length == 0) {
+				dispatch(campaignOff());
+				setLoading(false);
+			} else {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
+				setLoading(true);
 			}
 		});
 	});
@@ -39,10 +43,13 @@ const ListContainer = (props) => {
 			{},
 			'get',
 		).then((res) => {
-			if (res.data.campaigns.length == 0) dispatch(campaignOff());
-			else {
+			if (res.data.campaigns.length == 0) {
+				dispatch(campaignOff());
+				setLoading(false);
+			} else {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
+				setLoading(true);
 			}
 			console.log(res.data);
 		});
@@ -55,10 +62,13 @@ const ListContainer = (props) => {
 			{},
 			'get',
 		).then((res) => {
-			if (res.data.campaigns.length == 0) dispatch(campaignOff());
-			else {
+			if (res.data.campaigns.length == 0) {
+				dispatch(campaignOff());
+				setLoading(false);
+			} else {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
+				setLoading(true);
 			}
 			console.log(res.data);
 		});
@@ -68,9 +78,10 @@ const ListContainer = (props) => {
 		const scrollHeight = document.documentElement.scrollHeight - 1;
 		const scrollTop = document.documentElement.scrollTop;
 		const clientHeight = document.documentElement.clientHeight;
-		if (scrollTop + clientHeight >= scrollHeight && loading === true)
+		if (scrollTop + clientHeight >= scrollHeight && loading === true) {
 			setLoading(false);
-		setCount((count) => count + 6);
+			setCount((count) => count + 6);
+		}
 	}, [loading]);
 
 	useEffect(() => {
@@ -90,12 +101,15 @@ const ListContainer = (props) => {
 	useEffect(() => {
 		if (url === '/main/mypage/participationList') {
 			onParticipationList();
+			viewModal.onModal && <ViewInProgressModal />;
 			setComponent(<CampaignsList isSuggested={false} isSelect={1} />);
 		} else if (url === '/main/mypage/acceptList') {
 			onAcceptList();
+			viewModal.onModal && <ViewInProgressModal />;
 			setComponent(<CampaignsList isSuggested={true} isSelect={2} />);
 		} else if (url === '/main/mypage/refusalList') {
 			onRefusalList();
+			viewModal.onModal && <ViewInProgressModal />;
 			setComponent(<CampaignsList isSuggested={false} isSelect={3} />);
 		} else 0;
 	}, [url]);
