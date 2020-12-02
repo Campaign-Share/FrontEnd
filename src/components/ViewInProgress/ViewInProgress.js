@@ -68,16 +68,22 @@ const ViewInProgress = () => {
 						</S.SortText>
 					))}
 				</S.SortTextWrapper>
-				<S.BodyWrapper>
-					{campaignList.map((item) => (
-						<Campaign
-							key={item.campaign_uuid}
-							props={item}
-							onClick={onModalDispatch}
-							isSuggested={false}
-						/>
-					))}
-				</S.BodyWrapper>
+				{campaignList.length === 0 ? (
+					<S.BodyWrapper>
+						<h1>진행중인 캠페인이 없습니다.</h1>
+					</S.BodyWrapper>
+				) : (
+					<S.BodyWrapper>
+						{campaignList.map((item) => (
+							<Campaign
+								key={item.campaign_uuid}
+								props={item}
+								onClick={onModalDispatch}
+								isSuggested={false}
+							/>
+						))}
+					</S.BodyWrapper>
+				)}
 			</S.RightWrapper>
 		</>
 	);
