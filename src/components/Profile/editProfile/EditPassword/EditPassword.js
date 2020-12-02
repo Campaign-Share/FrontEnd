@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import SideBar from '../../../Navigation/sideBar/SideBar.js';
 import { requestApiWithAccessToken } from '../../../../APIrequest';
 import * as S from './style';
 import { useHistory } from 'react-router-dom';
@@ -29,9 +28,8 @@ const EditPassword = () => {
 					else console.log(res);
 				});
 			} else alert('새 비밀번호가 서로 다릅니다.');
-		}
-		else{
-			alert('입력값이 없습니다.')
+		} else {
+			alert('입력값이 없습니다.');
 		}
 	}, [input]);
 	const secession = () => {
@@ -61,9 +59,8 @@ const EditPassword = () => {
 		[input],
 	);
 	return (
-		<S.Container>
-			<SideBar></SideBar>
-			<S.MainContainer>
+		<S.MainContainer>
+			<S.Container>
 				<S.HeaderEnd>
 					<S.Logout onClick={secession}>회원 탈퇴</S.Logout>
 				</S.HeaderEnd>
@@ -102,8 +99,8 @@ const EditPassword = () => {
 					</S.PasswordInputBox>
 					<S.PasswordBtn onClick={ChangePassword}>변경하기</S.PasswordBtn>
 				</S.PasswordBox>
-			</S.MainContainer>
-		</S.Container>
+			</S.Container>
+		</S.MainContainer>
 	);
 };
 export default EditPassword;

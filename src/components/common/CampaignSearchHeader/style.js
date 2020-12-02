@@ -43,5 +43,31 @@ export const SearchSection = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	flex: 1;
-	padding-left: 300px;
+	padding-left: 380px;
+	height: 100%;
+`;
+
+export const HeaderSection = styled.div`
+	width: 100%;
+	display: flex;
+`;
+
+export const ContentSection = styled.div`
+	display: ${(props) => {
+		if (props.isSearch) return 'none';
+		else return 'flex';
+	}};
+	flex-wrap: wrap;
+`;
+
+export const SearchSpace = styled.div`
+	display: flex;
+	width: 100%;
+	height: 25%;
+`;
+
+export const Space = styled.p`
+	margin: 0 auto;
+	font-size: 20px;
+	color: #abc9c7;
 `;

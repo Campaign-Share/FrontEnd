@@ -7,9 +7,9 @@ const UserCampaignInfo = ({ userInfo }) => {
 	useEffect(() => {
 		userInfo.userData.campaign_number &&
 			setCount({
-				a: userInfo.userData.campaign_number.approved,
-				b: userInfo.userData.campaign_number.rejected,
-				c: userInfo.userData.campaign_number.participate,
+				a: userInfo.userData.campaign_number.participate,
+				b: userInfo.userData.campaign_number.approved,
+				c: userInfo.userData.campaign_number.rejected,
 			});
 	}, [userInfo.userData.campaign_number]);
 	return (
