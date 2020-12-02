@@ -2,10 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import CampaignSearchHeader from '../../components/common/CampaignSearchHeader/CampaignSearchHeader';
 import { requestApiWithAccessToken } from '../../APIrequest';
 import { useDispatch, useSelector } from 'react-redux';
-import { campaignSearch } from '../../modules/CampaignList';
+import { getCampaignList, modalOn } from '../../modules/viewInProgress';
 import * as S from '../../components/common/CampaignSearchHeader/style';
 import Campaign from '../../components/common/Campaign/Campaign';
-import { modalOn } from '../../modules/viewInProgress';
 import ViewInProgressModal from '../../components/Modal/ViewInProgressModal/ViewInProgressModal';
 
 const SearchContainer = () => {
@@ -30,7 +29,7 @@ const SearchContainer = () => {
 				if (res.data.campaigns.length == 0) {
 					setIsSearch(true);
 				} else {
-					dispatch(campaignSearch(res.data.campaigns));
+					dispatch(getCampaignList(res.data));
 					setPosts(res.data.campaigns);
 					setIsSearch(false);
 					setLoading(true);
@@ -72,8 +71,9 @@ const SearchContainer = () => {
 				<S.HeaderSection>
 					<CampaignSearchHeader getSearch={getSearch} isValue={isValue} />
 				</S.HeaderSection>
-				{viewModal.onModal && <ViewInProgressModal />}
+
 				<S.ContentSection isSearch={isSearch}>
+					{viewModal.onModal && <ViewInProgressModal />}
 					{posts.map((post) => (
 						<Campaign props={post} onClick={onModal} />
 					))}
