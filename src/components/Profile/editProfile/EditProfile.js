@@ -62,7 +62,7 @@ const EditProfile = () => {
 		});
 	}, [newName, userImg, severImg]);
 	const goToChangePassword = useCallback(() => {
-		history.push('/editPassword');
+		history.push('/main/editPassword');
 	}, []);
 
 	const logout = useCallback(() => {

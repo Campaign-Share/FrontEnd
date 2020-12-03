@@ -10,6 +10,7 @@ import ListContainer from '../profileContainer/ListContainer/ListContainer';
 import SearchContainer from '../SearchContainer/SearchContainer';
 import MypageContainer from '../profileContainer/MypageContainer';
 import EditProfileContainer from '../profileContainer/EditProfileContainer';
+import EditPasswordContainer from '../profileContainer/EditPasswordContainer';
 
 const MainContainer = () => {
 	return (
@@ -22,7 +23,11 @@ const MainContainer = () => {
 						exact
 						component={EditProfileContainer}
 					/>
-
+					<Route
+						path="/main/editPassword"
+						exact
+						component={EditPasswordContainer}
+					/>
 					<Route path="/main/mypage" exact component={MypageContainer} />
 
 					<Route exact path="/main/ranking" component={RankingContainer} />

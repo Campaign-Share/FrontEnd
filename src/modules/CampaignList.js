@@ -10,10 +10,6 @@ export const campaignList = (payload) => ({
 	payload,
 });
 
-export const onModal = () => ({
-	type: MODAL,
-});
-
 export const campaignSearch = (payload) => ({
 	type: SEARCH,
 	payload,

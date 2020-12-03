@@ -5,7 +5,6 @@ import CompleteContainer from './containers/CompleteContainer/CompleteContainer'
 import IntroduceContainer from './containers/IntroduceContainer/IntroduceContainer';
 import LoginContainer from './containers/LoginContainer/LoginContainer';
 import SignUpContainer from './containers/SignUpContainer/SignUpContainer';
-import EditPasswordContainer from './containers/profileContainer/EditPasswordContainer';
 import MainContainer from './containers/MainContainer/MainContainer';
 
 const Routing = () => {
@@ -15,7 +14,6 @@ const Routing = () => {
 			<Route path="/introduce" exact component={IntroduceContainer} />
 			<Route path="/complete" exact component={CompleteContainer} />
 			<Route path="/login" exact component={LoginContainer} />
-			<Route path="/editPassword" exact component={EditPasswordContainer} />
 			<Route
 				path="/signUp/input"
 				exact

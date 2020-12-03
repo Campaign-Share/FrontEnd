@@ -11,13 +11,10 @@ import {
 const ListContainer = (props) => {
 	const url = props.match.url;
 	const uuid = localStorage.getItem('user_uuid');
-	let list;
 	const dispatch = useDispatch();
-	const onList = () => {
-		dispatch(campaignList);
-	};
 	let [count, setCount] = useState(6);
 	let [loading, setLoading] = useState(true);
+	let [component, setComponent] = useState(<></>);
 
 	const onParticipationList = useCallback(() => {
 		requestApiWithAccessToken(
@@ -26,6 +23,7 @@ const ListContainer = (props) => {
 			{},
 			'get',
 		).then((res) => {
+			console.log(res.data);
 			if (res.data.campaigns.length == 0) dispatch(campaignOff());
 			else {
 				dispatch(campaignList(res.data.campaigns));
@@ -46,6 +44,7 @@ const ListContainer = (props) => {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
 			}
+			console.log(res.data);
 		});
 	});
 
@@ -61,27 +60,45 @@ const ListContainer = (props) => {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
 			}
+			console.log(res.data);
 		});
 	});
 
-	switch (url) {
-		case '/main/mypage/participationList': {
-			onParticipationList();
-			list = <CampaignsList isSuggested={false} isSelect={1} />;
-			break;
-		}
-		case '/main/mypage/acceptList': {
-			onAcceptList();
-			list = <CampaignsList isSuggested={true} isSelect={2} />;
-			break;
-		}
-		case '/main/mypage/refusalList': {
-			onRefusalList();
-			list = <CampaignsList isSuggested={true} isSelect={3} />;
-			break;
-		}
-	}
+	const handleScroll = useCallback(() => {
+		const scrollHeight = document.documentElement.scrollHeight - 1;
+		const scrollTop = document.documentElement.scrollTop;
+		const clientHeight = document.documentElement.clientHeight;
+		if (scrollTop + clientHeight >= scrollHeight && loading === true)
+			setLoading(false);
+		setCount((count) => count + 6);
+	}, [loading]);
 
-	return <React.Fragment>{list}</React.Fragment>;
+	useEffect(() => {
+		if (url === '/main/mypage/participationList') {
+			onParticipationList();
+		} else if (url === '/main/mypage/acceptList') {
+			onAcceptList();
+		} else if (url === '/main/mypage/refusalList') {
+			onRefusalList();
+		} else 0;
+		window.addEventListener('scroll', handleScroll);
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, [handleScroll]);
+
+	useEffect(() => {
+		if (url === '/main/mypage/participationList') {
+			onParticipationList();
+			setComponent(<CampaignsList isSuggested={false} isSelect={1} />);
+		} else if (url === '/main/mypage/acceptList') {
+			onAcceptList();
+			setComponent(<CampaignsList isSuggested={true} isSelect={2} />);
+		} else if (url === '/main/mypage/refusalList') {
+			onRefusalList();
+			setComponent(<CampaignsList isSuggested={false} isSelect={3} />);
+		} else 0;
+	}, [url]);
+	return <React.Fragment>{component}</React.Fragment>;
 };
 export default ListContainer;
