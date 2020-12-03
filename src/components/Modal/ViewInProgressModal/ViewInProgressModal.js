@@ -65,7 +65,11 @@ const ViewInProgressModal = () => {
 				<S.BodyWrapper>
 					<S.LeftWrapper>
 						<S.Poster
-							src={`http://campaignshare.s3.ap-northeast-2.amazonaws.com/${modalCampaignInfo.post_uri}`}
+							src={
+								modalCampaignInfo.post_uri
+									? `http://campaignshare.s3.ap-northeast-2.amazonaws.com/${modalCampaignInfo.post_uri}`
+									: ''
+							}
 						/>
 					</S.LeftWrapper>
 					<S.RightWrapper>
