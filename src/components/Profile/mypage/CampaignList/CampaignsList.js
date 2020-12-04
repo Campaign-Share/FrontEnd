@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { modalOn } from '../../../../modules/viewInProgress';
+import styled from 'styled-components';
+import { campaignModal } from '../../../../modules/CampaignList';
+import Campaign from '../../../common/Campaign/Campaign';
 import MyCampaign from '../../../common/Campaign/MyCampaign';
 import CampaignSearchHeader from '../../../common/CampaignSearchHeader/CampaignSearchHeader';
 import * as S from './style';
@@ -19,10 +21,6 @@ const CampaignsList = ({ isSuggested, isSelect }) => {
 
 	const myPageList = useSelector((store) => store.list.campaigns);
 	const campaign = useSelector((store) => store.list.isCampaign);
-
-	const onModal = (campaign_uuid) => {
-		dispatch(modalOn(campaign_uuid));
-	};
 
 	const listChange = (id) => {
 		setIsPick(id);
@@ -74,7 +72,6 @@ const CampaignsList = ({ isSuggested, isSelect }) => {
 				{myPageList.map((item) => (
 					<MyCampaign
 						props={item}
-						onClick={onModal}
 						isSuggested={isSuggested}
 						isCampaign={campaign}
 					/>
