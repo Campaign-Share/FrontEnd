@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { modalOn, changeSortBy } from '../../modules/viewSuggested';
+import { suggestedOn, changeSortBy } from '../../modules/viewSuggested';
 import * as S from './style';
 
 import CampaignSearchHeader from '../common/CampaignSearchHeader/CampaignSearchHeader';
@@ -35,7 +35,7 @@ const ViewSuggested = () => {
 	};
 
 	const onModalDispatch = (campaign_uuid) => {
-		dispatch(modalOn(campaign_uuid));
+		dispatch(suggestedOn(campaign_uuid));
 	};
 
 	const sortTextArray = [

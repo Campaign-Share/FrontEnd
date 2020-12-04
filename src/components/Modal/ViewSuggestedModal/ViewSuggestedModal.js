@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { modalOff } from '../../../modules/viewSuggested';
+import { suggestedOff } from '../../../modules/viewSuggested';
 import { reportModalOn } from '../../../modules/reportModal';
 import * as S from './style';
 import { report } from '../../../assets/img';
@@ -21,7 +21,7 @@ const ViewSuggestedModal = () => {
 	);
 
 	const modalOffDispatch = (e) => {
-		if (e.currentTarget === e.target) dispatch(modalOff());
+		if (e.currentTarget === e.target) dispatch(suggestedOff());
 	};
 
 	const reportModalOnDispatch = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './style.js';
 import { useHistory } from 'react-router-dom';
 import {
@@ -43,10 +43,8 @@ const ItemList = [
 	},
 ];
 const SideBarList = () => {
-	const history = useHistory();
-	const [itemUrl, setItemUrl] = useState('');
-	const [isitem, setIsItem] = useState(false);
-	const [itemImg, setItemImg] = useState();
+	let history = useHistory();
+	let [itemUrl, setItemUrl] = useState('');
 	const url = history.location.pathname;
 
 	const move = (item) => {
@@ -74,42 +72,12 @@ const SideBarList = () => {
 		}
 	};
 
-	const mouseOver = (item) => {
-		switch (item.id) {
-			case 1: {
-				setItemImg(medalFocus);
-				break;
-			}
-			case 2: {
-				setItemImg(ingFocus);
-				break;
-			}
-			case 3: {
-				setItemImg(proposalFocus);
-				break;
-			}
-			case 4: {
-				setItemImg(uploadFocus);
-				break;
-			}
-		}
-		setIsItem(true);
-	};
-
-	const mouseLeave = () => {
-		setIsItem(false);
-	};
 	return (
 		<>
 			{ItemList.map((item) => {
 				return (
-					<S.ItemBox
-						key={item.id}
-						url={itemUrl}
-						onClick={() => move(item)}
-						onMouseOver={() => mouseOver(item)}
-						onMouseLeave={mouseLeave}>
-						<S.ItemImg src={isitem ? itemImg : item.img} />
+					<S.ItemBox key={item.id} url={itemUrl} onClick={() => move(item)}>
+						<S.ItemImg src={item.img} />
 						<S.ItemText url={itemUrl}>{item.text}</S.ItemText>
 					</S.ItemBox>
 				);

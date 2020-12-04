@@ -22,10 +22,6 @@ const CampaignsList = ({ isSuggested, isSelect }) => {
 	const myPageList = useSelector((store) => store.list.campaigns);
 	const campaign = useSelector((store) => store.list.isCampaign);
 
-	const onModal = () => {
-		dispatch(campaingModal());
-	};
-
 	const listChange = (id) => {
 		setIsPick(id);
 		switch (id) {
@@ -76,7 +72,6 @@ const CampaignsList = ({ isSuggested, isSelect }) => {
 				{myPageList.map((item) => (
 					<MyCampaign
 						props={item}
-						onClick={onModal}
 						isSuggested={isSuggested}
 						isCampaign={campaign}
 					/>
