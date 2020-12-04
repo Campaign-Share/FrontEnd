@@ -9,7 +9,7 @@ const MyCampaign = ({ props, onClick, isSuggested, isCampaign }) => {
 			<S.MainWrapper onClick={onClick} isCampaign={isCampaign}>
 				<S.Poster src={imgUrl + props.post_uri} />
 				<S.CampaignTextWrapper>
-					<S.CampaignPublisher>{props.user_uuid}</S.CampaignPublisher>
+					<S.CampaignPublisher>{props.nick_name}</S.CampaignPublisher>
 					<S.CampaignSummaryWrapper>
 						<S.CampaignSubtitle>{props.sub_title}</S.CampaignSubtitle>
 						<S.CampaignTitle>{props.title}</S.CampaignTitle>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getCampaignList } from '../../../modules/viewSuggested';
+import { suggestedList } from '../../../modules/viewSuggested';
 import ReportModal from '../../../components/Modal/ReportModal/ReportModal';
 import ViewSuggestedModal from '../../../components/Modal/ViewSuggestedModal/ViewSuggestedModal';
 import ViewSuggested from '../../../components/ViewSuggested/ViewSuggested';
@@ -36,7 +36,7 @@ const ViewSuggestedContainer = () => {
 				history.push('/login');
 				return;
 			}
-			dispatch(getCampaignList(res.data));
+			dispatch(suggestedList(res.data));
 			setIndex((index) => index + 6);
 		});
 	};
@@ -58,7 +58,7 @@ const ViewSuggestedContainer = () => {
 			{},
 			'get',
 		);
-		dispatch(getCampaignList(res.data));
+		dispatch(suggestedList(res.data));
 		setFetching(false);
 		setIndex((index) => index + 6);
 	};

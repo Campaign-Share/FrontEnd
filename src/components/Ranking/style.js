@@ -15,8 +15,8 @@ export const HeaderBox = styled.div`
 	background-color: #b1ccc0;
 	border-radius: 50px;
 	color: white;
-	box-shadow: 0px 3px 10px rgb(0, 0, 0, 0.48);
-	margin: 40px 0px 0px 510px;
+	box-shadow: 0px 3px 10px rgb(0, 0, 0, 0.35);
+	margin: 40px 0px 0px 495px;
 	font-size: 20px;
 	font-weight: bold;
 	text-align: center;

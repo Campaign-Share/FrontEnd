@@ -3,7 +3,7 @@ export const CHANGE_SORT_BY = 'viewSuggested/CHANGE_SORT_BY';
 export const MODAL_ON = 'viewSuggested/MODAL_ON';
 export const MODAL_OFF = 'viewSuggested/MODAL_OFF';
 
-export const getCampaignList = (payload) => ({
+export const suggestedList = (payload) => ({
 	type: GET_CAMPAIGN_LIST,
 	payload,
 });
@@ -11,11 +11,11 @@ export const changeSortBy = (payload) => ({
 	type: CHANGE_SORT_BY,
 	payload,
 });
-export const modalOn = (payload) => ({
+export const suggestedOn = (payload) => ({
 	type: MODAL_ON,
 	payload,
 });
-export const modalOff = () => ({
+export const suggestedOff = () => ({
 	type: MODAL_OFF,
 });
 

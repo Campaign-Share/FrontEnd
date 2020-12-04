@@ -4,7 +4,13 @@ import profileImg from '../../../../assets/img/profile.png';
 import { useHistory } from 'react-router-dom';
 const UserProfileInfo = ({ userInfo }) => {
 	const logout = useCallback(() => {
-		if (confirm('로그아웃 하시겠습니까?')) history.push('/introduce');
+		if (confirm('로그아웃 하시겠습니까?')) {
+			history.push('/introduce');
+			localStorage.removeItem('access_token');
+			setTimeout(() => {
+				location.reload();
+			});
+		}
 	});
 	const history = useHistory();
 	return (

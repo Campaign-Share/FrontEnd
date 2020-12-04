@@ -1,17 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export const ItemHover = css`
-	background-color: #8db4a2;
-	border-radius: 25px;
-	color: white;
+	border-bottom: 3px solid #8db4a2;
 `;
 export const ItemBox = styled.div`
 	padding: 10px 0px 0px 15px;
-	width: 80px;
 	height: 40px;
 	margin-top: 50px;
 	display: flex;
-	width: 180px;
+	width: 170px;
 	cursor: pointer;
 	&:hover {
 		${ItemHover}
@@ -22,6 +19,7 @@ export const ItemImg = styled.img`
 	height: 30px;
 	margin-right: 20px;
 `;
+
 export const ItemText = styled.div`
 	display: flex;
 	justify-content: center;
@@ -29,6 +27,5 @@ export const ItemText = styled.div`
 	height: 30px;
 	color: #8d8d8d;
 	&:hover {
-		color: white;
 	}
 `;
