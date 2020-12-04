@@ -8,17 +8,19 @@ import {
 	campaignOff,
 	campaignOn,
 } from '../../../modules/CampaignList';
+
 const ListContainer = (props) => {
 	const url = props.match.url;
 	const uuid = localStorage.getItem('user_uuid');
 	const dispatch = useDispatch();
 	let [count, setCount] = useState(6);
-	let [loading, setLoading] = useState(true);
+	let [loading, setLoading] = useState(false);
 	let [component, setComponent] = useState(<></>);
 
 	const onParticipationList = useCallback(() => {
 		requestApiWithAccessToken(
-			`/v1/users/uuid/${uuid}/campaigns?start=0&count=${count}&state=pending`,
+			`/v1/users/uuid/${uuid}/participate-campaigns?start=0&count=${count}`,
+
 			{},
 			{},
 			'get',
@@ -28,6 +30,7 @@ const ListContainer = (props) => {
 			else {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
+				setLoading(true);
 			}
 		});
 	});
@@ -43,6 +46,7 @@ const ListContainer = (props) => {
 			else {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
+				setLoading(true);
 			}
 			console.log(res.data);
 		});
@@ -59,6 +63,7 @@ const ListContainer = (props) => {
 			else {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
+				setLoading(true);
 			}
 			console.log(res.data);
 		});
@@ -68,9 +73,10 @@ const ListContainer = (props) => {
 		const scrollHeight = document.documentElement.scrollHeight - 1;
 		const scrollTop = document.documentElement.scrollTop;
 		const clientHeight = document.documentElement.clientHeight;
-		if (scrollTop + clientHeight >= scrollHeight && loading === true)
+		if (scrollTop + clientHeight >= scrollHeight && loading === true) {
 			setLoading(false);
-		setCount((count) => count + 6);
+			setCount((count) => count + 6);
+		}
 	}, [loading]);
 
 	useEffect(() => {
@@ -99,6 +105,7 @@ const ListContainer = (props) => {
 			setComponent(<CampaignsList isSuggested={false} isSelect={3} />);
 		} else 0;
 	}, [url]);
+
 	return <React.Fragment>{component}</React.Fragment>;
 };
 export default ListContainer;
