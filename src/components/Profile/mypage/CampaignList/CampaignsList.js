@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { campaignModal } from '../../../../modules/CampaignList';
+import { campaignModal, on_modal } from '../../../../modules/CampaignList';
 import Campaign from '../../../common/Campaign/Campaign';
 import MyCampaign from '../../../common/Campaign/MyCampaign';
 import CampaignSearchHeader from '../../../common/CampaignSearchHeader/CampaignSearchHeader';
@@ -40,6 +40,10 @@ const CampaignsList = ({ isSuggested, isSelect }) => {
 		}
 	};
 
+	const modal = (campaing_uuid) => {
+		dispatch(on_modal(campaing_uuid));
+	};
+
 	useEffect(() => {
 		switch (isPick) {
 			case '0':
@@ -74,6 +78,7 @@ const CampaignsList = ({ isSuggested, isSelect }) => {
 						props={item}
 						isSuggested={isSuggested}
 						isCampaign={campaign}
+						onClick={modal}
 					/>
 				))}
 			</S.ListContainer>
