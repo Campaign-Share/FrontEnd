@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { requestApiWithAccessToken } from '../../../APIrequest';
-import MyCampaign from '../../../components/common/Campaign/MyCampaign';
 import CampaignsList from '../../../components/Profile/mypage/CampaignList/CampaignsList';
 import {
 	campaignList,
 	campaignOff,
 	campaignOn,
 } from '../../../modules/CampaignList';
+import MypageModal from '../../../components/Modal/MypageModal/MypageModal';
 
 const ListContainer = (props) => {
 	const url = props.match.url;
@@ -17,10 +17,11 @@ const ListContainer = (props) => {
 	let [loading, setLoading] = useState(false);
 	let [component, setComponent] = useState(<></>);
 
+	const myPageCampaign = useSelector((state) => state.list);
+
 	const onParticipationList = useCallback(() => {
 		requestApiWithAccessToken(
 			`/v1/users/uuid/${uuid}/participate-campaigns?start=0&count=${count}`,
-
 			{},
 			{},
 			'get',
@@ -48,7 +49,6 @@ const ListContainer = (props) => {
 				dispatch(campaignOn());
 				setLoading(true);
 			}
-			console.log(res.data);
 		});
 	});
 
@@ -106,6 +106,11 @@ const ListContainer = (props) => {
 		} else 0;
 	}, [url]);
 
-	return <React.Fragment>{component}</React.Fragment>;
+	return (
+		<React.Fragment>
+			{myPageCampaign.modal && <MypageModal />}
+			{component}
+		</React.Fragment>
+	);
 };
 export default ListContainer;
