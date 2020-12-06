@@ -6,7 +6,7 @@ export const Header = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	margin-bottom: 20px;
+	margin-bottom: 1.25rem;
 `;
 
 export const SearchBarWrapper = styled.div`
@@ -43,7 +43,7 @@ export const SearchSection = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	flex: 1;
-	padding-left: 380px;
+	padding-left: 23.75rem;
 	height: 100%;
 `;
 
@@ -68,6 +68,6 @@ export const SearchSpace = styled.div`
 
 export const Space = styled.p`
 	margin: 0 auto;
-	font-size: 20px;
+	font-size: 1.25rem;
 	color: #abc9c7;
 `;
