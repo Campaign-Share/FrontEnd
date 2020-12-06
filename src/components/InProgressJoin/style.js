@@ -4,8 +4,8 @@ export const RightWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-	padding-left: 300px;
-	width: calc(100% - 300px);
+	padding-left: 1.875rem;
+	width: calc(100% - 1.875rem);
 `;
 
 export const BodyWrapper = styled.div`
@@ -134,7 +134,7 @@ export const InProgressAddFileIcon = styled.img`
 export const InProgressAddFileText = styled.p`
 	font-family: Noto Sans CJK KR;
 	display: inline;
-	margin-left: 5px;
+	margin-left: 0.3125rem;
 `;
 
 export const InProgressAddFileInput = styled.input`
