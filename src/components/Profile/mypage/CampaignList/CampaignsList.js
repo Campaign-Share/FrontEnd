@@ -19,7 +19,7 @@ const CampaignsList = ({ isSuggested, isSelect, isRefusal }) => {
 	const history = useHistory();
 
 	const myPageList = useSelector((store) => store.list.campaigns);
-	const campaign = useSelector((store) => store.list.isCampaign);
+	const campaign = useSelector((state) => state.list.isCampaign);
 
 	const listChange = (id) => {
 		setIsPick(id);
