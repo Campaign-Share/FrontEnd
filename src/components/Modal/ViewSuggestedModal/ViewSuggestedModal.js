@@ -37,7 +37,7 @@ const ViewSuggestedModal = () => {
 			{},
 			'post',
 		);
-		return res.data.user_informs[0].user_id;
+		return res.data.user_informs[0].name;
 	};
 
 	const voteAgree = async (selected) => {
