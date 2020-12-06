@@ -57,7 +57,6 @@ export const UserImglabel = styled.label`
 export const NameInput = styled.input`
 	border: 0px;
 	border-bottom: 2px solid #b3d5d4;
-
 	outline: none;
 	width: 100%;
 	font-size: 20px;
