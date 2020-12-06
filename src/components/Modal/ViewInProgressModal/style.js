@@ -90,13 +90,13 @@ export const ModalIntroduction = styled.p`
 
 export const ModalParticipationExplanation = styled.p`
 	margin: 0;
-	font-size: 20px;
+	font-size: 1.25rem;
 	font-family: Noto Sans CJK KR;
 `;
 
 export const ModalParticipation = styled.p`
 	margin: 0;
-	margin-top: 10px;
+	margin-top: 0.625rem;
 	font-family: Noto Sans CJK KR;
 	height: 25%;
 	color: #535353;
