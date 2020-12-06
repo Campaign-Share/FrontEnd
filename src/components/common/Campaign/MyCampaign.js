@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './style';
 import { good, bad, member } from '../../../assets/img/index';
 
@@ -15,9 +15,9 @@ const MyCampaign = ({ props, onClick, isSuggested, isCampaign, isRefusal }) => {
 					<S.CampaignSummaryWrapper>
 						<S.CampaignSubtitle>{props.sub_title}</S.CampaignSubtitle>
 						<S.CampaignTitle>{props.title}</S.CampaignTitle>
-						{/* {props.campaigns_tags.map((tag) => (
+						{props.campaign_tags.map((tag) => (
 							<S.CampaignTags>{tag.replace(/'/g, '')}</S.CampaignTags>
-						))} */}
+						))}
 						<S.CampaignTags>{props.tags}</S.CampaignTags>
 					</S.CampaignSummaryWrapper>
 				</S.CampaignTextWrapper>
