@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import * as I from '../ViewInProgressModal/style';
-import * as S from '../ViewSuggestedModal/style';
+import * as S from '../../common/Campaign/style';
 import { useSelector, useDispatch } from 'react-redux';
 import { off_modal } from '../../../modules/CampaignList';
-import { useLocation, useHistory } from 'react-router-dom';
-import { report } from '../../../assets/img';
+import { useLocation } from 'react-router-dom';
+import { report, bad, good } from '../../../assets/img';
 import { reportModalOn } from '../../../modules/reportModal';
 
 const MypageModal = () => {
-	let [selected, setSelected] = useState(0);
-	let [vote, setVote] = useState(false);
-	let [member, setMember] = useState(false);
 	let [isReport, setIsReport] = useState(false);
-
+	let [isAccept, setIsAccept] = useState(false);
 	const location = useLocation();
-	const history = useHistory();
 	const dispatch = useDispatch();
 	const uuid = useSelector((state) => state.list.modalCampaign);
 	const myPageList = useSelector((state) => state.list.campaigns);
@@ -24,158 +20,6 @@ const MypageModal = () => {
 		if (e.target === e.currentTarget) dispatch(off_modal());
 	};
 
-	const agree = async (selected) => {
-		if (selected !== 0) {
-			cancelVote(selected);
-			return;
-		}
-		console.log('no');
-		await requestApiWithAccessToken(
-			`/v1/campaigns/uuid/${campaignModal.campaign_uuid}/actions/agree`,
-			{},
-			{},
-			'post',
-		).then((res) => {
-			switch (res.data.status) {
-				case 200: {
-					alert('투표에 성공하셨습니다.');
-					setSelected(1);
-					break;
-				}
-				case 401: {
-					alert('인증 오류');
-					history.push('/login');
-					break;
-				}
-				case 404: {
-					alert('투표 오류');
-					window.location.reload();
-					break;
-				}
-				case 409: {
-					if (res.data.code === -1071) {
-						alert('이미 투표한 캠페인입니다.');
-						break;
-					} else if (res.data.code === -1072) {
-						alert('투표하지 않은 캠페인입니다.');
-						break;
-					}
-				}
-			}
-		});
-	};
-
-	const disagree = async (selected) => {
-		if (selected !== 0) {
-			cancelVote(selected);
-			return;
-		}
-		await requestApiWithAccessToken(
-			`/v1/campaigns/uuid/${campaignModal.campaign_uuid}/actions/disagree`,
-			{},
-			{},
-			'post',
-		).then((res) => {
-			switch (res.data.status) {
-				case 200: {
-					alert('투표에 성공하셨습니다.');
-					setSelected(2);
-					break;
-				}
-				case 401: {
-					alert('인증 오류');
-					history.push('/login');
-					break;
-				}
-				case 404: {
-					alert('투표 오류');
-					window.location.reload();
-					break;
-				}
-				case 409: {
-					if (res.data.code === -1071) {
-						alert('이미 투표한 캠페인입니다.');
-						break;
-					} else if (res.data.code === -1072) {
-						alert('투표하지 않은 캠페인입니다.');
-						break;
-					}
-				}
-			}
-		});
-	};
-
-	const cancelVote = async (selected) => {
-		if (selected === 1) {
-			await requestApiWithAccessToken(
-				`/v1/campaigns/uuid/${modalCampaignInfo.campaign_uuid}/actions/cancel-agree`,
-				{},
-				{},
-				'post',
-			).then((res) => {
-				switch (res.data.status) {
-					case 200: {
-						alert('투표에 성공하셨습니다.');
-						setSelected(0);
-						break;
-					}
-					case 401: {
-						alert('인증 오류');
-						history.push('/login');
-						break;
-					}
-					case 404: {
-						alert('투표 오류');
-						window.location.reload();
-						break;
-					}
-					case 409: {
-						if (res.data.code === -1071) {
-							alert('이미 투표한 캠페인입니다.');
-							break;
-						} else if (res.data.code === -1072) {
-							alert('투표하지 않은 캠페인입니다.');
-							break;
-						}
-					}
-				}
-			});
-		} else {
-			await requestApiWithAccessToken(
-				`/v1/campaigns/uuid/${modalCampaignInfo.campaign_uuid}/actions/canceldisagree`,
-				{},
-				{},
-				'post',
-			).then((res) => {
-				switch (res.data.status) {
-					case 200: {
-						alert('투표에 성공하셨습니다.');
-						setSelected(0);
-						break;
-					}
-					case 401: {
-						alert('인증 오류');
-						history.push('/login');
-						break;
-					}
-					case 404: {
-						alert('투표 오류');
-						window.location.reload();
-						break;
-					}
-					case 409: {
-						if (res.data.code === -1071) {
-							alert('이미 투표한 캠페인입니다.');
-							break;
-						} else if (res.data.code === -1072) {
-							alert('투표하지 않은 캠페인입니다.');
-							break;
-						}
-					}
-				}
-			});
-		}
-	};
 	const reportModal = () => {
 		dispatch(reportModalOn());
 	};
@@ -183,21 +27,22 @@ const MypageModal = () => {
 	useEffect(() => {
 		switch (location.pathname) {
 			case '/main/mypage/participationList':
-				setVote(false);
-				setMember(true);
 				setIsReport(true);
+
 				break;
 			case '/main/mypage/acceptList':
-				setVote(true);
-				setMember(false);
-				setIsReport(true);
+				setIsReport(false);
+
 				break;
 			case '/main/mypage/refusalList':
-				setVote(false);
-				setMember(false);
 				setIsReport(false);
+
+				break;
+			case '/main/mypage/registerList':
+				setIsAccept(true);
 				break;
 		}
+		console.log(campaignModal);
 	});
 
 	return (
@@ -223,24 +68,30 @@ const MypageModal = () => {
 								{campaignModal.participation}
 							</I.ModalParticipation>
 						</I.ModalTextWrapper>
-						{vote ? (
-							<S.ModalBtnWrapper>
-								<S.ModalAgreeBtn
-									onClick={() => agree(selected)}
-									selected={selected}>
-									동의
-								</S.ModalAgreeBtn>
-								<S.ModalDisagreeBtn
-									onClick={() => disagree(selected)}
-									selected={selected}>
-									반대
-								</S.ModalDisagreeBtn>
-							</S.ModalBtnWrapper>
-						) : (
-							''
-						)}
 					</I.RightWrapper>
 				</I.BodyWrapper>
+				{isAccept ? (
+					<S.CampaignGraphWrapper mypage>
+						<S.CampaignLikeIcon src={good} />
+						<S.CampaignDisagreeGraph>
+							<S.CampaignFlexDiv
+								flex={campaignModal.agree_number}
+								isFull={campaignModal.disagree_number === 0}>
+								<S.CampaignAgreeNumber>
+									{campaignModal.agree_number}
+								</S.CampaignAgreeNumber>
+							</S.CampaignFlexDiv>
+							<S.CampaignFlexDiv flex={campaignModal.disagree_number}>
+								<S.CampaignDisagreeNumber>
+									{campaignModal.disagree_number}
+								</S.CampaignDisagreeNumber>
+							</S.CampaignFlexDiv>
+						</S.CampaignDisagreeGraph>
+						<S.CampaignDislikeIcon src={bad} />
+					</S.CampaignGraphWrapper>
+				) : (
+					''
+				)}
 				{isReport ? (
 					<I.ModalBottomWrapper>
 						<I.ModalReportWrapper>
