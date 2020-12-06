@@ -8,6 +8,7 @@ import {
 	campaignOn,
 } from '../../../modules/CampaignList';
 import MypageModal from '../../../components/Modal/MypageModal/MypageModal';
+import MypageReport from '../../../components/Modal/ReportModal/MypageReport';
 
 const ListContainer = (props) => {
 	const url = props.match.url;
@@ -15,9 +16,11 @@ const ListContainer = (props) => {
 	const dispatch = useDispatch();
 	let [count, setCount] = useState(6);
 	let [loading, setLoading] = useState(false);
+
 	let [component, setComponent] = useState(<></>);
 
 	const myPageCampaign = useSelector((state) => state.list);
+	const report = useSelector((state) => state.reportModal);
 
 	const onParticipationList = useCallback(() => {
 		requestApiWithAccessToken(
@@ -96,19 +99,26 @@ const ListContainer = (props) => {
 	useEffect(() => {
 		if (url === '/main/mypage/participationList') {
 			onParticipationList();
-			setComponent(<CampaignsList isSuggested={false} isSelect={1} />);
+			setComponent(
+				<CampaignsList isSuggested={false} isSelect={1} isRefusal={false} />,
+			);
 		} else if (url === '/main/mypage/acceptList') {
 			onAcceptList();
-			setComponent(<CampaignsList isSuggested={true} isSelect={2} />);
+			setComponent(
+				<CampaignsList isSuggested={true} isSelect={2} isRefusal={true} />,
+			);
 		} else if (url === '/main/mypage/refusalList') {
 			onRefusalList();
-			setComponent(<CampaignsList isSuggested={false} isSelect={3} />);
+			setComponent(
+				<CampaignsList isSuggested={false} isSelect={3} isRefusal={true} />,
+			);
 		} else 0;
 	}, [url]);
 
 	return (
 		<React.Fragment>
 			{myPageCampaign.modal && <MypageModal />}
+			{report.onReportModal && <MypageReport />}
 			{component}
 		</React.Fragment>
 	);
