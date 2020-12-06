@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as S from './style';
 import { good, bad, member } from '../../../assets/img/index';
 
-const MyCampaign = ({ props, onClick, isSuggested, isCampaign }) => {
+const MyCampaign = ({ props, onClick, isSuggested, isCampaign, isRefusal }) => {
 	const imgUrl = 'https://campaignshare.s3.ap-northeast-2.amazonaws.com/';
 	return (
 		<React.Fragment>
@@ -40,6 +40,11 @@ const MyCampaign = ({ props, onClick, isSuggested, isCampaign }) => {
 						</S.CampaignDisagreeGraph>
 						<S.CampaignDislikeIcon src={bad} />
 					</S.CampaignGraphWrapper>
+				) : (
+					''
+				)}
+				{isRefusal ? (
+					''
 				) : (
 					<S.CampaignParticipationWrapper>
 						<S.CampaignParticipationDiv>
