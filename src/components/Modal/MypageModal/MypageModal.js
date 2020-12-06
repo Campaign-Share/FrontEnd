@@ -26,14 +26,156 @@ const MypageModal = () => {
 
 	const agree = async (selected) => {
 		if (selected !== 0) {
+			cancelVote(selected);
+			return;
 		}
+		console.log('no');
+		await requestApiWithAccessToken(
+			`/v1/campaigns/uuid/${campaignModal.campaign_uuid}/actions/agree`,
+			{},
+			{},
+			'post',
+		).then((res) => {
+			switch (res.data.status) {
+				case 200: {
+					alert('투표에 성공하셨습니다.');
+					setSelected(1);
+					break;
+				}
+				case 401: {
+					alert('인증 오류');
+					history.push('/login');
+					break;
+				}
+				case 404: {
+					alert('투표 오류');
+					window.location.reload();
+					break;
+				}
+				case 409: {
+					if (res.data.code === -1071) {
+						alert('이미 투표한 캠페인입니다.');
+						break;
+					} else if (res.data.code === -1072) {
+						alert('투표하지 않은 캠페인입니다.');
+						break;
+					}
+				}
+			}
+		});
 	};
 
 	const disagree = async (selected) => {
 		if (selected !== 0) {
+			cancelVote(selected);
+			return;
 		}
+		await requestApiWithAccessToken(
+			`/v1/campaigns/uuid/${campaignModal.campaign_uuid}/actions/disagree`,
+			{},
+			{},
+			'post',
+		).then((res) => {
+			switch (res.data.status) {
+				case 200: {
+					alert('투표에 성공하셨습니다.');
+					setSelected(2);
+					break;
+				}
+				case 401: {
+					alert('인증 오류');
+					history.push('/login');
+					break;
+				}
+				case 404: {
+					alert('투표 오류');
+					window.location.reload();
+					break;
+				}
+				case 409: {
+					if (res.data.code === -1071) {
+						alert('이미 투표한 캠페인입니다.');
+						break;
+					} else if (res.data.code === -1072) {
+						alert('투표하지 않은 캠페인입니다.');
+						break;
+					}
+				}
+			}
+		});
 	};
 
+	const cancelVote = async (selected) => {
+		if (selected === 1) {
+			await requestApiWithAccessToken(
+				`/v1/campaigns/uuid/${modalCampaignInfo.campaign_uuid}/actions/cancel-agree`,
+				{},
+				{},
+				'post',
+			).then((res) => {
+				switch (res.data.status) {
+					case 200: {
+						alert('투표에 성공하셨습니다.');
+						setSelected(0);
+						break;
+					}
+					case 401: {
+						alert('인증 오류');
+						history.push('/login');
+						break;
+					}
+					case 404: {
+						alert('투표 오류');
+						window.location.reload();
+						break;
+					}
+					case 409: {
+						if (res.data.code === -1071) {
+							alert('이미 투표한 캠페인입니다.');
+							break;
+						} else if (res.data.code === -1072) {
+							alert('투표하지 않은 캠페인입니다.');
+							break;
+						}
+					}
+				}
+			});
+		} else {
+			await requestApiWithAccessToken(
+				`/v1/campaigns/uuid/${modalCampaignInfo.campaign_uuid}/actions/canceldisagree`,
+				{},
+				{},
+				'post',
+			).then((res) => {
+				switch (res.data.status) {
+					case 200: {
+						alert('투표에 성공하셨습니다.');
+						setSelected(0);
+						break;
+					}
+					case 401: {
+						alert('인증 오류');
+						history.push('/login');
+						break;
+					}
+					case 404: {
+						alert('투표 오류');
+						window.location.reload();
+						break;
+					}
+					case 409: {
+						if (res.data.code === -1071) {
+							alert('이미 투표한 캠페인입니다.');
+							break;
+						} else if (res.data.code === -1072) {
+							alert('투표하지 않은 캠페인입니다.');
+							break;
+						}
+					}
+				}
+			});
+		}
+	};
 	const reportModal = () => {
 		dispatch(reportModalOn());
 	};
@@ -56,7 +198,6 @@ const MypageModal = () => {
 				setIsReport(false);
 				break;
 		}
-		console.log(campaignModal);
 	});
 
 	return (
@@ -95,16 +236,6 @@ const MypageModal = () => {
 									반대
 								</S.ModalDisagreeBtn>
 							</S.ModalBtnWrapper>
-						) : (
-							''
-						)}
-						{member ? (
-							<I.ModalJoinWrapper>
-								<I.ModalJoinButton
-									onClick={() => history.push('/main/inProgressJoin')}>
-									참여하기
-								</I.ModalJoinButton>
-							</I.ModalJoinWrapper>
 						) : (
 							''
 						)}
