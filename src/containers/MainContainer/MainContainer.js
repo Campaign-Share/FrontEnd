@@ -58,6 +58,11 @@ const MainContainer = () => {
 						exact
 						component={ListContainer}
 					/>
+					<Route
+						path="/main/mypage/registerList"
+						exact
+						component={ListContainer}
+					/>
 					<Route path="/main/search" exact component={SearchContainer} />
 					<Redirect path="/main/*" to="/main/suggest" />
 				</Switch>
