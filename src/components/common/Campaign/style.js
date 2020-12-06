@@ -81,7 +81,11 @@ export const CampaignTags = styled.p`
 `;
 
 export const CampaignGraphWrapper = styled.div`
-	width: 90%;
+	width: 100%;
+	margin: ${(props) => {
+		if (props.mypage) return '0.625rem 37.5rem 0 0';
+		else return '';
+	}};
 	height: 10%;
 	display: flex;
 	justify-content: center;
@@ -137,7 +141,7 @@ export const CampaignDisagreeNumber = styled.p`
 `;
 
 export const CampaignMember = styled.div`
-	margin: 10px 0px 0px 240px;
+	margin: 0.625rem 0 0 15rem;
 `;
 
 export const Member = styled.img`
@@ -154,8 +158,8 @@ export const CampaignParticipationWrapper = styled.div`
 `;
 
 export const CampaignParticipationDiv = styled.div`
-	margin-right: 30px;
-	height: 20px;
+	margin-right: 1.875rem;
+	height: 1.25rem;
 	display: flex;
 `;
 
@@ -167,8 +171,8 @@ export const CampaignParticipationIcon = styled.img`
 
 export const CampaignParticipationText = styled.p`
 	margin: 0;
-	height: 20px;
-	font-size: 15px;
+	height: 1.25rem;
+	font-size: 0.9375rem;
 	font-family: Noto Sans CJK KR;
 	color: #353535;
 `;
@@ -181,10 +185,10 @@ export const voidContainer = styled.div`
 	width: 100%;
 	text-align: center;
 	height: 80%;
-	line-height: 400px;
+	line-height: 25rem;
 `;
 export const voidText = styled.p`
-	font-size: 22px;
+	font-size: 1.375rem;
 	font-weight: bold;
 	color: #9dc3c1;
 `;
