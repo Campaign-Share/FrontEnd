@@ -8,7 +8,7 @@ import MyCampaign from '../../../common/Campaign/MyCampaign';
 import CampaignSearchHeader from '../../../common/CampaignSearchHeader/CampaignSearchHeader';
 import * as S from './style';
 
-const CampaignsList = ({ isSuggested, isSelect }) => {
+const CampaignsList = ({ isSuggested, isSelect, isRefusal }) => {
 	const headerList = [
 		{ id: 1, text: '참여한 캠페인' },
 		{ id: 2, text: '수락된 캠페인' },
@@ -79,6 +79,7 @@ const CampaignsList = ({ isSuggested, isSelect }) => {
 						isSuggested={isSuggested}
 						isCampaign={campaign}
 						onClick={modal}
+						isRefusal={isRefusal}
 					/>
 				))}
 			</S.ListContainer>
