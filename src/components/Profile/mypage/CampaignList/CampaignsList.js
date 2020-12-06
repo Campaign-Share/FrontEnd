@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
-import { campaignModal, on_modal } from '../../../../modules/CampaignList';
-import Campaign from '../../../common/Campaign/Campaign';
+import { on_modal } from '../../../../modules/CampaignList';
 import MyCampaign from '../../../common/Campaign/MyCampaign';
 import CampaignSearchHeader from '../../../common/CampaignSearchHeader/CampaignSearchHeader';
 import * as S from './style';
@@ -11,8 +9,9 @@ import * as S from './style';
 const CampaignsList = ({ isSuggested, isSelect, isRefusal }) => {
 	const headerList = [
 		{ id: 1, text: '참여한 캠페인' },
-		{ id: 2, text: '수락된 캠페인' },
-		{ id: 3, text: '거절된 캠페인' },
+		{ id: 2, text: '등록한 캠페인' },
+		{ id: 3, text: '수락된 캠페인' },
+		{ id: 4, text: '거절된 캠페인' },
 	];
 
 	let [isPick, setIsPick] = useState('0');
@@ -30,10 +29,14 @@ const CampaignsList = ({ isSuggested, isSelect, isRefusal }) => {
 				break;
 			}
 			case 2: {
-				history.push('/main/mypage/acceptList');
+				history.push('/main/mypage/registerList');
 				break;
 			}
 			case 3: {
+				history.push('/main/mypage/acceptList');
+				break;
+			}
+			case 4: {
 				history.push('/main/mypage/refusalList');
 				break;
 			}
