@@ -29,7 +29,6 @@ const ListContainer = (props) => {
 			{},
 			'get',
 		).then((res) => {
-			console.log(res.data);
 			if (res.data.campaigns.length == 0) dispatch(campaignOff());
 			else {
 				dispatch(campaignList(res.data.campaigns));
@@ -68,7 +67,22 @@ const ListContainer = (props) => {
 				dispatch(campaignOn());
 				setLoading(true);
 			}
-			console.log(res.data);
+		});
+	});
+
+	const onRegisterList = useCallback(() => {
+		requestApiWithAccessToken(
+			`/v1/users/uuid/${uuid}/campaigns?start=0&count=${count}&state=pending`,
+			{},
+			{},
+			'get',
+		).then((res) => {
+			if (res.data.campaigns.length == 0) dispatch(campaignOff());
+			else {
+				dispatch(campaignList(res.data.campaigns));
+				dispatch(campaignOn());
+				setLoading(true);
+			}
 		});
 	});
 
@@ -89,6 +103,8 @@ const ListContainer = (props) => {
 			onAcceptList();
 		} else if (url === '/main/mypage/refusalList') {
 			onRefusalList();
+		} else if (url === '/main/mypage/registerList') {
+			onRegisterList();
 		} else 0;
 		window.addEventListener('scroll', handleScroll);
 		return () => {
@@ -102,17 +118,22 @@ const ListContainer = (props) => {
 			setComponent(
 				<CampaignsList isSuggested={false} isSelect={1} isRefusal={false} />,
 			);
+		} else if (url === '/main/mypage/registerList') {
+			onRegisterList();
+			setComponent(
+				<CampaignsList isSuggested={true} isSelect={2} isRefusal={true} />,
+			);
 		} else if (url === '/main/mypage/acceptList') {
 			onAcceptList();
 			setComponent(
-				<CampaignsList isSuggested={true} isSelect={2} isRefusal={true} />,
+				<CampaignsList isSuggested={false} isSelect={3} isRefusal={false} />,
 			);
 		} else if (url === '/main/mypage/refusalList') {
 			onRefusalList();
 			setComponent(
-				<CampaignsList isSuggested={false} isSelect={3} isRefusal={true} />,
+				<CampaignsList isSuggested={false} isSelect={4} isRefusal={true} />,
 			);
-		} else 0;
+		}
 	}, [url]);
 
 	return (
