@@ -96,7 +96,7 @@ export const ModalParticipationExplanation = styled.p`
 
 export const ModalParticipation = styled.p`
 	margin: 0;
-	margin-top: 10px;
+	margin-top: 0.625rem;
 	font-family: Noto Sans CJK KR;
 	height: 25%;
 	color: #535353;
