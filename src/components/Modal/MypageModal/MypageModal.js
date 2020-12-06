@@ -5,12 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { off_modal } from '../../../modules/CampaignList';
 import { useLocation, useHistory } from 'react-router-dom';
 import { report } from '../../../assets/img';
+import { reportModalOn } from '../../../modules/reportModal';
 
 const MypageModal = () => {
 	let [selected, setSelected] = useState(0);
 	let [vote, setVote] = useState(false);
 	let [member, setMember] = useState(false);
-	let [report, setReport] = useState(false);
+	let [isReport, setIsReport] = useState(false);
 
 	const location = useLocation();
 	const history = useHistory();
@@ -33,22 +34,26 @@ const MypageModal = () => {
 		}
 	};
 
+	const reportModal = () => {
+		dispatch(reportModalOn());
+	};
+
 	useEffect(() => {
 		switch (location.pathname) {
 			case '/main/mypage/participationList':
 				setVote(false);
 				setMember(true);
-				setReport(true);
+				setIsReport(true);
 				break;
 			case '/main/mypage/acceptList':
 				setVote(true);
 				setMember(false);
-				setReport(true);
+				setIsReport(true);
 				break;
 			case '/main/mypage/refusalList':
 				setVote(false);
 				setMember(false);
-				setReport(false);
+				setIsReport(false);
 				break;
 		}
 		console.log(campaignModal);
@@ -105,11 +110,11 @@ const MypageModal = () => {
 						)}
 					</I.RightWrapper>
 				</I.BodyWrapper>
-				{report ? (
+				{isReport ? (
 					<I.ModalBottomWrapper>
 						<I.ModalReportWrapper>
 							<I.ModalReportBtn>
-								<I.ModalReportIcon src={report} />
+								<I.ModalReportIcon onClick={reportModal} src={report} />
 								<I.ModalReportText>신고하기</I.ModalReportText>
 							</I.ModalReportBtn>
 						</I.ModalReportWrapper>
