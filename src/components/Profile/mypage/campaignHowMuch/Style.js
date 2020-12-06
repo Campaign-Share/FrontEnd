@@ -10,8 +10,8 @@ export const ListBox = styled.div`
 export const ListBoxWrapper = styled.div`
 	width: 30%;
 	height: 100%;
-	padding-left: 60px;
-	padding-right: 40px;
+	padding-left: 3.75rem;
+	padding-right: 2.5rem;
 
 	display: flex;
 	justify-content: center;
@@ -20,14 +20,14 @@ export const ListBoxWrapper = styled.div`
 export const ItemBox = styled.div`
 	display: flex;
 	width: 100%;
-	height: 50px;
+	height: 3.125rem;
 	justify-content: center;
 	align-items: center;
 `;
 export const ItemCircle = styled.div`
 	border-radius: 10rem;
-	width: 30px;
-	height: 30px;
+	width: 1.875rem;
+	height: 1.875rem;
 
 	background-color: ${(props) => props.backgroundColor};
 `;
