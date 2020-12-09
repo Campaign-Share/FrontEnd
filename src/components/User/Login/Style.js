@@ -20,7 +20,7 @@ export const UserBox = styled.div`
 	box-shadow: 6px 6px 6px rgb(0, 0, 0, 0.22);
 	background-color: white;
 	border-radius: 50px;
-	margin: 0px 0px 0px 32.5rem;
+	margin: 0px 32.5rem 0px 32.5rem;
 `;
 
 export const ContentSection = styled.div`
@@ -60,7 +60,7 @@ export const Password = styled(Id).attrs({
 	type: 'password',
 	placeholder: 'Password',
 })`
-	margin-top: 50px;
+	margin-top: 3.125rem;
 `;
 
 export const UserBtn = styled.button`
