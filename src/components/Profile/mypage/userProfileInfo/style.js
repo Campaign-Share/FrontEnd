@@ -8,7 +8,6 @@ export const UserDataBoxWrap = styled.div`
 export const UserdataBox = styled.div`
 	height: 100%;
 	width: 80%;
-
 	margin: 2.5rem;
 	border: 1px solid #e7e7e7;
 	border-radius: 2rem;
@@ -20,11 +19,12 @@ export const UserImgBox = styled.div`
 	width: 100%;
 	justify-content: center;
 	align-items: center;
+	object-fit: cover;
 `;
 export const UserImg = styled.img`
-	border-radius: 10rem;
-	width: 6.875rem;
-	height: 6.875rem;
+	border-radius: 50%;
+	width: 8.125rem;
+	height: 8.125rem;
 `;
 export const UserId = styled.div`
 	width: 100%;
