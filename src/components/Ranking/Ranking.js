@@ -8,7 +8,6 @@ const Ranking = () => {
 	let [first, setFirst] = useState([]);
 	let [second, setSecond] = useState([]);
 	let [third, setThird] = useState([]);
-	let [isImg, setIsImg] = useState(false);
 	const imgUrl = 'https://campaignshare.s3.ap-northeast-2.amazonaws.com/';
 	useEffect(() => {
 		requestApiWithAccessToken(
