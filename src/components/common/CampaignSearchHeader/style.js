@@ -35,8 +35,10 @@ export const SearchIcon = styled.img`
 
 export const HeaderIcon = styled.img`
 	width: 3.125rem;
+	height: 3.125em;
 	margin-right: 2%;
 	cursor: pointer;
+	border-radius: 10rem;
 `;
 
 export const SearchSection = styled.div`
