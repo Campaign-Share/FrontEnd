@@ -45,7 +45,7 @@ const ListContainer = (props) => {
 			{},
 			'get',
 		).then((res) => {
-			if (res.data.campaigns.length == 0) dispatch(campaignOff());
+			if (res.data.campaigns.length === 0) dispatch(campaignOff());
 			else {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
@@ -61,7 +61,7 @@ const ListContainer = (props) => {
 			{},
 			'get',
 		).then((res) => {
-			if (res.data.campaigns.length == 0) dispatch(campaignOff());
+			if (res.data.campaigns.length === 0) dispatch(campaignOff());
 			else {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
@@ -77,7 +77,7 @@ const ListContainer = (props) => {
 			{},
 			'get',
 		).then((res) => {
-			if (res.data.campaigns.length == 0) dispatch(campaignOff());
+			if (res.data.campaigns.length === 0) dispatch(campaignOff());
 			else {
 				dispatch(campaignList(res.data.campaigns));
 				dispatch(campaignOn());
