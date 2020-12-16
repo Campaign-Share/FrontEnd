@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export const UserContainer = styled.div`
+	display: flex;
+	flex-wrap: wrap;
 	text-align: center;
+	justify-content: center;
 	background-image: url(${(props) => props.url});
 	background-repeat: no-repeat;
 	background-size: 100% 43.75rem;
-	padding-top: ${(props) => {
-		if (props.join) return '3.75rem';
-		else return '5rem';
-	}};
+	padding-top: 6%;
 `;
 
 export const UserBox = styled.div`
@@ -20,7 +20,6 @@ export const UserBox = styled.div`
 	box-shadow: 6px 6px 6px rgb(0, 0, 0, 0.22);
 	background-color: white;
 	border-radius: 50px;
-	margin: 0px 0px 0px 32.5rem;
 `;
 
 export const ContentSection = styled.div`
