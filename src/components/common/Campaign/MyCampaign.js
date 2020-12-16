@@ -1,25 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './style';
 import { good, bad, member } from '../../../assets/img/index';
 
-const MyCampaign = ({ props, onClick, isSuggested, isCampaign }) => {
+const MyCampaign = ({ props, onClick, isSuggested, isCampaign, isRefusal }) => {
 	const imgUrl = 'https://campaignshare.s3.ap-northeast-2.amazonaws.com/';
 	return (
 		<React.Fragment>
-			<S.MainWrapper onClick={onClick} isCampaign={isCampaign}>
+			<S.MainWrapper
+				onClick={() => onClick(props.campaign_uuid)}
+				isCampaign={isCampaign}>
 				<S.Poster src={imgUrl + props.post_uri} />
 				<S.CampaignTextWrapper>
 					<S.CampaignPublisher>{props.nick_name}</S.CampaignPublisher>
 					<S.CampaignSummaryWrapper>
 						<S.CampaignSubtitle>{props.sub_title}</S.CampaignSubtitle>
 						<S.CampaignTitle>{props.title}</S.CampaignTitle>
-						{/* {tags.map((tag) => (
-						<S.CampaignTags>{tag.replace(/'/g, '')}</S.CampaignTags>
-					))} */}
+						{props.campaign_tags.map((tag) => (
+							<S.CampaignTags>{tag.replace(/'/g, '')}</S.CampaignTags>
+						))}
 						<S.CampaignTags>{props.tags}</S.CampaignTags>
 					</S.CampaignSummaryWrapper>
 				</S.CampaignTextWrapper>
-				<div></div>
 				{isSuggested ? (
 					<S.CampaignGraphWrapper>
 						<S.CampaignLikeIcon src={good} />
@@ -39,6 +40,11 @@ const MyCampaign = ({ props, onClick, isSuggested, isCampaign }) => {
 						</S.CampaignDisagreeGraph>
 						<S.CampaignDislikeIcon src={bad} />
 					</S.CampaignGraphWrapper>
+				) : (
+					''
+				)}
+				{isRefusal ? (
+					''
 				) : (
 					<S.CampaignParticipationWrapper>
 						<S.CampaignParticipationDiv>

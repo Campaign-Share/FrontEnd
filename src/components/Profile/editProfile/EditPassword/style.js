@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
 	display: flex;
-	padding-left: 300px;
+	padding-left: 18.75rem;
 	width: 100%;
 `;
 export const Container = styled.div`
@@ -10,9 +10,9 @@ export const Container = styled.div`
 `;
 
 export const HeaderEnd = styled.div`
-	margin-top: 20px;
-	margin-right: 20px;
-	height: 50px;
+	margin-top: 1.25rem;
+	margin-right: 1.25rem;
+	height: 3.125rem;
 	display: flex;
 	justify-content: flex-end;
 `;
@@ -35,8 +35,8 @@ export const TitleBox = styled.div`
 export const bar = styled.div`
 	width: 30%;
 	margin: 0 auto;
-	height: 3px;
-	margin-top: 10px;
+	height: 0.1875rem;
+	margin-top: 0.625rem;
 	background-color: #9dc3c1;
 `;
 export const PasswordInputBox = styled.div`
@@ -45,7 +45,7 @@ export const PasswordInputBox = styled.div`
 	width: 90%;
 	border-radius: 1rem;
 	height: 75%;
-	margin-top: 60px;
+	margin-top: 3.75rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -61,18 +61,18 @@ export const PasswordBtn = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 130px;
+	width: 8.125rem;
 	margin: 0 auto;
 	border-radius: 1rem;
-	height: 30px;
-	margin-top: 40px;
+	height: 1.875rem;
+	margin-top: 2.5rem;
 `;
 export const InputPasswordBox = styled.div`
 	margin: 0 auto;
 	display: flex;
 	width: 80%;
-	height: 40px;
-	margin-top: 40px;
+	height: 2.5rem;
+	margin-top: 2.5rem;
 `;
 export const WidthBox = styled.div`
 	width: 70%;
@@ -87,7 +87,7 @@ export const text = styled.div`
 	color: #525252;
 `;
 export const Input = styled.input`
-	margin-left: 20px;
+	margin-left: 1.25rem;
 	outline: none;
 	border: none;
 	border-bottom: 1px solid #b3d5d4;

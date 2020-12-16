@@ -13,10 +13,10 @@ export const MainWrapper = styled.div`
 `;
 
 export const BodyWrapper = styled.div`
-	width: 700px;
-	height: 300px;
+	width: 43.75rem;
+	height: 18.75rem;
 	background-color: white;
-	border-radius: 45px;
+	border-radius: 2.813rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -28,12 +28,12 @@ export const ModalText = styled.p`
 	font-size: 23px;
 	text-align: center;
 	color: #83aaa5;
-	margin-bottom: 40px;
+	margin-bottom: 2.5rem;
 `;
 
 export const ModalBtn = styled.button`
-	width: 140px;
-	height: 50px;
+	width: 8.75rem;
+	height: 3.125rem;
 	background-color: #9dc3c1;
 	border-radius: 26px;
 	color: white;

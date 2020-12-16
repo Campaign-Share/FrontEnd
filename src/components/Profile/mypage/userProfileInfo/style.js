@@ -9,22 +9,22 @@ export const UserdataBox = styled.div`
 	height: 100%;
 	width: 80%;
 
-	margin: 40px;
+	margin: 2.5rem;
 	border: 1px solid #e7e7e7;
 	border-radius: 2rem;
 	box-shadow: 1px 3px #e7e7e7;
 `;
 export const UserImgBox = styled.div`
 	display: flex;
-	height: 160px;
+	height: 10rem;
 	width: 100%;
 	justify-content: center;
 	align-items: center;
 `;
 export const UserImg = styled.img`
 	border-radius: 10rem;
-	width: 110px;
-	height: 110px;
+	width: 6.875rem;
+	height: 6.875rem;
 `;
 export const UserId = styled.div`
 	width: 100%;
@@ -32,23 +32,23 @@ export const UserId = styled.div`
 	color: #8a8a8a;
 `;
 export const UserName = styled.div`
-	margin-top: 15px;
+	margin-top: 0.9375rem;
 	width: 100%;
 	color: #8a8a8a;
 	text-align: center;
-	font-size: 15px;
+	font-size: 0.9375rem;
 `;
 export const UserEmail = styled.div`
-	margin-top: 15px;
+	margin-top: 0.9375rem;
 	width: 100%;
 	text-align: center;
 	color: #8a8a8a;
-	font-size: 15px;
+	font-size: 0.9375rem;
 `;
 
 export const MarginBox = styled.div`
-	height: 200px;
-	width: 200px;
+	height: 12.5rem;
+	width: 12.5rem;
 `;
 export const Logout = styled.div`
 	color: red;

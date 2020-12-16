@@ -5,7 +5,7 @@ export const Name = styled.input.attrs({
 })`
 	width: 70%;
 	display: block;
-	margin-top: 40px;
+	margin-top: 2.5rem;
 	border: none;
 	border-bottom: 1px solid #d1d1d1;
 	outline: none;
@@ -26,15 +26,15 @@ export const Id = styled(Name).attrs({
 	placeholder: 'ID',
 })`
 	display: inline-block;
-	margin: 40px 10px 0px -100px;
+	margin: 2.5rem 0.625rem 0px -6.25rem;
 `;
 
 export const IdBtn = styled.button`
-	width: 70px;
-	height: 30px;
+	width: 4.375rem;
+	height: 1.875rem;
 	border: none;
 	outline: none;
-	border-radius: 120px;
+	border-radius: 7.5rem;
 	background-color: #e7e7e7;
 	color: #aeaeae;
 	font-size: 12px;
@@ -44,13 +44,13 @@ export const Password = styled(Name).attrs({
 	type: 'password',
 	placeholder: 'Password',
 })`
-	margin-top: 20px;
+	margin-top: 1.25rem;
 `;
 
 export const IsError = styled.span`
 	font-size: 12px;
 	color: #ff0000;
-	margin-right: 35px;
+	margin-right: 2.188rem;
 `;
 
 export const Explan = styled.h3`
@@ -87,10 +87,10 @@ export const ChangeImg = styled.label.attrs({
 `;
 
 export const ImgBox = styled.div`
-	width: 140px;
-	height: 140px;
+	width: 8.75rem;
+	height: 8.75rem;
 	position: relative;
-	line-height: 130px;
+	line-height: 8.125rem;
 `;
 
 export const ChangeProfile = styled.img`
