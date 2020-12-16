@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import * as L from '../Login/Style';
 import * as S from './Style';
-import { signUpInput } from '../../../modules/SignUp';
 import background from '../../../assets/img/background.png';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 const SignUp = ({ data }) => {
@@ -55,6 +52,9 @@ const SignUp = ({ data }) => {
 		else return setIsId(false);
 	};
 
+	const enter = () => {
+		if (window.event.keyCode == 13) joinBtn();
+	};
 	return (
 		<L.UserContainer join url={background}>
 			<L.UserBox join>
@@ -69,7 +69,11 @@ const SignUp = ({ data }) => {
 						<S.IsError style={{ visibility: isIdStyle }}>
 							4~12자의 영문 대소문자와 숫자
 						</S.IsError>
-						<S.Password id="password" onChange={passwordChange} />
+						<S.Password
+							id="password"
+							onChange={passwordChange}
+							onKeyUp={enter}
+						/>
 						<S.IsError style={{ visibility: isPasswordStyle }}>
 							비밀번호는 4자 이상으로 설정해 주세요.
 						</S.IsError>

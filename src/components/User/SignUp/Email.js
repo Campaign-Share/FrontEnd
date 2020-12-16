@@ -30,6 +30,10 @@ const Email = ({ joinEmail }) => {
 			joinEmail(email);
 		}
 	};
+
+	const enter = () => {
+		if (window.event.keyCode == 13) onEmail();
+	};
 	let isEmailStyle = isEmail ? 'visible' : 'hidden';
 
 	return (
@@ -42,7 +46,8 @@ const Email = ({ joinEmail }) => {
 						<S.Email
 							placeholder="Email"
 							id="email"
-							onChange={emailChange}></S.Email>
+							onChange={emailChange}
+							onKeyUp={enter}></S.Email>
 						<S.IsError style={{ visibility: isEmailStyle }}>
 							이메일 형식이 올바르지 않습니다.
 						</S.IsError>
